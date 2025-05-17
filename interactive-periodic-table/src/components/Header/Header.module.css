@@ -1,0 +1,65 @@
+/* src/components/Header/Header.module.css */
+.header {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.searchInput {
+  padding: 8px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  min-width: 250px; /* Or adjust as needed */
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5em; /* Adjust icon size */
+  cursor: pointer;
+  padding: 5px;
+}
+
+.themeToggle:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .title {
+    font-size: 1.2em;
+  }
+  .controls {
+    width: 100%;
+    justify-content: space-between; /* Or center, depending on desired layout */
+  }
+  .searchInput {
+    flex-grow: 1; /* Allow search input to take available space */
+    min-width: auto;
+  }
+}

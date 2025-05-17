@@ -1,0 +1,47 @@
+/* src/components/ElementTooltip/ElementTooltip.module.css */
+.tooltip {
+  position: absolute;
+  background-color: var(--panel-bg);
+  color: var(--text-color);
+  border: 2px solid; /* Border color set by inline style from categoryColor */
+  border-radius: 6px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  z-index: 1000; /* High z-index */
+  min-width: 220px;
+  max-width: 280px;
+  pointer-events: none; /* Tooltip should not intercept mouse events */
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+.tooltip.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tooltipName {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 1.05em;
+  font-weight: bold;
+  border-top-left-radius: 4px; /* Match parent's border-radius slightly */
+  border-top-right-radius: 4px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tooltipDetails {
+  padding: 10px 12px;
+}
+
+.tooltipDetails p {
+  margin: 6px 0;
+}
+
+.tooltipDetails strong {
+  display: inline-block;
+  min-width: 110px; /* Helps align values */
+  font-weight: 600;
+}

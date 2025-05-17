@@ -1,0 +1,47 @@
+/* src/components/Legend/Legend.module.css */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: var(--panel-bg);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border 0.2s ease; /* Added border transition */
+  cursor: pointer;
+  border: 2px solid transparent; /* Placeholder for active border */
+}
+
+.colorBox {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(0,0,0,0.2);
+  margin-right: 8px;
+  border-radius: 2px;
+}
+
+/* Style for hovered/focused legend item (general active) */
+.legendItem:hover,
+.legendItem:focus,
+.legendItem.activeLegendItem {
+  background-color: var(--button-bg);
+  box-shadow: 0 0 8px var(--input-border);
+  outline: none;
+}
+
+/* Specific style for "sticky" selected legend item */
+.legendItem.selectedLegendItem {
+  background-color: var(--button-bg); /* Or a slightly different shade */
+  border: 2px solid var(--link-color); /* Example: a prominent border */
+  font-weight: bold; /* Make text bold */
+}

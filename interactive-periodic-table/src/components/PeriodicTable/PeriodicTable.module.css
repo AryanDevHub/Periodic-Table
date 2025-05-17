@@ -1,0 +1,59 @@
+/* src/components/PeriodicTable/PeriodicTable.module.css */
+.periodicTableContainer {
+  overflow-x: auto;
+  padding: 10px 0;
+  margin: 20px 0;
+  position: relative; /* Needed if initial positions are relative to this */
+  overflow: hidden; /* Hide elements flying in from outside initially */
+}
+
+.periodicTable {
+  display: grid;
+  grid-template-rows: repeat(10, minmax(60px, auto));
+  grid-template-columns: repeat(18, minmax(60px, 1fr));
+  gap: 4px;
+  min-width: calc(18 * 64px);
+  margin: 0 auto;
+  position: relative;
+  /* Make the container large enough to hold elements before they animate in */
+  /* This might need adjustment based on initialX/initialY values */
+  /* perspective: 800px; /* For 3D-like effects if you add rotation */
+}
+
+
+/* Styles for ElementCell related to initial animation are now in ElementCell.module.css */
+/* The .animateIn class on .periodicTable will trigger the animation on its children */
+/* We don't need specific styles for .periodicTable.animateIn > div here anymore */
+
+
+.seriesPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  color: var(--text-color);
+  background-color: rgba(128, 128, 128, 0.1);
+  border: 1px dashed var(--border-color);
+  border-radius: 3px;
+  text-align: center;
+  padding: 2px;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInPlaceholders 0.5s ease-out 2.5s forwards; /* Delay after main animation */
+}
+.seriesLabel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: var(--text-color);
+  opacity: 0; /* Initially hidden */
+  animation: fadeInPlaceholders 0.5s ease-out 2.5s forwards; /* Delay after main animation */
+}
+
+@keyframes fadeInPlaceholders {
+  to {
+    opacity: 1;
+  }
+}

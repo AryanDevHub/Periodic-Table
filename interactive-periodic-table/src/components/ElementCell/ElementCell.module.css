@@ -1,0 +1,106 @@
+/* src/components/ElementCell/ElementCell.module.css */
+
+@keyframes flyInAndSettle {
+  0% {
+    /* Initial state is set by inline styles (transform from JS, opacity 0) */
+    /* transform: translate(var(--initial-x), var(--initial-y)) scale(0.5); */
+    /* opacity: 0; */
+  }
+  60% {
+    /* Overshoot slightly or arrive with a bounce */
+    transform: translate(0, 0) scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    /* Settle into final position and style */
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+.elementCell {
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  min-width: 60px;
+  color: #000;
+  border-radius: 3px;
+  font-size: 0.8em;
+  /*
+    Initial opacity and transform are set by inline styles via JS
+    This ensures they are in their "random" positions before the animation starts.
+  */
+}
+
+/*
+  This class is added to element cells when they are in their initial, pre-animation state.
+  The animation itself is applied when the PARENT container gets the .animateIn class.
+  The animation properties are applied to the elementCell itself.
+*/
+.initialAnimateElement {
+  /* The animation will fill forwards, maintaining the 100% keyframe state */
+  animation-name: flyInAndSettle;
+  animation-duration: 2500ms; /* Matches ANIMATION_DURATION_MS from JS */
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.5); /* Easing with a bit of overshoot */
+  animation-fill-mode: forwards; /* Keeps the state of the last keyframe */
+  /* animation-delay is set by inline style in JS for staggering */
+}
+
+
+/* This class is for the INDIVIDUAL element hover/focus neon glow AFTER initial animation */
+.elementCell.individualHoverEffect {
+  transform: scale(1.08) !important;
+  z-index: 20 !important;
+  box-shadow:
+    0 0 3px rgba(255, 255, 255, 0.9),
+    0 0 8px #00bfff,
+    0 0 15px #00bfff !important;
+  outline: 2px solid #00bfff !important;
+  outline-offset: -1.5px !important;
+}
+
+.elementCell[tabindex="0"] {
+  cursor: pointer;
+}
+.elementCell[tabindex="-1"] {
+  cursor: default;
+}
+
+.number, .symbol, .name {
+  /* Ensure text doesn't affect layout too much during scale animations */
+  will-change: transform;
+}
+.number {
+  font-size: 0.7em;
+  align-self: flex-start;
+  margin-left: 2px;
+  margin-bottom: auto;
+}
+.symbol {
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1;
+}
+.name {
+  font-size: 0.7em;
+  word-break: break-word;
+  line-height: 1.1;
+}
+
+/* Text color adjustments (same as before) */
+.elementCell[style*="background-color: #f0e68c"],
+.elementCell[style*="background-color: #ffdead"],
+.elementCell[style*="background-color: #add8e6"],
+.elementCell[style*="background-color: #90ee90"],
+.elementCell[style*="background-color: #cccccc"] {
+  color: #333;
+}
+.elementCell[style*="background-color: #ff6666"],
+.elementCell[style*="background-color: #ff69b4"] {
+  color: white;
+}

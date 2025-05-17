@@ -1,0 +1,101 @@
+/* src/styles/global.css */
+:root {
+  /* Light Theme (default) */
+  --bg-color: #f4f7f6;
+  --text-color: #333;
+  --header-bg: #ffffff;
+  --panel-bg: #ffffff;
+  --border-color: #ddd;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --button-bg: #e0e0e0;
+  --button-text: #333;
+  --input-bg: #fff;
+  --input-border: #ccc;
+  --link-color: #007bff;
+}
+
+.dark-theme {
+  --bg-color: #2c3e50;
+  --text-color: #ecf0f1;
+  --header-bg: #34495e;
+  --panel-bg: #34495e;
+  --border-color: #4a627a;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --button-bg: #4a627a;
+  --button-text: #ecf0f1;
+  --input-bg: #2c3e50;
+  --input-border: #4a627a;
+  --link-color: #3498db;
+}
+
+/* Apply category colors as CSS variables */
+/* This can be generated dynamically in JS if preferred, 
+   or manually listed like this */
+:root {
+  --color-alkali-metal: #ff6666;
+  --color-alkaline-earth-metal: #ffdead;
+  --color-transition-metal: #f0e68c;
+  --color-post-transition-metal: #cccccc;
+  --color-metalloid: #66cdaa;
+  --color-nonmetal: #90ee90;
+  --color-halogen: #ffa07a;
+  --color-noble-gas: #add8e6;
+  --color-lanthanide: #ffb6c1;
+  --color-actinide: #ff69b4;
+  --color-unknown: #e0e0e0;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border: 1px solid var(--border-color);
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input[type="search"] {
+  padding: 0.5em;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border-radius: 4px;
+}
+
+.app-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.app-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
