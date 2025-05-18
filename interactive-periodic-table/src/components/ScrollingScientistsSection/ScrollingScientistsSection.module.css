@@ -1,0 +1,43 @@
+/* src/components/ScrollingScientistsSection/ScrollingScientistsSection.module.css */
+.scientistsSection {
+  padding: 60px 20px; /* More padding */
+  /* Consider a very subtle gradient or texture for the section background if desired */
+  /* background-image: linear-gradient(to bottom, var(--bg-color), var(--panel-bg-slightly-darker)); */
+  max-width: 1100px; /* Slightly wider for more impactful cards */
+  margin: 60px auto;
+  overflow: hidden; /* To contain any card animations that might peek out */
+}
+
+.sectionTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3em; /* Bigger title */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 70px; /* More space below title */
+  color: var(--text-color);
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.sectionTitle::before,
+.sectionTitle::after { /* More elaborate title decoration */
+  content: '';
+  display: block;
+  height: 3px;
+  background-color: var(--link-color);
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.sectionTitle::before {
+  width: 120px; /* Longer line */
+  bottom: -15px; /* Position below */
+  opacity: 0.6;
+}
+.sectionTitle::after {
+  width: 60px; /* Shorter line on top of the longer one */
+  bottom: -15px; /* Same position */
+  opacity: 1;
+}
+

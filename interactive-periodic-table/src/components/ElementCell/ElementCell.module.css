@@ -45,7 +45,7 @@
 .initialAnimateElement {
   /* The animation will fill forwards, maintaining the 100% keyframe state */
   animation-name: flyInAndSettle;
-  animation-duration: 2500ms; /* Matches ANIMATION_DURATION_MS from JS */
+  animation-duration: 6000ms; /* Matches ANIMATION_DURATION_MS from JS */
   animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.5); /* Easing with a bit of overshoot */
   animation-fill-mode: forwards; /* Keeps the state of the last keyframe */
   /* animation-delay is set by inline style in JS for staggering */

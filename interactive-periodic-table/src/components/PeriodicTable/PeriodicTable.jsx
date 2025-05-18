@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ElementCell from '../ElementCell/ElementCell';
 import styles from './PeriodicTable.module.css';
 
-const ANIMATION_DURATION_MS = 2500; // 2.5 seconds for the main animation
-const MAX_STAGGER_DELAY_MS = 500; // Max additional delay for staggering (total 2.5 + 0.5 = 3s)
+const ANIMATION_DURATION_MS = 6000; 
+const MAX_STAGGER_DELAY_MS = 2000; 
 
 const PeriodicTable = ({
   elements,

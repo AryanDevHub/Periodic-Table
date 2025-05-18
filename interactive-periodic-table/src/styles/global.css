@@ -12,26 +12,8 @@
   --input-bg: #fff;
   --input-border: #ccc;
   --link-color: #007bff;
-}
 
-.dark-theme {
-  --bg-color: #2c3e50;
-  --text-color: #ecf0f1;
-  --header-bg: #34495e;
-  --panel-bg: #34495e;
-  --border-color: #4a627a;
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --button-bg: #4a627a;
-  --button-text: #ecf0f1;
-  --input-bg: #2c3e50;
-  --input-border: #4a627a;
-  --link-color: #3498db;
-}
-
-/* Apply category colors as CSS variables */
-/* This can be generated dynamically in JS if preferred, 
-   or manually listed like this */
-:root {
+  /* Category colors can also be here - moved from duplicate :root block */
   --color-alkali-metal: #ff6666;
   --color-alkaline-earth-metal: #ffdead;
   --color-transition-metal: #f0e68c;
@@ -45,11 +27,30 @@
   --color-unknown: #e0e0e0;
 }
 
+/*
+  <<<<< KEY FIX HERE >>>>>
+  Target 'html.dark-theme' to apply dark theme variables when
+  the 'dark-theme' class is on the <html> element.
+*/
+html.dark-theme {
+  --bg-color: #2c3e50;
+  --text-color: #ecf0f1;
+  --header-bg: #34495e;
+  --panel-bg: #34495e; /* Consider a slightly different shade from header for panels if desired */
+  --border-color: #4a627a;
+  --shadow-color: rgba(0, 0, 0, 0.4); /* Slightly more prominent shadow for dark mode */
+  --button-bg: #4a627a;
+  --button-text: #ecf0f1;
+  --input-bg: #3b5063; /* Slightly different from main bg for better input visibility */
+  --input-border: #4a627a;
+  --link-color: #3498db; /* Lighter link color for dark backgrounds */
+}
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* These will now correctly pick up the themed variables from :root or html.dark-theme */
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -67,11 +68,11 @@ button {
   background-color: var(--button-bg);
   color: var(--button-text);
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 button:hover {
-  opacity: 0.8;
+  opacity: 0.8; /* Consider a theme-aware hover if desired */
 }
 
 input[type="search"] {
@@ -80,6 +81,7 @@ input[type="search"] {
   background-color: var(--input-bg);
   color: var(--text-color);
   border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .app-overlay {
@@ -88,14 +90,20 @@ input[type="search"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6); /* Adjusted for better contrast */
   z-index: 999;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
 }
+
+/* Optional: make overlay slightly different in dark mode if needed */
+/* html.dark-theme .app-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+} */
 
 .app-overlay.visible {
   opacity: 1;
   visibility: visible;
+  transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
 }

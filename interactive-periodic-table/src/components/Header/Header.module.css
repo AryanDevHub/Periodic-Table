@@ -15,7 +15,14 @@
 
 .title {
   margin: 0;
-  font-size: 1.5em;
+   font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+  font-weight: 700; /* Bold Poppins */
+  font-size: 1.6em; /* Slightly increased size, adjust as you like */
+  letter-spacing: 0.5px; /* Adds a bit of refinement */
+  color: var(--text-color); /* Explicitly set to ensure it follows theme */
+
+  flex-grow: 1; /* Allows the title to take available space */
+  text-align: center; 
 }
 
 .controls {
@@ -30,7 +37,9 @@
   border-radius: 4px;
   background-color: var(--input-bg);
   color: var(--text-color);
-  min-width: 250px; /* Or adjust as needed */
+  min-width: 305px; /* Slightly reduced min-width, adjust as needed */
+  font-family: 'Poppins', sans-serif; /* Optional: use Poppins for input too */
+  font-weight: 400px;
 }
 
 .themeToggle {
@@ -49,10 +58,14 @@
 @media (max-width: 600px) {
   .header {
     flex-direction: column;
-    gap: 10px;
+     gap: 12px; /* Adjust gap for stacked layout */
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
   .title {
-    font-size: 1.2em;
+    font-size: 1.4em;
+    order:-1;
+    flex-grow:0;
   }
   .controls {
     width: 100%;
