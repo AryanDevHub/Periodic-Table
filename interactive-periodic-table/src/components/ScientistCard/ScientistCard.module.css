@@ -1,69 +1,61 @@
-/* src/components/ScientistCard/ScientistCard.module.css - ENHANCED VERSION */
+/* src/components/ScientistCard/ScientistCard.module.css */
+
 .scientistEntry {
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 80px; /* More space between entries */
+  margin-bottom: 80px;
   padding: 40px;
-  background-color: var(--panel-bg); /* Or a slightly different shade for contrast */
-  border-radius: 16px; /* Softer, larger radius */
-  box-shadow: 0 10px 30px -5px var(--shadow-color); /* Enhanced shadow */
+  background-color: var(--panel-bg);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -5px var(--shadow-color);
   position: relative;
-  overflow: hidden; /* Important for containing animated elements */
-
-  /* Initial animation state */
+  overflow: hidden;
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s, /* Added delay */
+  transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s,
               transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s;
 }
 
-/* State when element is revealed by IntersectionObserver */
 .scientistEntry.reveal {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Alternating layouts */
 .scientistEntry.layoutLeft .imageWrapper {
   order: 1;
   margin-right: 40px;
-  /* Animation specific for image from left */
   transform: translateX(-100%) scale(0.8);
 }
 .scientistEntry.layoutLeft .contentWrapper {
   order: 2;
-  /* Animation specific for content from right */
   transform: translateX(50px);
 }
 
 .scientistEntry.layoutRight .imageWrapper {
   order: 2;
   margin-left: 40px;
-  /* Animation specific for image from right */
   transform: translateX(100%) scale(0.8);
 }
 .scientistEntry.layoutRight .contentWrapper {
   order: 1;
-  /* Animation specific for content from left */
   transform: translateX(-50px);
 }
 
-/* When entry is revealed, animate children */
 .scientistEntry.reveal .imageWrapper,
 .scientistEntry.reveal .contentWrapper {
-  transform: translateX(0) scale(1); /* Target state for children */
+  transform: translateX(0) scale(1);
   opacity: 1;
 }
 
 .imageWrapper {
-  flex: 0 0 250px; /* Slightly larger image */
+  flex: 0 0 250px;
   height: 250px;
-  border-radius: 50%; /* Keep it circular */
+  border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-  opacity: 0; /* Child initial state */
-  transition: transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s, /* Delayed child animation */
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s,
               opacity 0.7s ease-out 0.3s;
 }
 
@@ -72,65 +64,91 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease; /* For hover effect */
+  transition: transform 0.5s ease;
 }
 
 .scientistEntry:hover .scientistImage {
-  transform: scale(1.05); /* Subtle zoom on card hover */
+  transform: scale(1.05);
 }
 
 .contentWrapper {
   flex: 1;
   color: var(--text-color);
-  opacity: 0; /* Child initial state */
-  transition: transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) 0.35s, /* Slightly different delay */
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) 0.35s,
               opacity 0.7s ease-out 0.35s;
 }
 
+/* --- CORRECTED NAME AND UNDERLINE STYLES --- */
 .scientistName {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.4em; /* Larger name */
+  font-size: 2.4em;
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 15px;
-  color: var(--link-color); /* Using theme's link color as an accent */
+  color: var(--link-color);
   position: relative;
   padding-bottom: 10px;
+  
+  /* THIS IS THE KEY FIX: Make the H3 only as wide as its text content. */
+  display: inline-block;
 }
 
-/* Decorative underline for the name */
 .scientistName::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0; /* Align with text based on layout */
+  left: 50%; /* Center relative to the now-smaller h3 */
   width: 60px;
   height: 3px;
   background-color: var(--link-color);
   opacity: 0.8;
   border-radius: 3px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s; /* Delayed animation */
+  transform: translateX(-50%) scaleX(0); /* Center it, then scale from 0 */
+  transform-origin: center; /* Animate from the center */
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
 }
-.scientistEntry.layoutRight .scientistName::after {
-  left: auto; /* For right-aligned text, not implemented here but for future */
-  right: 0;
-  transform-origin: right;
-}
+
+/* This rule animates the underline when the card is revealed */
 .scientistEntry.reveal .scientistName::after {
-  transform: scaleX(1);
+  transform: translateX(-50%) scaleX(1); /* Animate to full width */
 }
+
+/* This rule is no longer needed because the underline is always centered on the text */
+/* .scientistEntry.layoutRight .scientistName::after { ... } */
 
 
 .scientistContribution {
-  font-size: 1.05em; /* Slightly larger contribution text */
-  line-height: 1.8; /* More spacing for readability */
-  color: var(--text-color-slightly-muted); /* If you have such a variable, or lighten var(--text-color) */
+  font-size: 1.05em;
+  line-height: 1.8;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 900px) { /* Wider breakpoint for more drastic change */
+.readMoreLink {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--link-color);
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--link-color);
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.readMoreLink:hover {
+  background-color: var(--link-color);
+  color: white;
+  opacity: 1;
+}
+
+.readMoreLink i {
+  margin-left: 0.5rem;
+  font-size: 0.8em;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
   .scientistEntry {
     flex-direction: column;
     text-align: center;
@@ -140,32 +158,20 @@
   .imageWrapper {
     flex-basis: 200px;
     height: 200px;
-    margin: 0 auto 30px auto; /* Center image and add bottom margin */
-    /* Reset order for stacking */
+    margin: 0 auto 30px auto;
     order: 1 !important;
   }
 
   .contentWrapper {
-    /* Reset order for stacking */
     order: 2 !important;
     text-align: center;
   }
 
-  /* Reset transforms for mobile stacking animation */
   .scientistEntry.layoutLeft .imageWrapper,
   .scientistEntry.layoutRight .imageWrapper,
   .scientistEntry.layoutLeft .contentWrapper,
   .scientistEntry.layoutRight .contentWrapper {
-    transform: translateY(30px); /* All children animate from bottom on mobile */
-  }
-
-  .scientistName::after { /* Center the underline on mobile */
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    transform-origin: center;
-  }
-  .scientistEntry.reveal .scientistName::after {
-    transform: translateX(-50%) scaleX(1);
+    transform: translateY(30px);
   }
 }
 

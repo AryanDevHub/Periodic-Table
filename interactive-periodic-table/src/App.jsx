@@ -1,132 +1,134 @@
+// src/App.jsx (Final and Complete Version)
+
 import React, { useState, useEffect, useCallback } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import styles from './App.module.css';
+
+// Component Imports
 import Header from './components/Header/Header';
-import PeriodicTable from './components/PeriodicTable/PeriodicTable';
-import ElementDetailPanel from './components/ElementDetailPanel/ElementDetailPanel';
-import Legend from './components/Legend/Legend';
-import BackToTopButton from './components/BackToTopButton/BackToTopButton';
-import elementsData from './data/elements.json';
-import { CATEGORY_COLORS, CATEGORY_NAMES } from './constants';
-import styles from './App.module.css'; // Styles specific to App.jsx layout
-import ScrollingScientistsSection from './components/ScrollingScientistsSection/ScrollingScientistsSection'; 
+import Footer from './components/Footer/Footer';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import AccountPage from './pages/AccountPage';
+import ProfilePage from './pages/ProfilePage';
+import ProtectedRoute from './components/Auth/ProtectedRoute';
+
+const API_BASE_URL = 'http://localhost:4000/api';
 
 function App() {
-  const [allElements] = useState(elementsData);
-  const [filteredElements, setFilteredElements] = useState(allElements);
-  const [selectedElement, setSelectedElement] = useState(null);
+  // State for data fetched from the API
+  const [allElements, setAllElements] = useState([]);
+  const [scientists, setScientists] = useState([]);
+  const [filteredElements, setFilteredElements] = useState([]);
+  
+  // State for UI and loading status
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
-  const [showPanel, setShowPanel] = useState(false);
 
-  const [hoveredLegendCategory, setHoveredLegendCategory] = useState(null);
-  const [selectedLegendCategory, setSelectedLegendCategory] = useState(null);
+  const location = useLocation();
 
-  // This useEffect correctly applies/removes 'dark-theme' class to <html>
+  // --- DATA FETCHING ---
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const [elementsRes, scientistsRes] = await Promise.all([
+          fetch(`${API_BASE_URL}/elements`),
+          fetch(`${API_BASE_URL}/scientists`)
+        ]);
+
+        if (!elementsRes.ok || !scientistsRes.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const elementsData = await elementsRes.json();
+        const scientistsData = await scientistsRes.json();
+
+        setAllElements(elementsData);
+        setFilteredElements(elementsData); // Initially, all elements are shown
+        setScientists(scientistsData);
+        setError(null);
+      } catch (err) {
+        console.error("Failed to fetch data:", err);
+        setError('Failed to load data from the server. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // --- THEME MANAGEMENT ---
   useEffect(() => {
     document.documentElement.className = theme === 'dark' ? 'dark-theme' : '';
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const handleThemeToggle = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
-
-  const handleElementClick = useCallback((element) => {
-    setSelectedElement(element);
-    setShowPanel(true);
-    setSelectedLegendCategory(null);
-    setHoveredLegendCategory(null);
-  }, []);
-
-  const handleClosePanel = useCallback(() => {
-    setShowPanel(false);
-    setTimeout(() => setSelectedElement(null), 300); // Delay for panel animation
-  }, []);
-
+  // --- EVENT HANDLERS ---
   const handleSearch = useCallback((term) => {
     setSearchTerm(term);
-    setHoveredLegendCategory(null);
-    setSelectedLegendCategory(null);
     if (!term) {
       setFilteredElements(allElements);
-    } else {
-      const lowerTerm = term.toLowerCase();
-      setFilteredElements(
-        allElements.filter(
-          el =>
-            el.name.toLowerCase().includes(lowerTerm) ||
-            el.symbol.toLowerCase().includes(lowerTerm) ||
-            String(el.number).includes(lowerTerm)
-        )
-      );
+      return;
     }
+    const lowerTerm = term.toLowerCase();
+    setFilteredElements(
+      allElements.filter(el =>
+        el.name.toLowerCase().includes(lowerTerm) ||
+        el.symbol.toLowerCase().includes(lowerTerm) ||
+        String(el.number).includes(lowerTerm)
+      )
+    );
   }, [allElements]);
 
-  const handleLegendCategoryHover = useCallback((categoryKey) => {
-    setHoveredLegendCategory(categoryKey);
+  const handleThemeToggle = useCallback(() => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   }, []);
 
-  const handleLegendCategoryClick = useCallback((categoryKey) => {
-    setSelectedLegendCategory(prevSelected => (prevSelected === categoryKey ? null : categoryKey));
-    setHoveredLegendCategory(null);
-  }, []);
-
-  const activeLegendCategory = hoveredLegendCategory || selectedLegendCategory;
+  // What: A check to determine if the search bar should be visible.
+  // Why: We only want to show it on the homepage.
+  const showSearchBar = location.pathname === '/';
 
   return (
-    <div className={styles.appContainer}> {/* Uses App.module.css for main container styling */}
+    <div className={styles.appContainer}>
       <Header
-        onSearchChange={handleSearch}
+        onSearchChange={showSearchBar ? handleSearch : null} // Conditionally pass the handler
+        searchTerm={searchTerm}
         onThemeToggle={handleThemeToggle}
         currentTheme={theme}
-        searchTerm={searchTerm}
       />
-
-      <main className={`${styles.mainContent} ${showPanel ? styles.mainContentShifted : ''}`}>
-        <div className={styles.tableArea}> {/* This div is for layout shifting */}
-          <Legend
-            categoryColors={CATEGORY_COLORS} // These are direct colors, not CSS vars here
-            categoryNames={CATEGORY_NAMES}
-            onCategoryHover={handleLegendCategoryHover}
-            onCategoryClick={handleLegendCategoryClick}
-            hoveredCategoryKey={hoveredLegendCategory}
-            selectedCategoryKey={selectedLegendCategory}
-          />
-          <PeriodicTable
-            elements={filteredElements}
-            onElementClick={handleElementClick}
-            categoryColors={CATEGORY_COLORS} // Direct colors passed here
-            allElements={allElements}
-            searchTerm={searchTerm}
-            activeLegendCategory={activeLegendCategory}
-          />
-        </div>
+      
+      <main className={styles.mainContent}>
+        {isLoading ? (
+          <div className="status-message">Loading Application Data...</div>
+        ) : error ? (
+          <div className="status-message error">{error}</div>
+        ) : (
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  allElements={allElements}
+                  filteredElements={filteredElements}
+                  scientists={scientists}
+                  searchTerm={searchTerm}
+                />
+              }
+            />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
+            <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+          </Routes>
+        )}
       </main>
-       {/* >>>>>>>> ADD THE NEW SECTION HERE <<<<<<<<<< */}
-      <ScrollingScientistsSection />
-      {/* >>>>>>>> END OF NEW SECTION <<<<<<<<<< */}
 
-
-      {/* Panel and Overlay */}
-      {showPanel && selectedElement && (
-        <>
-          {/*
-            Overlay class name adjusted to use global CSS if defined there.
-            If .app-overlay and .visible are in App.module.css, use styles.appOverlay and styles.visible.
-          */}
-          <div
-            className={`app-overlay ${showPanel ? 'visible' : ''}`} // Assumes .app-overlay & .visible are global
-            onClick={handleClosePanel}
-            aria-hidden="true"
-          />
-          <ElementDetailPanel
-            element={selectedElement}
-            onClose={handleClosePanel}
-            categoryColors={CATEGORY_COLORS} // Direct colors passed here
-            isOpen={showPanel}
-          />
-        </>
-      )}
-      <BackToTopButton />
+      <Footer />
     </div>
   );
 }

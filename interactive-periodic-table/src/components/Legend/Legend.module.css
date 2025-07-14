@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   font-size: 0.9em;
-  padding: 5px 10px;
+  padding: 8px 12px;
   border-radius: 4px;
   transition: background-color 0.2s ease, box-shadow 0.2s ease, border 0.2s ease; /* Added border transition */
   cursor: pointer;

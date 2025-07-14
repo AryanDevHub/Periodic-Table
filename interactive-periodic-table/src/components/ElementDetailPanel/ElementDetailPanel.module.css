@@ -1,73 +1,145 @@
 /* src/components/ElementDetailPanel/ElementDetailPanel.module.css */
+
 .sidePanel {
   position: fixed;
   top: 0;
-  right: -400px; /* Start off-screen, width can be adjusted */
-  width: 350px; /* Or your preferred width */
+  right: 0;
+  width: 380px;
   max-width: 90vw;
   height: 100%;
   background-color: var(--panel-bg);
   color: var(--text-color);
-  box-shadow: -2px 0 5px var(--shadow-color);
-  padding: 20px;
-  padding-top: 50px; /* Space for close button */
-  overflow-y: auto;
-  transition: right 0.3s ease-in-out;
-  z-index: 1000;
+  box-shadow: -2px 0 8px var(--shadow-color);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1020;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.sidePanel.open {
-  right: 0;
-}
-
-.closeButton {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  color: var(--text-color);
-  cursor: pointer;
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0; /* Prevents the header from shrinking */
 }
 
 .elementName {
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin: 0;
   font-size: 1.8em;
-  border-left: 5px solid; /* Color will be set by inline style */
+  font-weight: 700;
+  border-left: 5px solid;
   padding-left: 10px;
+  line-height: 1.2;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2),
+              0px 0px 1px rgba(0, 0, 0, 0.5);
 }
 
-.detailGrid p {
-  margin: 8px 0;
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 5px; /* Increase clickable area */
+}
+.closeButton:hover {
+  opacity: 1;
+}
+
+/* This is now the main scrolling area */
+.panelBody {
+  padding: 20px;
+  overflow-y: auto; /* Allow this section to scroll */
+  flex-grow: 1; /* This makes the body fill all available space */
+}
+
+.propertyGroup {
+  margin-bottom: 1.5rem;
+}
+
+.propertyGroup h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--link-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 4px;
+  font-size: 0.95em;
   line-height: 1.5;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+.propertyGroup .detailItem:last-child {
+  border-bottom: none;
 }
 
-.detailGrid strong {
-  min-width: 150px; /* Adjust as needed for alignment */
-  display: inline-block;
+.detailItem strong {
+  opacity: 0.8;
+  padding-right: 15px;
+  white-space: nowrap;
+}
+
+.detailItem span {
+  text-align: right;
+  font-weight: 600;
+}
+
+.detailItem a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+.detailItem a:hover {
+  text-decoration: underline;
+}
+
+.approx {
+  font-size: 0.8em;
+  opacity: 0.7;
+  font-weight: normal;
+  margin-left: 4px;
+  font-style: italic;
 }
 
 .categoryTag {
   padding: 3px 8px;
   border-radius: 4px;
-  color: #333; /* Default for light category colors */
+  color: #333;
   text-transform: capitalize;
   font-size: 0.9em;
+  font-weight: bold;
 }
-
-/* Example: ensure text visibility for dark category colors */
-.categoryTag[style*="background-color: #ff6666"], /* alkali-metal */
-.categoryTag[style*="background-color: #ff69b4"]  /* actinide */
-{
+.categoryTag[style*="background-color: #ff6666"],
+.categoryTag[style*="background-color: #ff69b4"] {
   color: white;
 }
 
-.detailGrid a {
-    color: var(--link-color);
-    text-decoration: none;
+.divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 1.5rem 0;
 }
-.detailGrid a:hover {
-    text-decoration: underline;
+
+.notesSection {
+  padding-top: 1rem; /* Adjusted padding */
+}
+.notesSection h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.sidePanel.open {
+  transform: translateX(0);
 }

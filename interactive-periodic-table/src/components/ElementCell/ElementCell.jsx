@@ -8,7 +8,6 @@ const ElementCell = ({
   categoryColor,
   isDimmedBySearch,
   activeLegendCategory,
-  // Initial animation props
   initialX,
   initialY,
   animationDelay,
@@ -19,11 +18,11 @@ const ElementCell = ({
   const cellRef = useRef(null);
   const tooltipId = `tooltip-${element.number}`;
 
-  // --- Style determination for interactive states (after initial animation) ---
+  // --- Visual state logic ---
   let cellOpacity = 1;
   let cellFilter = 'none';
   let cellZIndex = 1;
-  let cellTransform = 'scale(1)'; // Base transform after initial animation
+  let cellTransform = 'scale(1)';
   let cellBoxShadow = 'none';
   let cellOutline = 'none';
 
@@ -46,75 +45,80 @@ const ElementCell = ({
     cellZIndex = 1;
   }
 
-  // --- Initial Animation Styles ---
+  // --- Initial animation style ---
   let initialAnimationStyle = {};
   if (enableInitialAnimation) {
     initialAnimationStyle = {
-      // Translate from the random start point, opacity 0
-      transform: `translate(${initialX}, ${initialY}) scale(0.5)`, // Start smaller
+      transform: `translate(${initialX}, ${initialY}) scale(0.5)`,
       opacity: 0,
-      // The animation will be applied by CSS based on parent class
     };
   } else {
-    // When not doing initial animation (i.e., it's finished or wasn't enabled)
-    // Apply interactive transforms
-    initialAnimationStyle.transform = cellTransform; // Apply the calculated scale for legend highlight etc.
-    initialAnimationStyle.opacity = cellOpacity; // Apply calculated opacity
+    initialAnimationStyle.transform = cellTransform;
+    initialAnimationStyle.opacity = cellOpacity;
   }
 
-
   const allowIndividualInteractions =
-    !enableInitialAnimation && // No interactions during initial fly-in
+    !enableInitialAnimation &&
     ((activeLegendCategory && isHighlightedByActiveLegend) ||
-    (!activeLegendCategory && !isDimmedBySearch));
+      (!activeLegendCategory && !isDimmedBySearch));
 
   const cellStyle = {
     gridColumnStart: element.column,
     gridRowStart: element.row,
     backgroundColor: categoryColor,
-    // Opacity and transform are now handled by initialAnimationStyle or interactive logic
-    // opacity: cellOpacity, // Managed by initialAnimationStyle or interactive logic
     filter: cellFilter,
     zIndex: cellZIndex,
-    // transform: cellTransform, // Managed by initialAnimationStyle or interactive logic
     boxShadow: cellBoxShadow,
     outline: cellOutline,
     outlineOffset: '-1.5px',
-    // Add animation-delay from props for staggered effect, only if initial animation is active
-    // The animation-name and duration will be set in ElementCell.module.css
     animationDelay: enableInitialAnimation ? animationDelay : '0s',
-    transition: enableInitialAnimation ? 'none' : 'opacity 0.3s ease, filter 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease-out, outline 0.2s ease-out, z-index 0s linear 0.3s',
-    position: 'relative', // Keep for tooltip
-    ...initialAnimationStyle // Spread initial animation styles (transform, opacity)
+    transition: enableInitialAnimation
+      ? 'none'
+      : 'opacity 0.3s ease, filter 0.3s ease, transform 0.2s ease-out, box-shadow 0.2s ease-out, outline 0.2s ease-out, z-index 0s linear 0.3s',
+    position: 'relative',
+    ...initialAnimationStyle,
   };
 
+  // ✅ Viewport-aware tooltip positioning
   const handleMouseEnter = () => {
     if (!allowIndividualInteractions || !cellRef.current) {
       setShowTooltip(false);
       return;
     }
-    // Tooltip positioning logic (same as before)
+
     const cellRect = cellRef.current.getBoundingClientRect();
     const tooltipEstimatedHeight = 150;
     const tooltipEstimatedWidth = 250;
-    let ttTop = -(tooltipEstimatedHeight + 8);
-    let ttLeft = cellRect.width / 2;
+    const viewportMargin = 10;
 
-    if (cellRect.top - tooltipEstimatedHeight - 8 < 0) {
-      ttTop = cellRect.height + 8;
+    // --- Vertical logic ---
+    let top = -(tooltipEstimatedHeight + 8);
+    if (cellRect.top - tooltipEstimatedHeight - 8 < viewportMargin) {
+      top = cellRect.height + 8;
     }
-    if (cellRect.left + (cellRect.width / 2) - (tooltipEstimatedWidth / 2) < 10) {
-        ttLeft = (tooltipEstimatedWidth / 2) - (cellRect.left - 10);
-    }
-    else if (cellRect.left + (cellRect.width / 2) + (tooltipEstimatedWidth / 2) > window.innerWidth - 10) {
-        ttLeft = cellRect.width - (tooltipEstimatedWidth / 2) - ( (cellRect.left + cellRect.width) - (window.innerWidth - 10) );
+
+    // --- Horizontal logic ---
+    let left = cellRect.width / 2;
+    let transform = 'translateX(-50%)';
+
+    const tooltipCenterOnScreen = cellRect.left + (cellRect.width / 2);
+    const tooltipLeftEdge = tooltipCenterOnScreen - (tooltipEstimatedWidth / 2);
+    const tooltipRightEdge = tooltipCenterOnScreen + (tooltipEstimatedWidth / 2);
+
+    if (tooltipLeftEdge < viewportMargin) {
+      const overflowAmount = viewportMargin - tooltipLeftEdge;
+      transform = `translateX(calc(-50% + ${overflowAmount}px))`;
+    } else if (tooltipRightEdge > window.innerWidth - viewportMargin) {
+      const overflowAmount = tooltipRightEdge - (window.innerWidth - viewportMargin);
+      transform = `translateX(calc(-50% - ${overflowAmount}px))`;
     }
 
     setTooltipPosition({
-      top: `${ttTop}px`,
-      left: `${ttLeft}px`,
-      transform: 'translateX(-50%)',
+      top: `${top}px`,
+      left: `${left}px`,
+      transform,
     });
+
     setShowTooltip(true);
   };
 

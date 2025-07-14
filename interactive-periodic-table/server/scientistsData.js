@@ -1,0 +1,62 @@
+// server/scientistsData.js
+// This list focuses on scientists who defined atomic structure and the periodic table's order.
+// UPDATED with more detailed contributions and a new 'wikiUrl' property.
+
+module.exports = [
+  {
+    id: 6,
+    name: "John Dalton",
+    discoveryYear: 1803,
+    image: "https://imgs.search.brave.com/D1Kl6JhOK29VUDSKdzKewu_FJJIo83gSSqAnC-mI8NE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2U1L2Q1/L2U2L2U1ZDVlNjI5/NTJiMWJmY2UyYjA5/MDNkMmQ2MTkxN2Y0/LmpwZw",
+    contribution: "Considered the father of modern atomic theory, Dalton's work was the first complete attempt to describe all matter in terms of atoms. His postulates stated that elements are made of indivisible atoms, all atoms of an element are identical, and compounds are combinations of different types of atoms.",
+    wikiUrl: "https://en.wikipedia.org/wiki/John_Dalton"
+  },
+  {
+    id: 4,
+    name: "Dmitri Mendeleev",
+    discoveryYear: 1869,
+    image: "https://imgs.search.brave.com/jZi3-WBx19NSDCtpC_Ag1hyeQ3yQEcWeG9gxOJ32VJY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM5/MTk0MTg4OC9waG90/by9oYWxmLWxlbmd0/aC1zZWF0ZWQtcG9y/dHJhaXQtb2Ytc2Np/ZW50aXN0LWRtaXRy/aS1tZW5kZWxlZXYt/MTg5MC1ub3RlLWlt/YWdlLWhhcy1iZWVu/LWRpZ2l0YWxseS5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/VU1DcDRPaXFadDB0/YUFHeGxTLWRJT1JR/bXR3eEtIVTlqR05w/dHZKczdHND0" ,
+    contribution: "Best known for formulating the Periodic Law. He arranged the then-known elements by atomic mass, and his table's structure had such predictive power that he correctly described the properties of elements that had not yet been discovered.",
+    wikiUrl: "https://en.wikipedia.org/wiki/Dmitri_Mendeleev"
+  },
+  {
+    id: 1,
+    name: "J.J. Thomson",
+    discoveryYear: 1897,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbK25RK6ZnSu3j-77RsGovGu4EsGaVizIsow&s",
+    contribution: "Through his experiments with cathode ray tubes, Thomson is credited with the discovery of the electron, the first subatomic particle. This revolutionary finding proved that atoms were divisible and led to his famous 'plum pudding' model of atomic structure.",
+    wikiUrl: "https://en.wikipedia.org/wiki/J._J._Thomson"
+  },
+  {
+    id: 2,
+    name: "Ernest Rutherford",
+    discoveryYear: 1911,
+    image: "data:image/jpeg;base64,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",
+    contribution: "His famous gold foil experiment proved that atoms consist of a small, dense, positively-charged nucleus surrounded by mostly empty space. This displaced the 'plum pudding' model and formed the basis of our modern understanding of atomic structure.",
+    wikiUrl: "https://en.wikipedia.org/wiki/Ernest_Rutherford"
+  },
+  {
+    id: 5,
+    name: "Henry Moseley",
+    discoveryYear: 1913,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyQTeBXJYEh0JiGZiLPR3yYJCW8ba5kihkvw&s",
+    contribution: "Using X-ray spectroscopy, Moseley experimentally demonstrated that the major properties of an element are determined by its atomic number, not its atomic weight. This discovery fixed flaws in Mendeleev's table and led to the table's modern organization.",
+    wikiUrl: "https://en.wikipedia.org/wiki/Henry_Moseley"
+  },
+  {
+    id: 8,
+    name: "Niels Bohr",
+    discoveryYear: 1913,
+    image: "https://imgs.search.brave.com/0EgEyww-qVuC-KAt2noAgW6YK0STISeSdl39UvZiCeE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZW5k/ZXIuZmluZWFydGFt/ZXJpY2EuY29tL2lt/YWdlcy9pbWFnZXMt/cHJvZmlsZS1mbG93/LzQwMC9pbWFnZXMt/bWVkaXVtLWxhcmdl/LTUvMy1uaWVscy1i/b2hyLWxpYnJhcnkt/b2YtY29uZ3Jlc3Mu/anBn",
+    contribution: "Bohr refined Rutherford's atomic model by proposing that electrons travel in separate, defined orbits around the nucleus. He theorized that electrons could move between these energy levels through 'quantum leaps,' a foundational concept in quantum mechanics.",
+    wikiUrl: "https://en.wikipedia.org/wiki/Niels_Bohr"
+  },
+  {
+    id: 3,
+    name: "James Chadwick",
+    discoveryYear: 1932,
+    image: "https://imgs.search.brave.com/B4MMzHGtoBa1HuvJXrGoEZDGCczdByZWEA4RYojXdnY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZW5k/ZXIuZmluZWFydGFt/ZXJpY2EuY29tL2lt/YWdlcy9pbWFnZXMt/cHJvZmlsZS1mbG93/LzQwMC9pbWFnZXMv/YXJ0d29ya2ltYWdl/cy9tZWRpdW1sYXJn/ZS8yL2phbWVzLWNo/YWR3aWNrLWZhbW91/cy1zY2llbnRpc3Qt/am9obi1zcHJpbmdm/aWVsZC5qcGc",
+    contribution: "In 1932, Chadwick discovered the neutron, a neutral particle in the atom's nucleus. This monumental discovery completed the picture of the atom's subatomic particles and explained the existence of isotopes, paving the way for the nuclear age.",
+    wikiUrl: "https://en.wikipedia.org/wiki/James_Chadwick"
+  },
+];

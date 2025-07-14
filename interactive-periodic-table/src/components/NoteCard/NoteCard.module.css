@@ -1,0 +1,78 @@
+/* src/components/NoteCard/NoteCard.module.css */
+
+.noteCard {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: box-shadow 0.2s;
+}
+.noteCard:hover {
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+.cardHeader h4 {
+  margin: 0;
+  color: var(--link-color);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.actionButton i {
+  font-size: 0.8em;
+}
+
+.editButton { color: var(--link-color); }
+.deleteButton { color: #e74c3c; }
+.saveButton { color: #2ecc71; }
+.cancelButton { color: var(--text-color); opacity: 0.7; }
+
+.actionButton:hover {
+  background-color: var(--button-bg);
+  opacity: 1;
+}
+
+.cardBody p {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.editTextarea {
+  width: 100%;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  resize: vertical;
+}
+.editTextarea:focus {
+  outline: none;
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}

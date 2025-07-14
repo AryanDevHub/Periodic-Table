@@ -1,10 +1,16 @@
 // src/components/ScrollingScientistsSection/ScrollingScientistsSection.jsx
 import React from 'react';
-import { scientists } from '../../data/scientistsData'; // Adjust path
+// REMOVED: import { scientists } from '../../data/scientistsData';
 import ScientistCard from '../ScientistCard/ScientistCard';
 import styles from './ScrollingScientistsSection.module.css';
 
-const ScrollingScientistsSection = () => {
+// --- What: Accept a 'scientists' array as a prop ---
+const ScrollingScientistsSection = ({ scientists }) => {
+  // --- What: Add a check for empty or loading data ---
+  if (!scientists || scientists.length === 0) {
+    return null; // Or a loading spinner if you prefer
+  }
+
   return (
     <section className={styles.scientistsSection}>
       <h2 className={styles.sectionTitle}>Pioneers of the Periodic Table</h2>

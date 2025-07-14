@@ -27,11 +27,7 @@
   --color-unknown: #e0e0e0;
 }
 
-/*
-  <<<<< KEY FIX HERE >>>>>
-  Target 'html.dark-theme' to apply dark theme variables when
-  the 'dark-theme' class is on the <html> element.
-*/
+
 html.dark-theme {
   --bg-color: #2c3e50;
   --text-color: #ecf0f1;
@@ -97,13 +93,14 @@ input[type="search"] {
   transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
 }
 
-/* Optional: make overlay slightly different in dark mode if needed */
-/* html.dark-theme .app-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-} */
+
 
 .app-overlay.visible {
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
+}
+
+body.body-no-scroll {
+  overflow: hidden;
 }

@@ -1,0 +1,474 @@
+[
+  {
+    "number": 1, "symbol": "H", "name": "Hydrogen", "atomicMass": "1.008", "category": "nonmetal", "electronConfig": "1s1", "state": "Gas", "group": 1, "period": 1, "row": 1, "column": 1,
+    "electronegativity": 2.20, "ionizationEnergy": 1312.0, "electronAffinity": -72.8, "oxidationStates": "-1, 1", "atomicRadius": 25, "density": 0.00008988, "meltingPoint": 13.83, "boilingPoint": 20.27
+  },
+  {
+    "number": 2, "symbol": "He", "name": "Helium", "atomicMass": "4.002602(2)", "category": "noble-gas", "electronConfig": "1s2", "state": "Gas", "group": 18, "period": 1, "row": 1, "column": 18,
+    "electronegativity": "Unknown", "ionizationEnergy": 2372.3, "electronAffinity": 0, "oxidationStates": "0", "atomicRadius": 122, "density": 0.0001785, "meltingPoint": 0.95, "isApproximate": {"meltingPoint": true}, "boilingPoint": 4.22
+  },
+  {
+    "number": 3, "symbol": "Li", "name": "Lithium", "atomicMass": "6.94", "category": "alkali-metal", "electronConfig": "[He] 2s1", "state": "Solid", "group": 1, "period": 2, "row": 2, "column": 1,
+    "electronegativity": 0.98, "ionizationEnergy": 520.2, "electronAffinity": -59.6, "oxidationStates": "1", "atomicRadius": 152, "density": 0.534, "meltingPoint": 453.65, "boilingPoint": 1615
+  },
+  {
+    "number": 4, "symbol": "Be", "name": "Beryllium", "atomicMass": "9.0121831(5)", "category": "alkaline-earth-metal", "electronConfig": "[He] 2s2", "state": "Solid", "group": 2, "period": 2, "row": 2, "column": 2,
+    "electronegativity": 1.57, "ionizationEnergy": 899.5, "electronAffinity": 0, "oxidationStates": "2", "atomicRadius": 112, "density": 1.85, "meltingPoint": 1560, "boilingPoint": 2744
+  },
+  {
+    "number": 5, "symbol": "B", "name": "Boron", "atomicMass": "10.81", "category": "metalloid", "electronConfig": "[He] 2s2 2p1", "state": "Solid", "group": 13, "period": 2, "row": 2, "column": 13,
+    "electronegativity": 2.04, "ionizationEnergy": 800.6, "electronAffinity": -26.7, "oxidationStates": "1, 2, 3", "atomicRadius": 85, "density": 2.34, "meltingPoint": 2348, "boilingPoint": 4273
+  },
+  {
+    "number": 6, "symbol": "C", "name": "Carbon", "atomicMass": "12.011", "category": "nonmetal", "electronConfig": "[He] 2s2 2p2", "state": "Solid", "group": 14, "period": 2, "row": 2, "column": 14,
+    "electronegativity": 2.55, "ionizationEnergy": 1086.5, "electronAffinity": -121.8, "oxidationStates": "-4, -3, -2, -1, 0, 1, 2, 3, 4", "atomicRadius": 77, "density": 2.267, "meltingPoint": 3823, "boilingPoint": 5100
+  },
+  {
+    "number": 7, "symbol": "N", "name": "Nitrogen", "atomicMass": "14.007", "category": "nonmetal", "electronConfig": "[He] 2s2 2p3", "state": "Gas", "group": 15, "period": 2, "row": 2, "column": 15,
+    "electronegativity": 3.04, "ionizationEnergy": 1402.3, "electronAffinity": -7, "oxidationStates": "-3, -2, -1, 0, 1, 2, 3, 4, 5", "atomicRadius": 75, "density": 0.0012506, "meltingPoint": 63.15, "boilingPoint": 77.36
+  },
+  {
+    "number": 8, "symbol": "O", "name": "Oxygen", "atomicMass": "15.999", "category": "nonmetal", "electronConfig": "[He] 2s2 2p4", "state": "Gas", "group": 16, "period": 2, "row": 2, "column": 16,
+    "electronegativity": 3.44, "ionizationEnergy": 1313.9, "electronAffinity": -141, "oxidationStates": "-2, -1, 0, 1, 2", "atomicRadius": 73, "density": 0.001429, "meltingPoint": 54.36, "boilingPoint": 90.20
+  },
+  {
+    "number": 9, "symbol": "F", "name": "Fluorine", "atomicMass": "18.998403163(6)", "category": "halogen", "electronConfig": "[He] 2s2 2p5", "state": "Gas", "group": 17, "period": 2, "row": 2, "column": 17,
+    "electronegativity": 3.98, "ionizationEnergy": 1681.0, "electronAffinity": -328, "oxidationStates": "-1", "atomicRadius": 72, "density": 0.001696, "meltingPoint": 53.53, "boilingPoint": 85.03
+  },
+  {
+    "number": 10, "symbol": "Ne", "name": "Neon", "atomicMass": "20.1797(6)", "category": "noble-gas", "electronConfig": "[He] 2s2 2p6", "state": "Gas", "group": 18, "period": 2, "row": 2, "column": 18,
+    "electronegativity": "Unknown", "ionizationEnergy": 2080.7, "electronAffinity": 0, "oxidationStates": "0", "atomicRadius": 160, "density": 0.0008999, "meltingPoint": 24.56, "boilingPoint": 27.07
+  },
+  {
+    "number": 11, "symbol": "Na", "name": "Sodium", "atomicMass": "22.98976928(2)", "category": "alkali-metal", "electronConfig": "[Ne] 3s1", "state": "Solid", "group": 1, "period": 3, "row": 3, "column": 1,
+    "electronegativity": 0.93, "ionizationEnergy": 495.8, "electronAffinity": -52.8, "oxidationStates": "-1, 1", "atomicRadius": 186, "density": 0.971, "meltingPoint": 370.95, "boilingPoint": 1156
+  },
+  {
+    "number": 12, "symbol": "Mg", "name": "Magnesium", "atomicMass": "24.305", "category": "alkaline-earth-metal", "electronConfig": "[Ne] 3s2", "state": "Solid", "group": 2, "period": 3, "row": 3, "column": 2,
+    "electronegativity": 1.31, "ionizationEnergy": 737.7, "electronAffinity": 0, "oxidationStates": "1, 2", "atomicRadius": 160, "density": 1.738, "meltingPoint": 923, "boilingPoint": 1363
+  },
+  {
+    "number": 13, "symbol": "Al", "name": "Aluminum", "atomicMass": "26.9815385(7)", "category": "post-transition-metal", "electronConfig": "[Ne] 3s2 3p1", "state": "Solid", "group": 13, "period": 3, "row": 3, "column": 13,
+    "electronegativity": 1.61, "ionizationEnergy": 577.5, "electronAffinity": -42.5, "oxidationStates": "-2, -1, 1, 2, 3", "atomicRadius": 143, "density": 2.70, "meltingPoint": 933.47, "boilingPoint": 2792
+  },
+  {
+    "number": 14, "symbol": "Si", "name": "Silicon", "atomicMass": "28.085", "category": "metalloid", "electronConfig": "[Ne] 3s2 3p2", "state": "Solid", "group": 14, "period": 3, "row": 3, "column": 14,
+    "electronegativity": 1.90, "ionizationEnergy": 786.5, "electronAffinity": -133.6, "oxidationStates": "-4, -3, -2, -1, 0, 1, 2, 3, 4", "atomicRadius": 117, "density": 2.3296, "meltingPoint": 1687, "boilingPoint": 3538
+  },
+  {
+    "number": 15, "symbol": "P", "name": "Phosphorus", "atomicMass": "30.973761998(5)", "category": "nonmetal", "electronConfig": "[Ne] 3s2 3p3", "state": "Solid", "group": 15, "period": 3, "row": 3, "column": 15,
+    "electronegativity": 2.19, "ionizationEnergy": 1011.8, "electronAffinity": -72, "oxidationStates": "-3, -2, -1, 0, 1, 2, 3, 4, 5", "atomicRadius": 110, "density": 1.82, "meltingPoint": 317.3, "boilingPoint": 553.65
+  },
+  {
+    "number": 16, "symbol": "S", "name": "Sulfur", "atomicMass": "32.06", "category": "nonmetal", "electronConfig": "[Ne] 3s2 3p4", "state": "Solid", "group": 16, "period": 3, "row": 3, "column": 16,
+    "electronegativity": 2.58, "ionizationEnergy": 999.6, "electronAffinity": -200, "oxidationStates": "-2, -1, 0, 1, 2, 3, 4, 5, 6", "atomicRadius": 104, "density": 2.07, "meltingPoint": 388.36, "boilingPoint": 717.87
+  },
+  {
+    "number": 17, "symbol": "Cl", "name": "Chlorine", "atomicMass": "35.45", "category": "halogen", "electronConfig": "[Ne] 3s2 3p5", "state": "Gas", "group": 17, "period": 3, "row": 3, "column": 17,
+    "electronegativity": 3.16, "ionizationEnergy": 1251.2, "electronAffinity": -349, "oxidationStates": "-1, 0, 1, 2, 3, 4, 5, 6, 7", "atomicRadius": 99, "density": 0.003214, "meltingPoint": 171.6, "boilingPoint": 239.11
+  },
+  {
+    "number": 18, "symbol": "Ar", "name": "Argon", "atomicMass": "39.948(1)", "category": "noble-gas", "electronConfig": "[Ne] 3s2 3p6", "state": "Gas", "group": 18, "period": 3, "row": 3, "column": 18,
+    "electronegativity": "Unknown", "ionizationEnergy": 1520.6, "electronAffinity": 0, "oxidationStates": "0", "atomicRadius": 192, "density": 0.0017837, "meltingPoint": 83.8, "boilingPoint": 87.30
+  },
+  {
+    "number": 19, "symbol": "K", "name": "Potassium", "atomicMass": "39.0983(1)", "category": "alkali-metal", "electronConfig": "[Ar] 4s1", "state": "Solid", "group": 1, "period": 4, "row": 4, "column": 1,
+    "electronegativity": 0.82, "ionizationEnergy": 418.8, "electronAffinity": -48.4, "oxidationStates": "1", "atomicRadius": 227, "density": 0.862, "meltingPoint": 336.53, "boilingPoint": 1032
+  },
+  {
+    "number": 20, "symbol": "Ca", "name": "Calcium", "atomicMass": "40.078(4)", "category": "alkaline-earth-metal", "electronConfig": "[Ar] 4s2", "state": "Solid", "group": 2, "period": 4, "row": 4, "column": 2,
+    "electronegativity": 1.00, "ionizationEnergy": 589.8, "electronAffinity": -2.37, "oxidationStates": "2", "atomicRadius": 197, "density": 1.55, "meltingPoint": 1115, "boilingPoint": 1757
+  },
+  {
+    "number": 21, "symbol": "Sc", "name": "Scandium", "atomicMass": "44.955908(5)", "category": "transition-metal", "electronConfig": "[Ar] 3d1 4s2", "state": "Solid", "group": 3, "period": 4, "row": 4, "column": 3,
+    "electronegativity": 1.36, "ionizationEnergy": 633.1, "electronAffinity": -18, "oxidationStates": "1, 2, 3", "atomicRadius": 162, "density": 2.985, "meltingPoint": 1814, "boilingPoint": 3109
+  },
+  {
+    "number": 22, "symbol": "Ti", "name": "Titanium", "atomicMass": "47.867(1)", "category": "transition-metal", "electronConfig": "[Ar] 3d2 4s2", "state": "Solid", "group": 4, "period": 4, "row": 4, "column": 4,
+    "electronegativity": 1.54, "ionizationEnergy": 658.8, "electronAffinity": -7.6, "oxidationStates": "-1, 2, 3, 4", "atomicRadius": 147, "density": 4.506, "meltingPoint": 1941, "boilingPoint": 3560
+  },
+  {
+    "number": 23, "symbol": "V", "name": "Vanadium", "atomicMass": "50.9415(1)", "category": "transition-metal", "electronConfig": "[Ar] 3d3 4s2", "state": "Solid", "group": 5, "period": 4, "row": 4, "column": 5,
+    "electronegativity": 1.63, "ionizationEnergy": 650.9, "electronAffinity": -50.6, "oxidationStates": "-1, 0, 1, 2, 3, 4, 5", "atomicRadius": 134, "density": 6.11, "meltingPoint": 2183, "boilingPoint": 3680
+  },
+  {
+    "number": 24, "symbol": "Cr", "name": "Chromium", "atomicMass": "51.9961(6)", "category": "transition-metal", "electronConfig": "[Ar] 3d5 4s1", "state": "Solid", "group": 6, "period": 4, "row": 4, "column": 6,
+    "electronegativity": 1.66, "ionizationEnergy": 652.9, "electronAffinity": -64.3, "oxidationStates": "-2, -1, 0, 1, 2, 3, 4, 5, 6", "atomicRadius": 128, "density": 7.19, "meltingPoint": 2180, "boilingPoint": 2944
+  },
+  {
+    "number": 25, "symbol": "Mn", "name": "Manganese", "atomicMass": "54.938044(3)", "category": "transition-metal", "electronConfig": "[Ar] 3d5 4s2", "state": "Solid", "group": 7, "period": 4, "row": 4, "column": 7,
+    "electronegativity": 1.55, "ionizationEnergy": 717.3, "electronAffinity": 0, "oxidationStates": "-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7", "atomicRadius": 127, "density": 7.21, "meltingPoint": 1519, "boilingPoint": 2334
+  },
+  {
+    "number": 26, "symbol": "Fe", "name": "Iron", "atomicMass": "55.845(2)", "category": "transition-metal", "electronConfig": "[Ar] 3d6 4s2", "state": "Solid", "group": 8, "period": 4, "row": 4, "column": 8,
+    "electronegativity": 1.83, "ionizationEnergy": 762.5, "electronAffinity": -15.7, "oxidationStates": "-2, -1, 0, 1, 2, 3, 4, 5, 6", "atomicRadius": 126, "density": 7.874, "meltingPoint": 1811, "boilingPoint": 3134
+  },
+  {
+    "number": 27, "symbol": "Co", "name": "Cobalt", "atomicMass": "58.933194(4)", "category": "transition-metal", "electronConfig": "[Ar] 3d7 4s2", "state": "Solid", "group": 9, "period": 4, "row": 4, "column": 9,
+    "electronegativity": 1.88, "ionizationEnergy": 760.4, "electronAffinity": -63.7, "oxidationStates": "-1, 0, 1, 2, 3, 4, 5", "atomicRadius": 125, "density": 8.90, "meltingPoint": 1768, "boilingPoint": 3200
+  },
+  {
+    "number": 28, "symbol": "Ni", "name": "Nickel", "atomicMass": "58.6934(4)", "category": "transition-metal", "electronConfig": "[Ar] 3d8 4s2", "state": "Solid", "group": 10, "period": 4, "row": 4, "column": 10,
+    "electronegativity": 1.91, "ionizationEnergy": 737.1, "electronAffinity": -112, "oxidationStates": "-1, 0, 1, 2, 3, 4", "atomicRadius": 124, "density": 8.902, "meltingPoint": 1728, "boilingPoint": 3186
+  },
+  {
+    "number": 29, "symbol": "Cu", "name": "Copper", "atomicMass": "63.546(3)", "category": "transition-metal", "electronConfig": "[Ar] 3d10 4s1", "state": "Solid", "group": 11, "period": 4, "row": 4, "column": 11,
+    "electronegativity": 1.90, "ionizationEnergy": 745.5, "electronAffinity": -118.4, "oxidationStates": "0, 1, 2, 3, 4", "atomicRadius": 128, "density": 8.96, "meltingPoint": 1357.77, "boilingPoint": 2835
+  },
+  {
+    "number": 30, "symbol": "Zn", "name": "Zinc", "atomicMass": "65.38(2)", "category": "transition-metal", "electronConfig": "[Ar] 3d10 4s2", "state": "Solid", "group": 12, "period": 4, "row": 4, "column": 12,
+    "electronegativity": 1.65, "ionizationEnergy": 906.4, "electronAffinity": 0, "oxidationStates": "2", "atomicRadius": 134, "density": 7.14, "meltingPoint": 692.68, "boilingPoint": 1180
+  },
+  {
+    "number": 31, "symbol": "Ga", "name": "Gallium", "atomicMass": "69.723(1)", "category": "post-transition-metal", "electronConfig": "[Ar] 3d10 4s2 4p1", "state": "Solid", "group": 13, "period": 4, "row": 4, "column": 13,
+    "electronegativity": 1.81, "ionizationEnergy": 578.8, "electronAffinity": -28.9, "oxidationStates": "1, 2, 3", "atomicRadius": 135, "density": 5.904, "meltingPoint": 302.91, "boilingPoint": 2477
+  },
+  {
+    "number": 32, "symbol": "Ge", "name": "Germanium", "atomicMass": "72.630(8)", "category": "metalloid", "electronConfig": "[Ar] 3d10 4s2 4p2", "state": "Solid", "group": 14, "period": 4, "row": 4, "column": 14,
+    "electronegativity": 2.01, "ionizationEnergy": 762, "electronAffinity": -119, "oxidationStates": "-4, -3, -2, -1, 0, 1, 2, 3, 4", "atomicRadius": 122, "density": 5.323, "meltingPoint": 1211.4, "boilingPoint": 3106
+  },
+  {
+    "number": 33, "symbol": "As", "name": "Arsenic", "atomicMass": "74.921595(6)", "category": "metalloid", "electronConfig": "[Ar] 3d10 4s2 4p3", "state": "Solid", "group": 15, "period": 4, "row": 4, "column": 15,
+    "electronegativity": 2.18, "ionizationEnergy": 947.0, "electronAffinity": -78, "oxidationStates": "-3, 2, 3, 5", "atomicRadius": 121, "density": 5.727, "meltingPoint": 1090, "boilingPoint": 887
+  },
+  {
+    "number": 34, "symbol": "Se", "name": "Selenium", "atomicMass": "78.971(8)", "category": "nonmetal", "electronConfig": "[Ar] 3d10 4s2 4p4", "state": "Solid", "group": 16, "period": 4, "row": 4, "column": 16,
+    "electronegativity": 2.55, "ionizationEnergy": 941.0, "electronAffinity": -195, "oxidationStates": "-2, 2, 4, 6", "atomicRadius": 117, "density": 4.81, "meltingPoint": 494, "boilingPoint": 958
+  },
+  {
+    "number": 35, "symbol": "Br", "name": "Bromine", "atomicMass": "79.904", "category": "halogen", "electronConfig": "[Ar] 3d10 4s2 4p5", "state": "Liquid", "group": 17, "period": 4, "row": 4, "column": 17,
+    "electronegativity": 2.96, "ionizationEnergy": 1139.9, "electronAffinity": -324.6, "oxidationStates": "-1, 1, 3, 4, 5, 7", "atomicRadius": 114, "density": 3.12, "meltingPoint": 265.8, "boilingPoint": 332.0
+  },
+  {
+    "number": 36, "symbol": "Kr", "name": "Krypton", "atomicMass": "83.798(2)", "category": "noble-gas", "electronConfig": "[Ar] 3d10 4s2 4p6", "state": "Gas", "group": 18, "period": 4, "row": 4, "column": 18,
+    "electronegativity": 3.00, "ionizationEnergy": 1350.8, "electronAffinity": 0, "oxidationStates": "2", "atomicRadius": 198, "density": 0.003733, "meltingPoint": 115.79, "boilingPoint": 119.93
+  },
+  {
+    "number": 37, "symbol": "Rb", "name": "Rubidium", "atomicMass": "85.4678(3)", "category": "alkali-metal", "electronConfig": "[Kr] 5s1", "state": "Solid", "group": 1, "period": 5, "row": 5, "column": 1,
+    "electronegativity": 0.82, "ionizationEnergy": 403.0, "electronAffinity": -46.9, "oxidationStates": "1", "atomicRadius": 244, "density": 1.532, "meltingPoint": 312.46, "boilingPoint": 961
+  },
+  {
+    "number": 38, "symbol": "Sr", "name": "Strontium", "atomicMass": "87.62(1)", "category": "alkaline-earth-metal", "electronConfig": "[Kr] 5s2", "state": "Solid", "group": 2, "period": 5, "row": 5, "column": 2,
+    "electronegativity": 0.95, "ionizationEnergy": 549.5, "electronAffinity": -5.0, "oxidationStates": "2", "atomicRadius": 215, "density": 2.64, "meltingPoint": 1050, "boilingPoint": 1655
+  },
+  {
+    "number": 39, "symbol": "Y", "name": "Yttrium", "atomicMass": "88.90584(2)", "category": "transition-metal", "electronConfig": "[Kr] 4d1 5s2", "state": "Solid", "group": 3, "period": 5, "row": 5, "column": 3,
+    "electronegativity": 1.22, "ionizationEnergy": 600, "electronAffinity": -29.6, "oxidationStates": "1, 2, 3", "atomicRadius": 180, "density": 4.472, "meltingPoint": 1799, "boilingPoint": 3609
+  },
+  {
+    "number": 40, "symbol": "Zr", "name": "Zirconium", "atomicMass": "91.224(2)", "category": "transition-metal", "electronConfig": "[Kr] 4d2 5s2", "state": "Solid", "group": 4, "period": 5, "row": 5, "column": 4,
+    "electronegativity": 1.33, "ionizationEnergy": 640.1, "electronAffinity": -41.1, "oxidationStates": "1, 2, 3, 4", "atomicRadius": 160, "density": 6.52, "meltingPoint": 2128, "boilingPoint": 4682
+  },
+  {
+    "number": 41, "symbol": "Nb", "name": "Niobium", "atomicMass": "92.90637(2)", "category": "transition-metal", "electronConfig": "[Kr] 4d4 5s1", "state": "Solid", "group": 5, "period": 5, "row": 5, "column": 5,
+    "electronegativity": 1.6, "ionizationEnergy": 652.1, "electronAffinity": -86, "oxidationStates": "-1, 2, 3, 4, 5", "atomicRadius": 146, "density": 8.57, "meltingPoint": 2750, "boilingPoint": 5017
+  },
+  {
+    "number": 42, "symbol": "Mo", "name": "Molybdenum", "atomicMass": "95.96(2)", "category": "transition-metal", "electronConfig": "[Kr] 4d5 5s1", "state": "Solid", "group": 6, "period": 5, "row": 5, "column": 6,
+    "electronegativity": 2.16, "ionizationEnergy": 684.3, "electronAffinity": -71.9, "oxidationStates": "-2, -1, 0, 1, 2, 3, 4, 5, 6", "atomicRadius": 139, "density": 10.22, "meltingPoint": 2896, "boilingPoint": 4912
+  },
+  {
+    "number": 43, "symbol": "Tc", "name": "Technetium", "atomicMass": "(98)", "category": "transition-metal", "electronConfig": "[Kr] 4d5 5s2", "state": "Solid", "group": 7, "period": 5, "row": 5, "column": 7,
+    "electronegativity": 1.9, "ionizationEnergy": 702, "electronAffinity": -53, "oxidationStates": "-3, -1, 0, 1, 2, 3, 4, 5, 6, 7", "atomicRadius": 136, "density": 11, "meltingPoint": 2430, "boilingPoint": 4538, "isApproximate": {"density": true}
+  },
+  {
+    "number": 44, "symbol": "Ru", "name": "Ruthenium", "atomicMass": "101.07(2)", "category": "transition-metal", "electronConfig": "[Kr] 4d7 5s1", "state": "Solid", "group": 8, "period": 5, "row": 5, "column": 8,
+    "electronegativity": 2.2, "ionizationEnergy": 710.2, "electronAffinity": -101.3, "oxidationStates": "-2, 0, 1, 2, 3, 4, 5, 6, 7, 8", "atomicRadius": 134, "density": 12.41, "meltingPoint": 2607, "boilingPoint": 4423
+  },
+  {
+    "number": 45, "symbol": "Rh", "name": "Rhodium", "atomicMass": "102.90550(2)", "category": "transition-metal", "electronConfig": "[Kr] 4d8 5s1", "state": "Solid", "group": 9, "period": 5, "row": 5, "column": 9,
+    "electronegativity": 2.28, "ionizationEnergy": 719.7, "electronAffinity": -109.7, "oxidationStates": "-1, 0, 1, 2, 3, 4, 5, 6", "atomicRadius": 134, "density": 12.41, "meltingPoint": 2237, "boilingPoint": 3968
+  },
+  {
+    "number": 46, "symbol": "Pd", "name": "Palladium", "atomicMass": "106.42(1)", "category": "transition-metal", "electronConfig": "[Kr] 4d10", "state": "Solid", "group": 10, "period": 5, "row": 5, "column": 10,
+    "electronegativity": 2.20, "ionizationEnergy": 804.4, "electronAffinity": -53.7, "oxidationStates": "0, 1, 2, 4", "atomicRadius": 137, "density": 12.023, "meltingPoint": 1828.05, "boilingPoint": 3236
+  },
+  {
+    "number": 47, "symbol": "Ag", "name": "Silver", "atomicMass": "107.8682(2)", "category": "transition-metal", "electronConfig": "[Kr] 4d10 5s1", "state": "Solid", "group": 11, "period": 5, "row": 5, "column": 11,
+    "electronegativity": 1.93, "ionizationEnergy": 731.0, "electronAffinity": -125.6, "oxidationStates": "1, 2, 3", "atomicRadius": 144, "density": 10.49, "meltingPoint": 1234.93, "boilingPoint": 2435
+  },
+  {
+    "number": 48, "symbol": "Cd", "name": "Cadmium", "atomicMass": "112.414(4)", "category": "transition-metal", "electronConfig": "[Kr] 4d10 5s2", "state": "Solid", "group": 12, "period": 5, "row": 5, "column": 12,
+    "electronegativity": 1.69, "ionizationEnergy": 867.8, "electronAffinity": 0, "oxidationStates": "2", "atomicRadius": 151, "density": 8.65, "meltingPoint": 594.22, "boilingPoint": 1040
+  },
+  {
+    "number": 49, "symbol": "In", "name": "Indium", "atomicMass": "114.818(1)", "category": "post-transition-metal", "electronConfig": "[Kr] 4d10 5s2 5p1", "state": "Solid", "group": 13, "period": 5, "row": 5, "column": 13,
+    "electronegativity": 1.78, "ionizationEnergy": 558.3, "electronAffinity": -28.9, "oxidationStates": "1, 2, 3", "atomicRadius": 167, "density": 7.31, "meltingPoint": 429.75, "boilingPoint": 2345
+  },
+  {
+    "number": 50, "symbol": "Sn", "name": "Tin", "atomicMass": "118.710(7)", "category": "post-transition-metal", "electronConfig": "[Kr] 4d10 5s2 5p2", "state": "Solid", "group": 14, "period": 5, "row": 5, "column": 14,
+    "electronegativity": 1.96, "ionizationEnergy": 708.6, "electronAffinity": -116, "oxidationStates": "-4, 2, 4", "atomicRadius": 140, "density": 7.31, "meltingPoint": 505.08, "boilingPoint": 2875
+  },
+  {
+    "number": 51, "symbol": "Sb", "name": "Antimony", "atomicMass": "121.760(1)", "category": "metalloid", "electronConfig": "[Kr] 4d10 5s2 5p3", "state": "Solid", "group": 15, "period": 5, "row": 5, "column": 15,
+    "electronegativity": 2.05, "ionizationEnergy": 834, "electronAffinity": -103.2, "oxidationStates": "-3, 3, 5", "atomicRadius": 141, "density": 6.697, "meltingPoint": 903.78, "boilingPoint": 1860
+  },
+  {
+    "number": 52, "symbol": "Te", "name": "Tellurium", "atomicMass": "127.60(3)", "category": "metalloid", "electronConfig": "[Kr] 4d10 5s2 5p4", "state": "Solid", "group": 16, "period": 5, "row": 5, "column": 16,
+    "electronegativity": 2.1, "ionizationEnergy": 869.3, "electronAffinity": -190.2, "oxidationStates": "-2, 2, 4, 5, 6", "atomicRadius": 137, "density": 6.24, "meltingPoint": 722.66, "boilingPoint": 1261
+  },
+  {
+    "number": 53, "symbol": "I", "name": "Iodine", "atomicMass": "126.90447(3)", "category": "halogen", "electronConfig": "[Kr] 4d10 5s2 5p5", "state": "Solid", "group": 17, "period": 5, "row": 5, "column": 17,
+    "electronegativity": 2.66, "ionizationEnergy": 1008.4, "electronAffinity": -295.2, "oxidationStates": "-1, 1, 3, 5, 7", "atomicRadius": 133, "density": 4.93, "meltingPoint": 386.85, "boilingPoint": 457.4
+  },
+  {
+    "number": 54, "symbol": "Xe", "name": "Xenon", "atomicMass": "131.293(6)", "category": "noble-gas", "electronConfig": "[Kr] 4d10 5s2 5p6", "state": "Gas", "group": 18, "period": 5, "row": 5, "column": 18,
+    "electronegativity": 2.6, "ionizationEnergy": 1170.4, "electronAffinity": 0, "oxidationStates": "0, 2, 4, 6, 8", "atomicRadius": 217, "density": 0.005894, "meltingPoint": 161.4, "boilingPoint": 165.03
+  },
+  {
+    "number": 55, "symbol": "Cs", "name": "Cesium", "atomicMass": "132.90545196(6)", "category": "alkali-metal", "electronConfig": "[Xe] 6s1", "state": "Solid", "group": 1, "period": 6, "row": 6, "column": 1,
+    "electronegativity": 0.79, "ionizationEnergy": 375.7, "electronAffinity": -45.5, "oxidationStates": "1", "atomicRadius": 265, "density": 1.879, "meltingPoint": 301.59, "boilingPoint": 944
+  },
+  {
+    "number": 56, "symbol": "Ba", "name": "Barium", "atomicMass": "137.327(7)", "category": "alkaline-earth-metal", "electronConfig": "[Xe] 6s2", "state": "Solid", "group": 2, "period": 6, "row": 6, "column": 2,
+    "electronegativity": 0.89, "ionizationEnergy": 502.9, "electronAffinity": -13.95, "oxidationStates": "2", "atomicRadius": 222, "density": 3.51, "meltingPoint": 1000, "boilingPoint": 2170
+  },
+  {
+    "number": 57, "symbol": "La", "name": "Lanthanum", "atomicMass": "138.90547(7)", "category": "lanthanide", "electronConfig": "[Xe] 5d1 6s2", "state": "Solid", "group": 3, "period": 6, "row": 6, "column": 3,
+    "electronegativity": 1.10, "ionizationEnergy": 538.1, "electronAffinity": -48, "oxidationStates": "2, 3", "atomicRadius": 187, "density": 6.146, "meltingPoint": 1193, "boilingPoint": 3737
+  },
+  {
+    "number": 58, "symbol": "Ce", "name": "Cerium", "atomicMass": "140.116(1)", "category": "lanthanide", "electronConfig": "[Xe] 4f1 5d1 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 4,
+    "electronegativity": 1.12, "ionizationEnergy": 534.4, "electronAffinity": -50, "oxidationStates": "2, 3, 4", "atomicRadius": 182, "density": 6.770, "meltingPoint": 1068, "boilingPoint": 3716
+  },
+  {
+    "number": 59, "symbol": "Pr", "name": "Praseodymium", "atomicMass": "140.90766(1)", "category": "lanthanide", "electronConfig": "[Xe] 4f3 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 5,
+    "electronegativity": 1.13, "ionizationEnergy": 527, "electronAffinity": -50, "oxidationStates": "2, 3, 4", "atomicRadius": 182, "density": 6.77, "meltingPoint": 1208, "boilingPoint": 3793
+  },
+  {
+    "number": 60, "symbol": "Nd", "name": "Neodymium", "atomicMass": "144.242(3)", "category": "lanthanide", "electronConfig": "[Xe] 4f4 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 6,
+    "electronegativity": 1.14, "ionizationEnergy": 533.1, "electronAffinity": -50, "oxidationStates": "2, 3", "atomicRadius": 181, "density": 7.01, "meltingPoint": 1297, "boilingPoint": 3347
+  },
+  {
+    "number": 61, "symbol": "Pm", "name": "Promethium", "atomicMass": "(145)", "category": "lanthanide", "electronConfig": "[Xe] 4f5 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 7,
+    "electronegativity": 1.13, "ionizationEnergy": 540, "electronAffinity": -50, "oxidationStates": "3", "atomicRadius": 183, "density": 7.26, "meltingPoint": 1315, "boilingPoint": 3273, "isApproximate": {"density": true}
+  },
+  {
+    "number": 62, "symbol": "Sm", "name": "Samarium", "atomicMass": "150.36(2)", "category": "lanthanide", "electronConfig": "[Xe] 4f6 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 8,
+    "electronegativity": 1.17, "ionizationEnergy": 544.5, "electronAffinity": -50, "oxidationStates": "2, 3", "atomicRadius": 180, "density": 7.52, "meltingPoint": 1345, "boilingPoint": 2067
+  },
+  {
+    "number": 63, "symbol": "Eu", "name": "Europium", "atomicMass": "151.964(1)", "category": "lanthanide", "electronConfig": "[Xe] 4f7 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 9,
+    "electronegativity": 1.2, "ionizationEnergy": 547.1, "electronAffinity": -50, "oxidationStates": "2, 3", "atomicRadius": 204, "density": 5.244, "meltingPoint": 1099, "boilingPoint": 1802
+  },
+  {
+    "number": 64, "symbol": "Gd", "name": "Gadolinium", "atomicMass": "157.25(3)", "category": "lanthanide", "electronConfig": "[Xe] 4f7 5d1 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 10,
+    "electronegativity": 1.2, "ionizationEnergy": 593.4, "electronAffinity": -50, "oxidationStates": "1, 2, 3", "atomicRadius": 180, "density": 7.90, "meltingPoint": 1585, "boilingPoint": 3546
+  },
+  {
+    "number": 65, "symbol": "Tb", "name": "Terbium", "atomicMass": "158.92535(2)", "category": "lanthanide", "electronConfig": "[Xe] 4f9 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 11,
+    "electronegativity": 1.2, "ionizationEnergy": 565.8, "electronAffinity": -50, "oxidationStates": "1, 3, 4", "atomicRadius": 177, "density": 8.23, "meltingPoint": 1629, "boilingPoint": 3503
+  },
+  {
+    "number": 66, "symbol": "Dy", "name": "Dysprosium", "atomicMass": "162.500(1)", "category": "lanthanide", "electronConfig": "[Xe] 4f10 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 12,
+    "electronegativity": 1.22, "ionizationEnergy": 573.0, "electronAffinity": -50, "oxidationStates": "2, 3", "atomicRadius": 177, "density": 8.551, "meltingPoint": 1680, "boilingPoint": 2840
+  },
+  {
+    "number": 67, "symbol": "Ho", "name": "Holmium", "atomicMass": "164.93033(2)", "category": "lanthanide", "electronConfig": "[Xe] 4f11 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 13,
+    "electronegativity": 1.23, "ionizationEnergy": 581.0, "electronAffinity": -50, "oxidationStates": "3", "atomicRadius": 176, "density": 8.79, "meltingPoint": 1734, "boilingPoint": 2993
+  },
+  {
+    "number": 68, "symbol": "Er", "name": "Erbium", "atomicMass": "167.259(3)", "category": "lanthanide", "electronConfig": "[Xe] 4f12 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 14,
+    "electronegativity": 1.24, "ionizationEnergy": 589.3, "electronAffinity": -50, "oxidationStates": "3", "atomicRadius": 175, "density": 9.066, "meltingPoint": 1802, "boilingPoint": 3141
+  },
+  {
+    "number": 69, "symbol": "Tm", "name": "Thulium", "atomicMass": "168.93422(2)", "category": "lanthanide", "electronConfig": "[Xe] 4f13 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 15,
+    "electronegativity": 1.25, "ionizationEnergy": 596.7, "electronAffinity": -50, "oxidationStates": "2, 3", "atomicRadius": 174, "density": 9.32, "meltingPoint": 1818, "boilingPoint": 2223
+  },
+  {
+    "number": 70, "symbol": "Yb", "name": "Ytterbium", "atomicMass": "173.054(5)", "category": "lanthanide", "electronConfig": "[Xe] 4f14 6s2", "state": "Solid", "group": -1, "period": 6, "row": 9, "column": 16,
+    "electronegativity": 1.1, "ionizationEnergy": 603.4, "electronAffinity": -50, "oxidationStates": "2, 3", "atomicRadius": 194, "density": 6.90, "meltingPoint": 1097, "boilingPoint": 1469
+  },
+  {
+    "number": 71, "symbol": "Lu", "name": "Lutetium", "atomicMass": "174.9668(1)", "category": "lanthanide", "electronConfig": "[Xe] 4f14 5d1 6s2", "state": "Solid", "group": 3, "period": 6, "row": 9, "column": 17,
+    "electronegativity": 1.27, "ionizationEnergy": 523.5, "electronAffinity": -50, "oxidationStates": "3", "atomicRadius": 173, "density": 9.841, "meltingPoint": 1925, "boilingPoint": 3675
+  },
+  {
+    "number": 72, "symbol": "Hf", "name": "Hafnium", "atomicMass": "178.49(2)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d2 6s2", "state": "Solid", "group": 4, "period": 6, "row": 6, "column": 4,
+    "electronegativity": 1.3, "ionizationEnergy": 658.5, "electronAffinity": 0, "oxidationStates": "2, 3, 4", "atomicRadius": 159, "density": 13.31, "meltingPoint": 2506, "boilingPoint": 4876
+  },
+  {
+    "number": 73, "symbol": "Ta", "name": "Tantalum", "atomicMass": "180.94788(2)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d3 6s2", "state": "Solid", "group": 5, "period": 6, "row": 6, "column": 5,
+    "electronegativity": 1.5, "ionizationEnergy": 761, "electronAffinity": -31, "oxidationStates": "-1, 2, 3, 4, 5", "atomicRadius": 146, "density": 16.65, "meltingPoint": 3290, "boilingPoint": 5731
+  },
+  {
+    "number": 74, "symbol": "W", "name": "Tungsten", "atomicMass": "183.84(1)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d4 6s2", "state": "Solid", "group": 6, "period": 6, "row": 6, "column": 6,
+    "electronegativity": 2.36, "ionizationEnergy": 770, "electronAffinity": -78.6, "oxidationStates": "-2, -1, 0, 1, 2, 3, 4, 5, 6", "atomicRadius": 139, "density": 19.25, "meltingPoint": 3695, "boilingPoint": 5828
+  },
+  {
+    "number": 75, "symbol": "Re", "name": "Rhenium", "atomicMass": "186.207(1)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d5 6s2", "state": "Solid", "group": 7, "period": 6, "row": 6, "column": 7,
+    "electronegativity": 1.9, "ionizationEnergy": 760, "electronAffinity": -14.5, "oxidationStates": "-3, -1, 0, 1, 2, 3, 4, 5, 6, 7", "atomicRadius": 137, "density": 21.02, "meltingPoint": 3459, "boilingPoint": 5869
+  },
+  {
+    "number": 76, "symbol": "Os", "name": "Osmium", "atomicMass": "190.23(3)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d6 6s2", "state": "Solid", "group": 8, "period": 6, "row": 6, "column": 8,
+    "electronegativity": 2.2, "ionizationEnergy": 840, "electronAffinity": -106.1, "oxidationStates": "-2, 0, 1, 2, 3, 4, 5, 6, 8", "atomicRadius": 135, "density": 22.59, "meltingPoint": 3306, "boilingPoint": 5285
+  },
+  {
+    "number": 77, "symbol": "Ir", "name": "Iridium", "atomicMass": "192.217(3)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d7 6s2", "state": "Solid", "group": 9, "period": 6, "row": 6, "column": 9,
+    "electronegativity": 2.20, "ionizationEnergy": 880, "electronAffinity": -151, "oxidationStates": "-1, 0, 1, 2, 3, 4, 5, 6", "atomicRadius": 136, "density": 22.56, "meltingPoint": 2719, "boilingPoint": 4701
+  },
+  {
+    "number": 78, "symbol": "Pt", "name": "Platinum", "atomicMass": "195.084(9)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d9 6s1", "state": "Solid", "group": 10, "period": 6, "row": 6, "column": 10,
+    "electronegativity": 2.28, "ionizationEnergy": 870, "electronAffinity": -205.3, "oxidationStates": "0, 2, 4, 5, 6", "atomicRadius": 139, "density": 21.45, "meltingPoint": 2041.4, "boilingPoint": 4098
+  },
+  {
+    "number": 79, "symbol": "Au", "name": "Gold", "atomicMass": "196.966569(5)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d10 6s1", "state": "Solid", "group": 11, "period": 6, "row": 6, "column": 11,
+    "electronegativity": 2.54, "ionizationEnergy": 890.1, "electronAffinity": -222.8, "oxidationStates": "-1, 1, 2, 3, 5", "atomicRadius": 144, "density": 19.32, "meltingPoint": 1337.33, "boilingPoint": 3129
+  },
+  {
+    "number": 80, "symbol": "Hg", "name": "Mercury", "atomicMass": "200.592(3)", "category": "transition-metal", "electronConfig": "[Xe] 4f14 5d10 6s2", "state": "Liquid", "group": 12, "period": 6, "row": 6, "column": 12,
+    "electronegativity": 2.00, "ionizationEnergy": 1007.1, "electronAffinity": 0, "oxidationStates": "1, 2, 4", "atomicRadius": 151, "density": 13.546, "meltingPoint": 234.32, "boilingPoint": 629.88
+  },
+  {
+    "number": 81, "symbol": "Tl", "name": "Thallium", "atomicMass": "204.38", "category": "post-transition-metal", "electronConfig": "[Xe] 4f14 5d10 6s2 6p1", "state": "Solid", "group": 13, "period": 6, "row": 6, "column": 13,
+    "electronegativity": 1.62, "ionizationEnergy": 589.4, "electronAffinity": -19.2, "oxidationStates": "1, 3", "atomicRadius": 170, "density": 11.85, "meltingPoint": 577, "boilingPoint": 1746
+  },
+  {
+    "number": 82, "symbol": "Pb", "name": "Lead", "atomicMass": "207.2(1)", "category": "post-transition-metal", "electronConfig": "[Xe] 4f14 5d10 6s2 6p2", "state": "Solid", "group": 14, "period": 6, "row": 6, "column": 14,
+    "electronegativity": 2.33, "ionizationEnergy": 715.6, "electronAffinity": -35.1, "oxidationStates": "-4, 2, 4", "atomicRadius": 146, "density": 11.34, "meltingPoint": 600.61, "boilingPoint": 2022
+  },
+  {
+    "number": 83, "symbol": "Bi", "name": "Bismuth", "atomicMass": "208.98040(1)", "category": "post-transition-metal", "electronConfig": "[Xe] 4f14 5d10 6s2 6p3", "state": "Solid", "group": 15, "period": 6, "row": 6, "column": 15,
+    "electronegativity": 2.02, "ionizationEnergy": 703, "electronAffinity": -91.2, "oxidationStates": "-3, 1, 3, 5", "atomicRadius": 156, "density": 9.747, "meltingPoint": 544.7, "boilingPoint": 1837
+  },
+  {
+    "number": 84, "symbol": "Po", "name": "Polonium", "atomicMass": "(209)", "category": "post-transition-metal", "electronConfig": "[Xe] 4f14 5d10 6s2 6p4", "state": "Solid", "group": 16, "period": 6, "row": 6, "column": 16,
+    "electronegativity": 2.0, "ionizationEnergy": 812.1, "electronAffinity": -183.3, "oxidationStates": "-2, 2, 4, 6", "atomicRadius": 167, "density": 9.196, "meltingPoint": 527, "boilingPoint": 1235
+  },
+  {
+    "number": 85, "symbol": "At", "name": "Astatine", "atomicMass": "(210)", "category": "halogen", "electronConfig": "[Xe] 4f14 5d10 6s2 6p5", "state": "Solid", "group": 17, "period": 6, "row": 6, "column": 17,
+    "electronegativity": 2.2, "ionizationEnergy": 920, "electronAffinity": -270, "oxidationStates": "-1, 1, 3, 5, 7", "atomicRadius": "Unknown", "density": 7, "meltingPoint": 575, "boilingPoint": 610, "isApproximate": {"density": true}
+  },
+  {
+    "number": 86, "symbol": "Rn", "name": "Radon", "atomicMass": "(222)", "category": "noble-gas", "electronConfig": "[Xe] 4f14 5d10 6s2 6p6", "state": "Gas", "group": 18, "period": 6, "row": 6, "column": 18,
+    "electronegativity": 2.2, "ionizationEnergy": 1037, "electronAffinity": 0, "oxidationStates": "2, 6", "atomicRadius": 220, "density": 0.00973, "meltingPoint": 202, "boilingPoint": 211.3
+  },
+  {
+    "number": 87, "symbol": "Fr", "name": "Francium", "atomicMass": "(223)", "category": "alkali-metal", "electronConfig": "[Rn] 7s1", "state": "Solid", "group": 1, "period": 7, "row": 7, "column": 1,
+    "electronegativity": 0.7, "ionizationEnergy": 380, "electronAffinity": -46.89, "oxidationStates": "1", "atomicRadius": "Unknown", "density": 1.87, "meltingPoint": 300, "boilingPoint": 950, "isApproximate": {"density": true, "boilingPoint": true}
+  },
+  {
+    "number": 88, "symbol": "Ra", "name": "Radium", "atomicMass": "(226)", "category": "alkaline-earth-metal", "electronConfig": "[Rn] 7s2", "state": "Solid", "group": 2, "period": 7, "row": 7, "column": 2,
+    "electronegativity": 0.9, "ionizationEnergy": 509.3, "electronAffinity": -9.6, "oxidationStates": "2", "atomicRadius": 215, "density": 5.5, "meltingPoint": 973, "boilingPoint": 2010
+  },
+  {
+    "number": 89, "symbol": "Ac", "name": "Actinium", "atomicMass": "(227)", "category": "actinide", "electronConfig": "[Rn] 6d1 7s2", "state": "Solid", "group": 3, "period": 7, "row": 7, "column": 3,
+    "electronegativity": 1.1, "ionizationEnergy": 499, "electronAffinity": -33.8, "oxidationStates": "3", "atomicRadius": 188, "density": 10.07, "meltingPoint": 1323, "boilingPoint": 3471, "isApproximate": {"meltingPoint": true, "boilingPoint": true}
+  },
+  {
+    "number": 90, "symbol": "Th", "name": "Thorium", "atomicMass": "232.0377(4)", "category": "actinide", "electronConfig": "[Rn] 6d2 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 4,
+    "electronegativity": 1.3, "ionizationEnergy": 587, "electronAffinity": -112.7, "oxidationStates": "2, 3, 4", "atomicRadius": 179, "density": 11.724, "meltingPoint": 2023, "boilingPoint": 5061
+  },
+  {
+    "number": 91, "symbol": "Pa", "name": "Protactinium", "atomicMass": "231.03588(2)", "category": "actinide", "electronConfig": "[Rn] 5f2 6d1 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 5,
+    "electronegativity": 1.5, "ionizationEnergy": 568, "electronAffinity": "Unknown", "oxidationStates": "3, 4, 5", "atomicRadius": 163, "density": 15.37, "meltingPoint": 1841, "boilingPoint": 4300, "isApproximate": {"boilingPoint": true}
+  },
+  {
+    "number": 92, "symbol": "U", "name": "Uranium", "atomicMass": "238.02891(3)", "category": "actinide", "electronConfig": "[Rn] 5f3 6d1 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 6,
+    "electronegativity": 1.38, "ionizationEnergy": 597.6, "electronAffinity": "Unknown", "oxidationStates": "3, 4, 5, 6", "atomicRadius": 156, "density": 19.05, "meltingPoint": 1405.3, "boilingPoint": 4404
+  },
+  {
+    "number": 93, "symbol": "Np", "name": "Neptunium", "atomicMass": "(237)", "category": "actinide", "electronConfig": "[Rn] 5f4 6d1 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 7,
+    "electronegativity": 1.36, "ionizationEnergy": 604.5, "electronAffinity": "Unknown", "oxidationStates": "3, 4, 5, 6, 7", "atomicRadius": 156, "density": 20.45, "meltingPoint": 917, "boilingPoint": 4273
+  },
+  {
+    "number": 94, "symbol": "Pu", "name": "Plutonium", "atomicMass": "(244)", "category": "actinide", "electronConfig": "[Rn] 5f6 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 8,
+    "electronegativity": 1.28, "ionizationEnergy": 584.7, "electronAffinity": "Unknown", "oxidationStates": "3, 4, 5, 6, 7", "atomicRadius": 159, "density": 19.816, "meltingPoint": 912.5, "boilingPoint": 3501
+  },
+  {
+    "number": 95, "symbol": "Am", "name": "Americium", "atomicMass": "(243)", "category": "actinide", "electronConfig": "[Rn] 5f7 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 9,
+    "electronegativity": 1.3, "ionizationEnergy": 578, "electronAffinity": "Unknown", "oxidationStates": "2, 3, 4, 5, 6", "atomicRadius": 173, "density": 13.67, "meltingPoint": 1449, "boilingPoint": 2284
+  },
+  {
+    "number": 96, "symbol": "Cm", "name": "Curium", "atomicMass": "(247)", "category": "actinide", "electronConfig": "[Rn] 5f7 6d1 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 10,
+    "electronegativity": 1.3, "ionizationEnergy": 581, "electronAffinity": "Unknown", "oxidationStates": "3, 4", "atomicRadius": 174, "density": 13.51, "meltingPoint": 1613, "boilingPoint": 3383
+  },
+  {
+    "number": 97, "symbol": "Bk", "name": "Berkelium", "atomicMass": "(247)", "category": "actinide", "electronConfig": "[Rn] 5f9 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 11,
+    "electronegativity": 1.3, "ionizationEnergy": 601, "electronAffinity": "Unknown", "oxidationStates": "3, 4", "atomicRadius": 170, "density": 14.78, "meltingPoint": 1259, "boilingPoint": 2900, "isApproximate": {"boilingPoint": true}
+  },
+  {
+    "number": 98, "symbol": "Cf", "name": "Californium", "atomicMass": "(251)", "category": "actinide", "electronConfig": "[Rn] 5f10 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 12,
+    "electronegativity": 1.3, "ionizationEnergy": 608, "electronAffinity": "Unknown", "oxidationStates": "2, 3, 4", "atomicRadius": 186, "density": 15.1, "meltingPoint": 1173, "boilingPoint": 1743, "isApproximate": {"boilingPoint": true}
+  },
+  {
+    "number": 99, "symbol": "Es", "name": "Einsteinium", "atomicMass": "(252)", "category": "actinide", "electronConfig": "[Rn] 5f11 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 13,
+    "electronegativity": 1.3, "ionizationEnergy": 619, "electronAffinity": "Unknown", "oxidationStates": "2, 3", "atomicRadius": 186, "density": 8.84, "meltingPoint": 1133, "boilingPoint": 1269, "isApproximate": {"density": true, "boilingPoint": true}
+  },
+  {
+    "number": 100, "symbol": "Fm", "name": "Fermium", "atomicMass": "(257)", "category": "actinide", "electronConfig": "[Rn] 5f12 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 14,
+    "electronegativity": 1.3, "ionizationEnergy": 627, "electronAffinity": "Unknown", "oxidationStates": "2, 3", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": 1800, "boilingPoint": "Unknown"
+  },
+  {
+    "number": 101, "symbol": "Md", "name": "Mendelevium", "atomicMass": "(258)", "category": "actinide", "electronConfig": "[Rn] 5f13 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 15,
+    "electronegativity": 1.3, "ionizationEnergy": 635, "electronAffinity": "Unknown", "oxidationStates": "2, 3", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": 1100, "boilingPoint": "Unknown"
+  },
+  {
+    "number": 102, "symbol": "No", "name": "Nobelium", "atomicMass": "(259)", "category": "actinide", "electronConfig": "[Rn] 5f14 7s2", "state": "Solid", "group": -1, "period": 7, "row": 10, "column": 16,
+    "electronegativity": 1.3, "ionizationEnergy": 642, "electronAffinity": "Unknown", "oxidationStates": "2, 3", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": 1100, "boilingPoint": "Unknown"
+  },
+  {
+    "number": 103, "symbol": "Lr", "name": "Lawrencium", "atomicMass": "(262)", "category": "actinide", "electronConfig": "[Rn] 5f14 7s2 7p1", "state": "Solid", "group": 3, "period": 7, "row": 10, "column": 17,
+    "electronegativity": 1.3, "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "3", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": 1900, "boilingPoint": "Unknown", "isApproximate": {"electronegativity": true}
+  },
+  {
+    "number": 104, "symbol": "Rf", "name": "Rutherfordium", "atomicMass": "(267)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d2 7s2", "state": "Solid", "group": 4, "period": 7, "row": 7, "column": 4,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "4", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 105, "symbol": "Db", "name": "Dubnium", "atomicMass": "(270)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d3 7s2", "state": "Solid", "group": 5, "period": 7, "row": 7, "column": 5,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "5", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 106, "symbol": "Sg", "name": "Seaborgium", "atomicMass": "(271)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d4 7s2", "state": "Solid", "group": 6, "period": 7, "row": 7, "column": 6,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "6", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 107, "symbol": "Bh", "name": "Bohrium", "atomicMass": "(270)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d5 7s2", "state": "Solid", "group": 7, "period": 7, "row": 7, "column": 7,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "7", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 108, "symbol": "Hs", "name": "Hassium", "atomicMass": "(277)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d6 7s2", "state": "Solid", "group": 8, "period": 7, "row": 7, "column": 8,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "8", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 109, "symbol": "Mt", "name": "Meitnerium", "atomicMass": "(278)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d7 7s2", "state": "Solid", "group": 9, "period": 7, "row": 7, "column": 9,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "Unknown", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 110, "symbol": "Ds", "name": "Darmstadtium", "atomicMass": "(281)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d8 7s2", "state": "Solid", "group": 10, "period": 7, "row": 7, "column": 10,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "0, 2, 4, 6, 8", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 111, "symbol": "Rg", "name": "Roentgenium", "atomicMass": "(282)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d9 7s2", "state": "Solid", "group": 11, "period": 7, "row": 7, "column": 11,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "-1, 1, 3, 5", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 112, "symbol": "Cn", "name": "Copernicium", "atomicMass": "(285)", "category": "transition-metal", "electronConfig": "[Rn] 5f14 6d10 7s2", "state": "Gas", "group": 12, "period": 7, "row": 7, "column": 12,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "0, 2, 4", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "357", "isApproximate": {"state": true, "boilingPoint": true}
+  },
+  {
+    "number": 113, "symbol": "Nh", "name": "Nihonium", "atomicMass": "(286)", "category": "post-transition-metal", "electronConfig": "[Rn] 5f14 6d10 7s2 7p1", "state": "Solid", "group": 13, "period": 7, "row": 7, "column": 13,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "1, 3", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "700", "boilingPoint": "1400", "isApproximate": {"state": true, "meltingPoint": true, "boilingPoint": true}
+  },
+  {
+    "number": 114, "symbol": "Fl", "name": "Flerovium", "atomicMass": "(289)", "category": "post-transition-metal", "electronConfig": "[Rn] 5f14 6d10 7s2 7p2", "state": "Solid", "group": 14, "period": 7, "row": 7, "column": 14,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "0, 2, 4, 6", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "210", "isApproximate": {"state": true, "boilingPoint": true}
+  },
+  {
+    "number": 115, "symbol": "Mc", "name": "Moscovium", "atomicMass": "(290)", "category": "post-transition-metal", "electronConfig": "[Rn] 5f14 6d10 7s2 7p3", "state": "Solid", "group": 15, "period": 7, "row": 7, "column": 15,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "1, 3", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "700", "boilingPoint": "1400", "isApproximate": {"state": true, "meltingPoint": true, "boilingPoint": true}
+  },
+  {
+    "number": 116, "symbol": "Lv", "name": "Livermorium", "atomicMass": "(293)", "category": "post-transition-metal", "electronConfig": "[Rn] 5f14 6d10 7s2 7p4", "state": "Solid", "group": 16, "period": 7, "row": 7, "column": 16,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "-2, 2, 4", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "Unknown"
+  },
+  {
+    "number": 117, "symbol": "Ts", "name": "Tennessine", "atomicMass": "(294)", "category": "halogen", "electronConfig": "[Rn] 5f14 6d10 7s2 7p5", "state": "Solid", "group": 17, "period": 7, "row": 7, "column": 17,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "-1, 1, 3, 5", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "883", "isApproximate": {"state": true, "boilingPoint": true}
+  },
+  {
+    "number": 118, "symbol": "Og", "name": "Oganesson", "atomicMass": "(294)", "category": "noble-gas", "electronConfig": "[Rn] 5f14 6d10 7s2 7p6", "state": "Gas", "group": 18, "period": 7, "row": 7, "column": 18,
+    "electronegativity": "Unknown", "ionizationEnergy": "Unknown", "electronAffinity": "Unknown", "oxidationStates": "-1, 0, 1, 2, 4, 6", "atomicRadius": "Unknown", "density": "Unknown", "meltingPoint": "Unknown", "boilingPoint": "350", "isApproximate": {"state": true, "boilingPoint": true}
+  }
+]

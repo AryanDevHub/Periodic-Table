@@ -1,0 +1,96 @@
+/* src/components/Footer/Footer.module.css */
+
+.footer {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  padding: 3rem 2rem 0 2rem; /* Add padding at the top, remove at bottom */
+  border-top: 1px solid var(--border-color);
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between; /* Puts space between the two sections */
+  flex-wrap: wrap; /* Allows them to stack on small screens */
+  gap: 2rem;
+  max-width: 900px; /* Constrain the width for a cleaner look */
+  margin: 0 auto;
+}
+
+.footerSection {
+  flex: 2; /* Allow the 'About' section to take more space */
+  min-width: 280px;
+  text-align: left;
+}
+
+.connectSection {
+  flex: 1; /* The 'Connect' section will take less space */
+  text-align: right;
+}
+
+.footerSection h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--link-color);
+}
+
+.footerSection p {
+  opacity: 0.8;
+  line-height: 1.7;
+  max-width: 450px; /* Constrain line length for readability */
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end; /* Align icons to the right */
+}
+
+.socialIcons a {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.socialIcons a:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+.footerBottom {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.footerBottom p {
+  margin: 0;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .footerContent {
+    justify-content: center; /* Center the sections when they stack */
+    text-align: center;
+  }
+
+  .footerSection,
+  .connectSection {
+    text-align: center;
+  }
+  
+  .footerSection p {
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .socialIcons {
+    justify-content: center; /* Center the icons on small screens */
+  }
+}

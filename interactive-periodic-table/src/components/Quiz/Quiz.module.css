@@ -1,0 +1,148 @@
+/* src/components/Quiz/Quiz.module.css */
+
+.quizSection {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 3rem auto;
+  text-align: center;
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.quizSection h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  margin-top: 0;
+  color: var(--link-color);
+}
+
+/* --- Intro/End Screen Styles --- */
+.intro {
+  padding: 1rem 0;
+}
+
+.finalScore {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: var(--bg-color);
+}
+.finalScore h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: var(--link-color);
+}
+.scoreDetail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+}
+.scoreDetail span:first-child {
+  color: var(--text-color);
+  opacity: 0.8;
+}
+.scoreDetail span:last-child {
+  color: var(--detail-color, var(--text-color));
+  font-weight: bold;
+}
+
+.startButton {
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.startButton:hover {
+  opacity: 0.9;
+}
+
+/* --- Active Question Styles --- */
+.questionArea {
+  min-height: 250px;
+}
+.progress {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+.questionText {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  min-height: 70px;
+}
+.optionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.optionButton {
+  padding: 1rem;
+  font-size: 1.1rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 2px solid var(--border-color);
+  transition: all 0.2s ease;
+  transform: scale(1);
+}
+
+.optionButton:not(.answered):hover {
+  border-color: var(--link-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.optionButton.answered {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* --- Feedback Styles --- */
+.feedback {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+.optionButton.answered.correct {
+  background-color: #2ecc71;
+  border-color: #27ae60;
+  color: white;
+  transform: scale(1.05);
+  opacity: 1;
+  z-index: 10;
+}
+
+.optionButton.answered.incorrect {
+  background-color: #e74c3c;
+  border-color: #c0392b;
+  color: white;
+  opacity: 1;
+}
+@media (max-width: 500px) {
+  .optionsGrid {
+    /* Switch from a 2x2 grid to a single column for answers */
+    grid-template-columns: 1fr;
+  }
+
+  .questionText {
+    font-size: 1.2rem; /* Make text slightly smaller on mobile */
+  }
+
+  .quizSection h2 {
+    font-size: 1.8rem;
+  }
+}

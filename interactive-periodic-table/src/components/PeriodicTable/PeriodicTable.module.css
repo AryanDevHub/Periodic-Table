@@ -1,10 +1,11 @@
-/* src/components/PeriodicTable/PeriodicTable.module.css */
 .periodicTableContainer {
-  overflow-x: auto;
+  overflow-x: auto; /* This can stay if you want horizontal scrolling on very small screens */
   padding: 10px 0;
   margin: 20px 0;
-  position: relative; /* Needed if initial positions are relative to this */
-  overflow: hidden; /* Hide elements flying in from outside initially */
+  position: relative;
+
+  /* ✅ FIXED: Allow children like tooltips to be visible outside bounds */
+  overflow: visible;
 }
 
 .periodicTable {
@@ -15,16 +16,12 @@
   min-width: calc(18 * 64px);
   margin: 0 auto;
   position: relative;
-  /* Make the container large enough to hold elements before they animate in */
-  /* This might need adjustment based on initialX/initialY values */
   /* perspective: 800px; /* For 3D-like effects if you add rotation */
 }
-
 
 /* Styles for ElementCell related to initial animation are now in ElementCell.module.css */
 /* The .animateIn class on .periodicTable will trigger the animation on its children */
 /* We don't need specific styles for .periodicTable.animateIn > div here anymore */
-
 
 .seriesPlaceholder {
   display: flex;
@@ -38,8 +35,9 @@
   text-align: center;
   padding: 2px;
   opacity: 0; /* Initially hidden */
-  animation: fadeInPlaceholders 0.5s ease-out 2.5s forwards; /* Delay after main animation */
+  animation: fadeInPlaceholders 0.5s ease-out 2.5s forwards;
 }
+
 .seriesLabel {
   display: flex;
   align-items: center;
@@ -49,7 +47,7 @@
   font-size: 0.9em;
   color: var(--text-color);
   opacity: 0; /* Initially hidden */
-  animation: fadeInPlaceholders 0.5s ease-out 2.5s forwards; /* Delay after main animation */
+  animation: fadeInPlaceholders 0.5s ease-out 2.5s forwards;
 }
 
 @keyframes fadeInPlaceholders {

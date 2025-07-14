@@ -1,0 +1,51 @@
+/* src/pages/AccountPage.module.css */
+
+.accountPage {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto; /* Give it some space from the header */
+  padding: 2rem;
+  color: var(--text-color);
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+}
+
+.pageHeader h1 {
+  margin-top: 0;
+  font-size: 2.5rem;
+}
+
+.pageHeader p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.contentArea {
+  background-color: var(--panel-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.feedbackMessage_error, .feedbackMessage_success {
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+.feedbackMessage_error {
+  background-color: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+.feedbackMessage_success {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
