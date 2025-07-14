@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 # Ignore server environment file
 server/.env
+*.docx
+*.txt
