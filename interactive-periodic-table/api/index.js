@@ -1,29 +1,61 @@
-// FILE: api/index.js (Your New Serverless Function)
+// FILE: api/index.js (Final and Complete Version)
 
-require('dotenv').config();
+// What: Loads environment variables from a .env file for local development.
+// Why: Vercel provides these automatically in production from your project settings.
+require('dotenv').config(); 
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// --- UPDATED PATHS ---
+// --- Correct relative paths to your server files ---
 const authRoutes = require('../server/routes/auth');
 const userRoutes = require('../server/routes/user');
 const Element = require('../server/models/Element');
 const Scientist = require('../server/models/Scientist');
 
 const app = express();
-
-// --- Connect to Database ---
 const dbURI = process.env.DB_URI;
-if (dbURI) {
-  mongoose.connect(dbURI).catch(err => console.error('DB Connection Error:', err));
-}
 
-// --- Middleware ---
-app.use(cors());
-app.use(express.json());
+// --- A more robust connection handler for serverless environments ---
+let conn = null; // This variable will hold our cached connection.
 
-// --- Define API Routes ---
+const connectDB = async () => {
+  // If we already have a connection (mongoose.connections[0].readyState === 1), reuse it.
+  if (conn && mongoose.connections[0].readyState === 1) {
+    console.log("Using existing database connection.");
+    return;
+  }
+  
+  // If not, establish a new connection.
+  try {
+    console.log("No existing connection, creating a new one...");
+    conn = await mongoose.connect(dbURI);
+    console.log("New database connection established.");
+  } catch (error) {
+    console.error("Database connection error:", error);
+    // If the DB fails to connect, we throw an error to stop the process.
+    throw new Error("Could not connect to database.");
+  }
+};
+
+// Middleware that runs before every API request to ensure the DB is connected.
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next(); // If connection is successful, proceed to the actual API route.
+  } catch (error) {
+    // If the connection fails, send back a server error response.
+    res.status(500).json({ message: 'Database connection failed.' });
+  }
+});
+
+
+// --- Standard Middleware ---
+app.use(cors()); // Allows your frontend to make requests to this API.
+app.use(express.json()); // Parses incoming JSON bodies.
+
+// --- Your API Routes ---
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
@@ -32,7 +64,7 @@ app.get('/api/elements', async (req, res) => {
     const elements = await Element.find().sort({ number: 1 });
     res.json(elements);
   } catch (err) {
-    console.error(err);
+    console.error("Error fetching elements:", err);
     res.status(500).json({ message: 'Server error while fetching elements.' });
   }
 });
@@ -42,11 +74,11 @@ app.get('/api/scientists', async (req, res) => {
     const scientists = await Scientist.find().sort({ discoveryYear: 1 });
     res.json(scientists);
   } catch (err) {
-    console.error(err);
+    console.error("Error fetching scientists:", err);
     res.status(500).json({ message: 'Server error while fetching scientists.' });
   }
 });
 
-// --- THIS IS THE MOST IMPORTANT LINE ---
-// Export the Express app for Vercel to use.
+// --- Export the app for Vercel ---
+// This allows Vercel to take your Express app and run it as a serverless function.
 module.exports = app;
