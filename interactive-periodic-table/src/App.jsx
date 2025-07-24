@@ -1,4 +1,4 @@
-// src/App.jsx (Final and Complete Version)
+// src/App.jsx
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -14,15 +14,14 @@ import AccountPage from './pages/AccountPage';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 
-const API_BASE_URL = 'http://localhost:4000/api';
+// ✅ Environment variable
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function App() {
-  // State for data fetched from the API
   const [allElements, setAllElements] = useState([]);
   const [scientists, setScientists] = useState([]);
   const [filteredElements, setFilteredElements] = useState([]);
-  
-  // State for UI and loading status
+
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -48,11 +47,11 @@ function App() {
         const scientistsData = await scientistsRes.json();
 
         setAllElements(elementsData);
-        setFilteredElements(elementsData); // Initially, all elements are shown
+        setFilteredElements(elementsData);
         setScientists(scientistsData);
         setError(null);
       } catch (err) {
-        console.error("Failed to fetch data:", err);
+        console.error('Failed to fetch data:', err);
         setError('Failed to load data from the server. Please try again later.');
       } finally {
         setIsLoading(false);
@@ -75,6 +74,7 @@ function App() {
       setFilteredElements(allElements);
       return;
     }
+
     const lowerTerm = term.toLowerCase();
     setFilteredElements(
       allElements.filter(el =>
@@ -89,19 +89,17 @@ function App() {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   }, []);
 
-  // What: A check to determine if the search bar should be visible.
-  // Why: We only want to show it on the homepage.
   const showSearchBar = location.pathname === '/';
 
   return (
     <div className={styles.appContainer}>
       <Header
-        onSearchChange={showSearchBar ? handleSearch : null} // Conditionally pass the handler
+        onSearchChange={showSearchBar ? handleSearch : null}
         searchTerm={searchTerm}
         onThemeToggle={handleThemeToggle}
         currentTheme={theme}
       />
-      
+
       <main className={styles.mainContent}>
         {isLoading ? (
           <div className="status-message">Loading Application Data...</div>

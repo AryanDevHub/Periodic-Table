@@ -1,17 +1,16 @@
 // src/components/ElementDetailPanel/ElementDetailPanel.jsx
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import styles from './ElementDetailPanel.module.css';
 
 const API_USER_URL = 'http://localhost:4000/api/user';
 
-// Helper component to display each property cleanly and handle different data types.
+// Displays a single label-value pair with optional unit and approximation
 const DetailItem = ({ label, value, unit = '', isApprox = false }) => {
-  if (value === null || typeof value === 'undefined') {
-    return null; // Don't render if there's no data
-  }
-  const displayValue = value === "Unknown" ? "Unknown" : `${value} ${unit}`.trim();
+  if (value === null || typeof value === 'undefined') return null;
+  const displayValue = value === 'Unknown' ? 'Unknown' : `${value} ${unit}`.trim();
+
   return (
     <div className={styles.detailItem}>
       <strong>{label}</strong>
@@ -25,46 +24,47 @@ const DetailItem = ({ label, value, unit = '', isApprox = false }) => {
 
 const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
   const { isAuthenticated, user, token, updateUser } = useAuth();
-  
-  // State for the notes functionality
   const [noteText, setNoteText] = useState('');
   const [initialNote, setInitialNote] = useState('');
   const [saveStatus, setSaveStatus] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
-  // Effect to load the correct note when the element changes
+  // Load note for selected element
   useEffect(() => {
     if (isAuthenticated && user?.notes && element) {
-      const existingNoteText = user.notes.find(note => note.elementNumber === element.number)?.text || '';
-      setNoteText(existingNoteText);
-      setInitialNote(existingNoteText);
-      setSaveStatus(''); // Reset status on element change
+      const existingNote = user.notes.find(n => n.elementNumber === element.number)?.text || '';
+      setNoteText(existingNote);
+      setInitialNote(existingNote);
+      setSaveStatus('');
       setIsSaving(false);
     }
   }, [isAuthenticated, user, element]);
 
-  // Handler for the manual save button
+  // Save personal note to server
   const handleSaveNote = async () => {
     if (!element) return;
-    
+
     setIsSaving(true);
     setSaveStatus('Saving...');
-    
+
     try {
-      const response = await fetch(`${API_USER_URL}/notes`, {
+      const res = await fetch(`${API_USER_URL}/notes`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
         body: JSON.stringify({ elementNumber: element.number, text: noteText }),
       });
-      
-      const updatedUserData = await response.json();
-      if (!response.ok) throw new Error(updatedUserData.message || 'Failed to save note.');
 
-      updateUser(updatedUserData);
-      setInitialNote(noteText); // Update the "saved" text baseline
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Failed to save note.');
+
+      updateUser(data);
+      setInitialNote(noteText);
       setSaveStatus('Saved!');
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
       setSaveStatus('Error!');
     } finally {
       setIsSaving(false);
@@ -73,58 +73,63 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
 
   const handleNoteChange = (e) => {
     setNoteText(e.target.value);
-    setSaveStatus(''); // Clear save status when user types
+    setSaveStatus('');
   };
-  
-  // Handler for the favorite button with optimistic UI update
+
+  // Toggle favorite status
   const handleFavoriteToggle = async () => {
     if (!isAuthenticated || !element?._id || !user) return;
-    const originalUser = user;
-    const isCurrentlyFavorited = originalUser.favoriteElements.some(fav => fav._id === element._id);
-    
-    // Optimistically update the UI immediately
+
+    const isFavorited = user.favoriteElements.some(fav => fav._id === element._id);
     const optimisticUser = {
-      ...originalUser,
-      favoriteElements: isCurrentlyFavorited
-        ? originalUser.favoriteElements.filter(fav => fav._id !== element._id)
-        : [...originalUser.favoriteElements, { ...element }],
+      ...user,
+      favoriteElements: isFavorited
+        ? user.favoriteElements.filter(fav => fav._id !== element._id)
+        : [...user.favoriteElements, { ...element }],
     };
     updateUser(optimisticUser);
 
-    // Then, sync with the server
     try {
-      const response = await fetch(`${API_USER_URL}/favorites`, {
+      const res = await fetch(`${API_USER_URL}/favorites`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
         body: JSON.stringify({ elementId: element._id }),
       });
-      const finalUserData = await response.json();
-      if (!response.ok) throw new Error('Server error');
-      // Sync with the final state from the server
-      updateUser(finalUserData);
-    } catch (error) {
-      console.error("Failed to sync favorite status:", error);
-      // If the API call fails, revert to the original state
-      updateUser(originalUser);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Failed to update favorites.');
+      updateUser(data);
+    } catch (err) {
+      console.error('Favorite sync failed:', err);
+      updateUser(user); // Revert if failed
     }
   };
 
-  const hasUnsavedChanges = noteText !== initialNote;
   if (!element) return null;
+
   const categoryColor = categoryColors[element.category] || categoryColors['unknown'];
   const isFavorited = isAuthenticated && user?.favoriteElements?.some(fav => fav._id === element._id);
+  const hasUnsavedChanges = noteText !== initialNote;
   const isApprox = element.isApproximate || {};
 
   return (
-    <aside className={`${styles.sidePanel} ${isOpen ? styles.open : ''}`} aria-labelledby="element-panel-title" role="dialog" aria-modal="true">
+    <aside
+      className={`${styles.sidePanel} ${isOpen ? styles.open : ''}`}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="element-panel-title"
+    >
       <div className={styles.panelHeader}>
-        <h2 
-          id="element-panel-title" 
-          className={styles.elementName} 
+        <h2
+          id="element-panel-title"
+          className={styles.elementName}
           style={{ borderLeftColor: categoryColor, color: categoryColor }}
         >
           {element.name} ({element.symbol})
         </h2>
+
         {isAuthenticated && (
           <button
             onClick={handleFavoriteToggle}
@@ -135,6 +140,7 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
             <i className={isFavorited ? 'fas fa-heart' : 'far fa-heart'}></i>
           </button>
         )}
+
         <button onClick={onClose} className={styles.closeButton} aria-label="Close element details">
           <i className="fas fa-times"></i>
         </button>
@@ -162,25 +168,29 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
           <DetailItem label="Melting Point" value={element.meltingPoint} unit="K" isApprox={isApprox.meltingPoint} />
           <DetailItem label="Boiling Point" value={element.boilingPoint} unit="K" isApprox={isApprox.boilingPoint} />
         </div>
-        
+
         <div className={styles.divider}></div>
 
         <div className={styles.propertyGroup}>
-            <h3>Classification & Info</h3>
+          <h3>Classification & Info</h3>
+          <div className={styles.detailItem}>
+            <strong>Category:</strong>
+            <span className={styles.categoryTag} style={{ backgroundColor: categoryColor }}>
+              {element.category.replace(/-/g, ' ')}
+            </span>
+          </div>
+          {element.name && (
             <div className={styles.detailItem}>
-                <strong>Category:</strong>
-                <span className={styles.categoryTag} style={{ backgroundColor: categoryColor }}>
-                    {element.category.replace(/-/g, ' ')}
-                </span>
+              <strong>Wikipedia:</strong>
+              <a
+                href={`https://en.wikipedia.org/wiki/${element.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read More <i className="fas fa-external-link-alt"></i>
+              </a>
             </div>
-            {element.name && (
-                <div className={styles.detailItem}>
-                    <strong>Wikipedia:</strong>
-                    <a href={`https://en.wikipedia.org/wiki/${element.name}`} target="_blank" rel="noopener noreferrer">
-                        Read More <i className="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-            )}
+          )}
         </div>
 
         {isAuthenticated && (
@@ -202,8 +212,8 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
                 {isSaving ? 'Saving...' : 'Save Note'}
               </button>
               <div className={styles.saveStatus}>
-                {hasUnsavedChanges && !isSaving && saveStatus !== 'Error!' && 'Unsaved changes'}
-                {saveStatus && (isSaving || saveStatus === 'Saved!' || saveStatus === 'Error!') && saveStatus}
+                {hasUnsavedChanges && !isSaving && !saveStatus && 'Unsaved changes'}
+                {saveStatus && saveStatus}
               </div>
             </div>
           </div>

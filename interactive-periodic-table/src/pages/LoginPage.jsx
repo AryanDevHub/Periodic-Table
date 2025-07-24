@@ -1,4 +1,4 @@
-// FILE: src/pages/LoginPage.jsx (Corrected and Final Version)
+// FILE: src/pages/LoginPage.jsx
 
 import React, { useState, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
@@ -6,22 +6,21 @@ import { useNavigate, Link, useLocation } from 'react-router-dom';
 import AuthForm from '../components/Auth/AuthForm';
 import styles from './AuthPage.module.css';
 
-const API_LOGIN_URL = 'http://localhost:4000/api/auth/login';
+// ✅ Use environment variable
+const API_LOGIN_URL = `${import.meta.env.VITE_API_BASE_URL}/auth/login`;
 
 const LoginPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // This reads the page the user was on before being redirected to login.
-  // It defaults to the homepage if they came here directly.
+
+  // Redirect path after successful login
   const from = location.state?.from?.pathname || '/';
 
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // --- THE FIX IS HERE ---
-  // The function is wrapped in useCallback to prevent it from being recreated on every render.
+  // --- HANDLE LOGIN SUBMIT ---
   const handleLogin = useCallback(async (formData) => {
     setIsLoading(true);
     setError(null);
@@ -35,22 +34,20 @@ const LoginPage = () => {
       });
 
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.message || 'Failed to log in');
       }
 
-      // Pass the full data object to the context's login function
-      login(data);
-
-      // Navigate to the page the user was trying to access
-      navigate(from, { replace: true });
+      login(data); // Set user in context
+      navigate(from, { replace: true }); // Redirect to intended page
 
     } catch (err) {
       setError(err.message);
     } finally {
       setIsLoading(false);
     }
-  }, [login, navigate, from]); // Dependencies for useCallback
+  }, [login, navigate, from]);
 
   return (
     <div className={styles.authPage}>

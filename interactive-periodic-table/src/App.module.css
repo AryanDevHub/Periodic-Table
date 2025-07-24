@@ -1,67 +1,19 @@
-/* src/App.module.css */
+/* src/App.module.css (Corrected and Final Version) */
 
 .appContainer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
- 
+  /* 
+    REMOVED: 'overflow-x: hidden' was here.
+    WHY: This was preventing the 'position: fixed' side panel from being
+         visible when it was animated in from outside the screen boundaries.
+         Removing it is the key to fixing the invisible panel bug.
+  */
 }
 
-/* --- MAIN LAYOUT AREA --- */
-
-/* What: Container for both content and detail panel.
-   Why: Allows independent control of panel and content for slide-out behavior. */
-.mainArea {
-  position: relative;
-  flex-grow: 1;
-  display: flex;
- 
-}
-
-/* What: This is the content wrapper that will slide left.
-   Why: Uses transform for smooth animation and avoids layout reflow. */
-.content {
-  flex-grow: 1;
-  width: 100%;
-  transition: transform 0.3s ease-in-out;
-}
-
-/* What: Applied when the detail panel is open.
-   Why: Slides the content left to make room for the panel. */
-.contentShifted {
-  transform: translateX(-350px); /* Match the panel width */
-}
-
-/* --- Overlay Styles --- */
-
-.appOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent overlay */
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
-}
-
-.appOverlay.visible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
-}
-
-/* --- Responsive Behavior --- */
-
-/* On smaller screens, let the panel overlay instead of shifting content */
-@media (max-width: 900px) {
-  .contentShifted {
-    transform: none; /* Don't shift content on small screens */
-  }
-}
 .mainContent {
-  flex-grow: 1; 
+  flex-grow: 1; /* This ensures the main area fills the vertical space between the header and footer. */
   width: 100%;
 }
+

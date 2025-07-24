@@ -1,4 +1,4 @@
-// FILE: src/pages/RegisterPage.jsx (Corrected and Final Version)
+// FILE: src/pages/RegisterPage.jsx
 
 import React, { useState, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
@@ -6,16 +6,17 @@ import { useNavigate, Link } from 'react-router-dom';
 import AuthForm from '../components/Auth/AuthForm';
 import styles from './AuthPage.module.css';
 
-const API_REGISTER_URL = 'http://localhost:4000/api/auth/register';
+// ✅ Use environment variable for flexibility
+const API_REGISTER_URL = `${import.meta.env.VITE_API_BASE_URL}/auth/register`;
 
 const RegisterPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
+
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // --- THE FIX IS HERE ---
-  // This function is also wrapped in useCallback for stability.
+  // --- HANDLE REGISTER SUBMIT ---
   const handleRegister = useCallback(async (formData) => {
     setIsLoading(true);
     setError(null);
@@ -29,22 +30,20 @@ const RegisterPage = () => {
       });
 
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.message || 'Failed to register');
       }
 
-      // After registering, we log the user in with the returned data
-      login(data);
+      login(data); // Automatically log the user in
+      navigate('/'); // Redirect to home
 
-      // Navigate to the homepage
-      navigate('/');
-      
     } catch (err) {
       setError(err.message);
     } finally {
       setIsLoading(false);
     }
-  }, [login, navigate]); // Dependencies for useCallback
+  }, [login, navigate]);
 
   return (
     <div className={styles.authPage}>

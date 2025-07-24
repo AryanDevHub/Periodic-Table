@@ -1,14 +1,19 @@
-// FILE: src/context/AuthContext.jsx (Definitive Correct Version)
+// FILE: src/context/AuthContext.jsx
 
-import React, { createContext, useState, useEffect, useContext, useCallback, useMemo } from 'react';
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  useMemo,
+} from 'react';
 
-const API_BASE_URL = 'http://localhost:4000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000/api';
 
 export const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -18,20 +23,16 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const verifyUserSession = async () => {
       if (token && !user) {
-        setIsAuthLoading(true);
         try {
           const response = await fetch(`${API_BASE_URL}/user/me`, {
             headers: { 'x-auth-token': token },
           });
-          if (response.ok) {
-            const userData = await response.json();
-            setUser(userData);
-          } else {
-            localStorage.removeItem('token');
-            setToken(null);
-          }
-        } catch (error) {
-          console.error("Error verifying session:", error);
+          if (!response.ok) throw new Error('Unauthorized');
+
+          const userData = await response.json();
+          setUser(userData);
+        } catch (err) {
+          console.error('Session verification failed:', err);
           localStorage.removeItem('token');
           setToken(null);
         } finally {
@@ -41,13 +42,14 @@ export const AuthProvider = ({ children }) => {
         setIsAuthLoading(false);
       }
     };
+
     verifyUserSession();
   }, [token, user]);
 
-  const login = useCallback((loginData) => {
-    setUser(loginData.user);
-    setToken(loginData.token);
-    localStorage.setItem('token', loginData.token);
+  const login = useCallback(({ user, token }) => {
+    setUser(user);
+    setToken(token);
+    localStorage.setItem('token', token);
   }, []);
 
   const logout = useCallback(() => {
@@ -60,21 +62,18 @@ export const AuthProvider = ({ children }) => {
     setUser(newUserData);
   }, []);
 
-  // --- THE FIX IS HERE ---
-  // The dependency array now correctly lists the state variables and functions.
-  const value = useMemo(() => ({
-    user,
-    token,
-    login,
-    logout,
-    updateUser,
-    isAuthLoading,
-    isAuthenticated: !!user,
-  }), [user, token, isAuthLoading, login, logout, updateUser]);
-
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
+  const value = useMemo(
+    () => ({
+      user,
+      token,
+      login,
+      logout,
+      updateUser,
+      isAuthLoading,
+      isAuthenticated: !!user,
+    }),
+    [user, token, isAuthLoading, login, logout, updateUser]
   );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
