@@ -102,7 +102,7 @@ function App() {
 
       <main className={styles.mainContent}>
         {isLoading ? (
-          <div className="status-message">Loading Application Data...</div>
+          <div className="status-message">lication Data...</div>
         ) : error ? (
           <div className="status-message error">{error}</div>
         ) : (
