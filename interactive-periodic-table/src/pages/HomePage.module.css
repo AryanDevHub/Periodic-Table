@@ -1,38 +1,38 @@
-/* src/pages/HomePage.module.css (Corrected Final Version) */
+/* src/pages/HomePage.module.css (Final and Complete Version) */
 
 .homePageContainer {
   width: 100%;
 }
 
-/* This is now our main scrolling container for the table */
+/* 
+  This is the container that holds the table and becomes scrollable.
+  It is no longer a flex container. Its default block layout is what we want.
+*/
 .interactiveArea {
-  /* This is the key: it tells this specific container to handle horizontal scrolling */
+  /* This is the only rule needed to create the scrollbar when content is too wide. */
   overflow-x: auto;
-   display: flex;
-  justify-content: center; 
   
- 
+  /* These are UX improvements for touch scrolling and hiding the scrollbar visually. */
   -webkit-overflow-scrolling: touch;
-   scrollbar-width: none;
- 
-  &::-webkit-scrollbar {
-    display: none;
-}
+  scrollbar-width: none; /* For Firefox */
 }
 
-/* The tableArea no longer needs overflow control. It just holds the content. */
+/* For Chrome, Safari, and other WebKit browsers */
+.interactiveArea::-webkit-scrollbar {
+  display: none;
+}
+
+/* 
+  The tableArea just holds the content. Its natural width (determined by the
+  PeriodicTable component) will cause the parent (.interactiveArea) to overflow
+  and activate the scrollbar.
+*/
 .tableArea {
   display: flex;
   flex-direction: column;
-  align-items: center;
+ 
   padding: 1rem;
-  
-  /* This smooth transition is no longer needed here. */
 }
-
-/* The padding-based scroll trigger is REMOVED as it was causing issues. 
-   The natural overflow of the table will create the scrollbar correctly. */
-
 
 .fullWidthSections {
   width: 100%;
