@@ -1,39 +1,49 @@
-/* src/pages/HomePage.module.css (Final and Complete Version) */
+/* src/pages/HomePage.module.css (Final and Corrected Version for Stationary Legend) */
 
 .homePageContainer {
   width: 100%;
 }
 
 /* 
-  This is the container that holds the table and becomes scrollable.
-  It is no longer a flex container. Its default block layout is what we want.
+  WHAT: This is a new container for the top section.
+  WHY:  It holds both the stationary Legend and the scrollable table area,
+        and uses flexbox to center the Legend above the full-width scroll area.
+*/
+.tableSectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This will keep the Legend component centered */
+}
+
+/* 
+  This is the container that scrolls horizontally. It is now separate from the Legend.
 */
 .interactiveArea {
-  /* This is the only rule needed to create the scrollbar when content is too wide. */
+  /* This ensures the scrollable area takes up the full screen width */
+  width: 100%; 
+  
+  /* This enables horizontal scrolling ONLY if the content inside is wider than the container */
   overflow-x: auto;
   
-  /* These are UX improvements for touch scrolling and hiding the scrollbar visually. */
+  /* These are UX improvements for touch scrolling and hiding the scrollbar visually */
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* For Firefox */
 }
 
-/* For Chrome, Safari, and other WebKit browsers */
+/* Correct syntax to hide the scrollbar on Chrome, Safari, and Edge */
 .interactiveArea::-webkit-scrollbar {
   display: none;
 }
 
 /* 
-  The tableArea just holds the content. Its natural width (determined by the
-  PeriodicTable component) will cause the parent (.interactiveArea) to overflow
-  and activate the scrollbar.
+  The tableArea just provides padding for the PeriodicTable component.
+  It no longer needs flexbox since it only wraps the table.
 */
 .tableArea {
-  display: flex;
-  flex-direction: column;
- 
   padding: 1rem;
 }
 
+/* The static content sections below the table */
 .fullWidthSections {
   width: 100%;
   padding: 0 1rem;

@@ -1,4 +1,4 @@
-/* src/components/Header/Header.module.css (Final Version) */
+/* src/components/Header/Header.module.css (Final Version with Responsive Title) */
 
 .header {
   background-color: var(--header-bg);
@@ -123,7 +123,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* Dropdown styles are fine, but add this for the chevron */
 .chevron {
   font-size: 0.7em;
   margin-left: 8px;
@@ -149,10 +148,10 @@
     display: none; /* Remove left spacer to make more room */
   }
   .title {
-    margin-right: auto; /* Push controls to the right */
+    margin-right: auto; /* Push the title to the left */
   }
-  .titleText {
-    display: none; /* Hide the "Atomify" text, leaving only the icon */
+  .titleLink {
+    font-size: 1.5em; /* Make the title slightly smaller to fit */
   }
   .controls {
     gap: 10px;
@@ -160,19 +159,22 @@
   .searchInput {
     max-width: 150px;
   }
-  /* This is the key: hide the text inside the auth buttons */
+  /* The rules that used to hide .titleText and .authButtonText have been REMOVED */
+}
+
+/* On very small screens, we still hide the text to prevent the layout from breaking */
+@media (max-width: 550px) {
+  .titleText {
+    display: none; 
+  }
   .authButtonText {
-    display: none;
+    display: none; 
   }
   .authButton, .profileLink {
     padding: 8px 12px; /* Make icon-only buttons more compact */
   }
-}
-
-@media (max-width: 480px) {
-  /* On very small screens, the search bar might still be too big */
   .searchInput {
-    max-width: 100px; /* Further reduce search bar size */
+    max-width: 100px;
   }
   .authLinks {
     gap: 5px;
