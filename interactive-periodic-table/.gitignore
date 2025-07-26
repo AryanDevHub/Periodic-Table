@@ -23,6 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 # Ignore server environment file
+.env
 server/.env
 *.docx
 *.txt

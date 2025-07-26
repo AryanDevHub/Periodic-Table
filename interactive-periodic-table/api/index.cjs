@@ -1,10 +1,11 @@
-// Load environment variables (.env file in local, Vercel sets them in prod)
+// FILE: api/index.cjs (Corrected and Final Version)
+
 require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const serverless = require('serverless-http'); // ✅ Wrap Express for Vercel
+const serverless = require('serverless-http');
 
 // Correct paths to your backend logic
 const authRoutes = require('../server/routes/auth');
@@ -15,6 +16,15 @@ const Scientist = require('../server/models/Scientist');
 const app = express();
 const dbURI = process.env.DB_URI;
 
+// --- THIS IS THE KEY FIX: Apply Global Middleware FIRST ---
+// WHAT: cors() and express.json() are applied immediately after the app is created.
+// WHY: This ensures that EVERY request, including the browser's initial "preflight"
+//      OPTIONS request, is handled by the CORS middleware. This adds the necessary
+//      'Access-Control-Allow-Origin' header, which solves the error.
+app.use(cors());
+app.use(express.json());
+
+
 // --- Reusable DB Connection for Serverless ---
 let conn = null;
 const connectDB = async () => {
@@ -22,7 +32,6 @@ const connectDB = async () => {
     console.log("✅ Using existing DB connection.");
     return;
   }
-
   try {
     console.log("🔌 Connecting to MongoDB...");
     conn = await mongoose.connect(dbURI);
@@ -43,11 +52,8 @@ app.use(async (req, res, next) => {
   }
 });
 
-// --- Express Middleware ---
-app.use(cors());
-app.use(express.json());
 
-// --- API Routes ---
+// --- API Routes (These now come AFTER all global middleware) ---
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
@@ -72,4 +78,4 @@ app.get('/api/scientists', async (req, res) => {
 });
 
 // --- Vercel Serverless Export ---
-module.exports = serverless(app); // ✅ This makes it compatible with Vercel
+module.exports = serverless(app); // This remains the same

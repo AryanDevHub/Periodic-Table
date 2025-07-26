@@ -1,4 +1,4 @@
-/* src/components/NoteCard/NoteCard.module.css */
+/* src/components/NoteCard/NoteCard.module.css (Final and Themed Version) */
 
 .noteCard {
   background-color: var(--bg-color);
@@ -44,10 +44,13 @@
   font-size: 0.8em;
 }
 
+/* --- THIS IS THE KEY CHANGE --- */
+/* Using semantic color variables instead of hardcoded colors */
 .editButton { color: var(--link-color); }
-.deleteButton { color: #e74c3c; }
-.saveButton { color: #2ecc71; }
+.deleteButton { color: var(--error-color); }
+.saveButton { color: var(--success-color); }
 .cancelButton { color: var(--text-color); opacity: 0.7; }
+/* --- END OF CHANGE --- */
 
 .actionButton:hover {
   background-color: var(--button-bg);
@@ -74,5 +77,6 @@
 .editTextarea:focus {
   outline: none;
   border-color: var(--link-color);
+  /* The box-shadow here is light-themed. It will be subtle in dark mode, which is fine. */
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }

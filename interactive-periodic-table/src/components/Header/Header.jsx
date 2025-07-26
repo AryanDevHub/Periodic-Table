@@ -1,13 +1,19 @@
-// src/components/Header/Header.jsx
+// src/components/Header/Header.jsx (Final and Complete Version)
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// What: Import 'useLocation' to detect the current page URL.
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Header.module.css';
 
 const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => {
   const { isAuthenticated, logout, user, isAuthLoading } = useAuth();
   const navigate = useNavigate();
+  
+  // What: Get the current location object from the router.
+  const location = useLocation();
+  // What: A simple boolean to check if the current path is the homepage.
+  const isHomePage = location.pathname === '/';
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -18,6 +24,7 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
     navigate('/');
   };
 
+  // Effect to handle closing the dropdown when clicking outside of it.
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -32,11 +39,11 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
     };
   }, [isDropdownOpen]);
 
+  // This function decides which authentication links to show.
   const renderAuthLinks = () => {
     if (isAuthLoading) return null;
 
     if (isAuthenticated && user) {
-      // This section for logged-in users is already responsive.
       return (
         <div className={styles.profileContainer} ref={dropdownRef}>
           <button
@@ -45,7 +52,11 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
             aria-haspopup="true"
             aria-expanded={isDropdownOpen}
           >
-            <i className="fas fa-user-circle"></i>
+            {user.profilePicture ? (
+              <img src={user.profilePicture} alt={user.username} className={styles.profileAvatar} />
+            ) : (
+              <i className="fas fa-user-circle"></i>
+            )}
             <span className={styles.authButtonText}>{user.username}</span>
             <i className={`fas fa-chevron-down ${styles.chevron} ${isDropdownOpen ? styles.chevronUp : ''}`}></i>
           </button>
@@ -67,8 +78,7 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
       );
     }
 
-    // --- UPDATED LOGGED-OUT BUTTONS ---
-    // Icons are added, and text is wrapped in a span for responsive hiding.
+    // Render block for logged-out users
     return (
       <div className={styles.authLinks}>
         <Link to="/login" className={styles.authButton} aria-label="Login">
@@ -85,13 +95,23 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
 
   return (
     <header className={styles.header}>
-      <div className={styles.leftSection}></div>
+      <div className={styles.leftSection}>
+        {/* WHAT: Conditionally render the Home link/button. */}
+        {/* WHY:  It only appears if we are NOT on the homepage, providing a clean UI. */}
+        {!isHomePage && (
+          <Link to="/" className={styles.homeButton} aria-label="Go to Homepage">
+            <i className="fas fa-home"></i>
+          </Link>
+        )}
+      </div>
+      
       <h1 className={styles.title}>
         <Link to="/" className={styles.titleLink}>
           <i className={`fas fa-atom ${styles.logoIcon}`}></i>
           <span className={styles.titleText}>Atomify</span>
         </Link>
       </h1>
+
       <div className={styles.controls}>
         {onSearchChange && (
           <input

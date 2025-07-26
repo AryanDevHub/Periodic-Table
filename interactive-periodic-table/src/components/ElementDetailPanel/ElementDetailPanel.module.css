@@ -1,4 +1,4 @@
-/* src/components/ElementDetailPanel/ElementDetailPanel.module.css */
+/* src/components/ElementDetailPanel/ElementDetailPanel.module.css (Final and Confirmed Version) */
 
 .sidePanel {
   position: fixed;
@@ -18,6 +18,10 @@
   flex-direction: column;
 }
 
+.sidePanel.open {
+  transform: translateX(0);
+}
+
 .panelHeader {
   display: flex;
   justify-content: space-between;
@@ -34,6 +38,7 @@
   border-left: 5px solid;
   padding-left: 10px;
   line-height: 1.2;
+  /* This text-shadow provides a subtle depth that looks great in both light and dark mode. */
   text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2),
               0px 0px 1px rgba(0, 0, 0, 0.5);
 }
@@ -46,17 +51,16 @@
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s;
-  padding: 5px; /* Increase clickable area */
+  padding: 5px;
 }
 .closeButton:hover {
   opacity: 1;
 }
 
-/* This is now the main scrolling area */
 .panelBody {
   padding: 20px;
-  overflow-y: auto; /* Allow this section to scroll */
-  flex-grow: 1; /* This makes the body fill all available space */
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 .propertyGroup {
@@ -68,8 +72,8 @@
   margin-bottom: 1rem;
   font-size: 1.2em;
   font-weight: bold;
-  color: var(--link-color);
-  border-bottom: 1px solid var(--border-color);
+  color: var(--link-color); /* Correctly uses a theme variable */
+  border-bottom: 1px solid var(--border-color); /* Correctly uses a theme variable */
   padding-bottom: 0.5rem;
 }
 
@@ -98,7 +102,7 @@
 }
 
 .detailItem a {
-  color: var(--link-color);
+  color: var(--link-color); /* Correctly uses a theme variable */
   text-decoration: none;
   font-weight: bold;
 }
@@ -114,6 +118,7 @@
   font-style: italic;
 }
 
+/* These hardcoded colors are intentional and correct for the category tags. */
 .categoryTag {
   padding: 3px 8px;
   border-radius: 4px;
@@ -129,17 +134,14 @@
 
 .divider {
   height: 1px;
-  background-color: var(--border-color);
+  background-color: var(--border-color); /* Correctly uses a theme variable */
   margin: 1.5rem 0;
 }
 
 .notesSection {
-  padding-top: 1rem; /* Adjusted padding */
+  padding-top: 1rem;
 }
 .notesSection h3 {
   margin-top: 0;
   margin-bottom: 10px;
-}
-.sidePanel.open {
-  transform: translateX(0);
 }

@@ -1,4 +1,4 @@
-/* src/components/Quiz/Quiz.module.css */
+/* src/components/Quiz/Quiz.module.css (Final and Themed Version) */
 
 .quizSection {
   background-color: var(--panel-bg);
@@ -62,7 +62,8 @@
   cursor: pointer;
 }
 .startButton:hover {
-  opacity: 0.9;
+  background-color: var(--link-hover-color);
+  opacity: 1; /* Override default hover */
 }
 
 /* --- Active Question Styles --- */
@@ -116,10 +117,11 @@
   font-weight: bold;
 }
 
-
+/* --- THIS IS THE KEY CHANGE --- */
+/* Now using theme variables for correct/incorrect states */
 .optionButton.answered.correct {
-  background-color: #2ecc71;
-  border-color: #27ae60;
+  background-color: var(--success-color);
+  border-color: var(--success-color);
   color: white;
   transform: scale(1.05);
   opacity: 1;
@@ -127,19 +129,21 @@
 }
 
 .optionButton.answered.incorrect {
-  background-color: #e74c3c;
-  border-color: #c0392b;
+  background-color: var(--error-color);
+  border-color: var(--error-color);
   color: white;
   opacity: 1;
 }
+/* --- END OF CHANGE --- */
+
+
 @media (max-width: 500px) {
   .optionsGrid {
-    /* Switch from a 2x2 grid to a single column for answers */
     grid-template-columns: 1fr;
   }
 
   .questionText {
-    font-size: 1.2rem; /* Make text slightly smaller on mobile */
+    font-size: 1.2rem;
   }
 
   .quizSection h2 {

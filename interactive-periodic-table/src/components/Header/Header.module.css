@@ -1,10 +1,9 @@
-/* src/components/Header/Header.module.css (Final Version with Responsive Title) */
+/* src/components/Header/Header.module.css (Final and Complete Version) */
 
 .header {
   background-color: var(--header-bg);
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px var(--shadow-color);
   position: sticky;
@@ -13,14 +12,26 @@
   gap: 15px;
 }
 
-/* --- LAYOUT & LOGO --- */
+/* --- LAYOUT: A robust 3-column structure --- */
+.leftSection, .controls {
+  flex: 1; /* This forces the left and right sections to take up equal space */
+}
 .leftSection {
-  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
 }
 .title {
-  margin: 0;
   text-align: center;
+  margin: 0;
 }
+
+/* --- LOGO & TITLE --- */
 .titleLink {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -37,21 +48,13 @@
 }
 .titleLink:hover {
   transform: scale(1.03);
-  opacity: 1;
 }
 .logoIcon {
   font-size: 0.9em;
 }
 
-/* --- CONTROLS SECTION --- */
-.controls {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 15px;
-}
 
+/* --- SEARCH & THEME TOGGLE --- */
 .searchInput {
   padding: 8px 12px;
   border: 1px solid var(--input-border);
@@ -61,10 +64,17 @@
   width: 100%;
   max-width: 280px;
   font-size: 0.9rem;
-  transition: max-width 0.3s ease-in-out;
+}
+.themeToggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 8px;
 }
 
-/* --- AUTH & PROFILE STYLES --- */
+/* --- AUTH BUTTONS & PROFILE DROPDOWN --- */
 .authLinks, .profileContainer {
   display: flex;
   align-items: center;
@@ -86,7 +96,6 @@
   transition: background-color 0.2s;
   text-decoration: none;
 }
-
 .authButton {
   border: 1px solid var(--border-color);
   color: var(--text-color);
@@ -101,9 +110,8 @@
   color: white;
 }
 .registerButton:hover {
-  background-color: #3498db;
-  border-color: #3498db;
-  color: white;
+  background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
 }
 .profileLink {
   color: var(--text-color);
@@ -118,10 +126,6 @@
   font-size: 1.2rem;
 }
 
-.authButtonText {
-  margin-left: 8px; /* Space between icon and text */
-  transition: all 0.2s ease-in-out;
-}
 
 .chevron {
   font-size: 0.7em;
@@ -131,52 +135,121 @@
 .chevronUp {
   transform: rotate(180deg);
 }
-/* ... (Keep all your existing dropdown styles: .dropdownMenu, .dropdownItem, etc.) ... */
 
-.themeToggle {
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 240px;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  z-index: 1020;
+  overflow: hidden;
+  animation: fadeInDropdown 0.2s ease-out forwards;
+}
+
+@keyframes fadeInDropdown {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 18px;
+  text-align: left;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  font-weight: 600;
   background: none;
   border: none;
-  color: var(--text-color);
-  font-size: 1.5em;
+  width: 100%;
   cursor: pointer;
-  padding: 8px;
+  transition: background-color 0.2s;
+}
+.dropdownItem:hover {
+  background-color: var(--button-bg);
+  opacity: 1;
+}
+.dropdownItem i {
+  width: 20px;
+  text-align: center;
+  opacity: 0.8;
+  color: var(--link-color);
+}
+.dropdownDivider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 6px 0;
+}
+.logoutButton {
+  color: var(--error-color);
+}
+.logoutButton:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+}
+.logoutButton i {
+  color: var(--error-color);
 }
 
 /* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 850px) {
-  .leftSection {
-    display: none; /* Remove left spacer to make more room */
-  }
-  .title {
-    margin-right: auto; /* Push the title to the left */
-  }
+
+/* For tablets and medium screens */
+@media (max-width: 900px) {
   .titleLink {
-    font-size: 1.5em; /* Make the title slightly smaller to fit */
-  }
-  .controls {
-    gap: 10px;
+    font-size: 1.5em;
   }
   .searchInput {
     max-width: 150px;
   }
-  /* The rules that used to hide .titleText and .authButtonText have been REMOVED */
-}
-
-/* On very small screens, we still hide the text to prevent the layout from breaking */
-@media (max-width: 550px) {
-  .titleText {
-    display: none; 
-  }
   .authButtonText {
-    display: none; 
+    display: none;
   }
   .authButton, .profileLink {
-    padding: 8px 12px; /* Make icon-only buttons more compact */
+    padding: 8px 12px;
   }
-  .searchInput {
-    max-width: 100px;
+}
+
+/* For mobile phones */
+@media (max-width: 650px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
   }
-  .authLinks {
-    gap: 5px;
+  .leftSection {
+    display: none;
   }
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+.profileAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%; 
+  object-fit: cover;  
+}
+
+.homeButton {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5em; /* Match the theme toggle icon size */
+  cursor: pointer;
+  padding: 8px; /* Give it a good clickable area */
+  display: flex; /* Helps center the icon if needed */
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+  border-radius: 50%; /* Make it circular like other icon buttons */
+}
+
+.homeButton:hover {
+  opacity: 0.7;
+  background-color: var(--button-bg); /* Add a subtle hover background */
 }

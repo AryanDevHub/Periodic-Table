@@ -1,19 +1,25 @@
-/* src/styles/global.css */
+/* src/styles/global.css (Final and Improved Version) */
 :root {
-  /* Light Theme (default) */
+  /* --- Light Theme (Default) --- */
   --bg-color: #f4f7f6;
-  --text-color: #333;
-  --header-bg: #ffffff;
   --panel-bg: #ffffff;
-  --border-color: #ddd;
+  --header-bg: #ffffff;
+  --text-color: #212529; /* A softer black */
+  --border-color: #dee2e6;
   --shadow-color: rgba(0, 0, 0, 0.1);
-  --button-bg: #e0e0e0;
-  --button-text: #333;
-  --input-bg: #fff;
-  --input-border: #ccc;
+  --button-bg: #e9ecef;
+  --button-text: #212529;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  
+  /* NEW: Semantic color variables */
   --link-color: #007bff;
+  --link-hover-color: #0056b3;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --overlay-bg: rgba(0, 0, 0, 0.5);
 
-  /* Category colors can also be here - moved from duplicate :root block */
+  /* Category colors remain the same */
   --color-alkali-metal: #ff6666;
   --color-alkaline-earth-metal: #ffdead;
   --color-transition-metal: #f0e68c;
@@ -27,26 +33,37 @@
   --color-unknown: #e0e0e0;
 }
 
-
+/* --- NEW & IMPROVED DARK THEME --- */
 html.dark-theme {
-  --bg-color: #2c3e50;
-  --text-color: #ecf0f1;
-  --header-bg: #34495e;
-  --panel-bg: #34495e; /* Consider a slightly different shade from header for panels if desired */
-  --border-color: #4a627a;
-  --shadow-color: rgba(0, 0, 0, 0.4); /* Slightly more prominent shadow for dark mode */
-  --button-bg: #4a627a;
-  --button-text: #ecf0f1;
-  --input-bg: #3b5063; /* Slightly different from main bg for better input visibility */
-  --input-border: #4a627a;
-  --link-color: #3498db; /* Lighter link color for dark backgrounds */
+  /* A deep, cool-toned dark gray is more comfortable than pure black */
+  --bg-color: #1a1d21; 
+  /* A slightly lighter surface color for panels and headers creates depth */
+  --panel-bg: #23272d;
+  --header-bg: #23272d;
+  /* Off-white text is less straining on the eyes than pure white */
+  --text-color: #e2e8f0;
+  /* A subtle border that is just visible enough */
+  --border-color: #3b424d;
+  /* A more prominent shadow is needed for dark mode */
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  /* Darker UI element backgrounds */
+  --button-bg: #3b424d;
+  --button-text: #e2e8f0;
+  --input-bg: #1a1d21;
+  --input-border: #3b424d;
+  
+  /* Brighter, more vibrant accent colors for better contrast */
+  --link-color: #3498db;
+  --link-hover-color: #5dade2;
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+  --overlay-bg: rgba(0, 0, 0, 0.7);
 }
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  /* These will now correctly pick up the themed variables from :root or html.dark-theme */
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -68,7 +85,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.8; /* Consider a theme-aware hover if desired */
+  opacity: 0.8;
 }
 
 input[type="search"] {
@@ -86,14 +103,12 @@ input[type="search"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Adjusted for better contrast */
+  background-color: var(--overlay-bg); /* Use the new variable */
   z-index: 999;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
 }
-
-
 
 .app-overlay.visible {
   opacity: 1;
