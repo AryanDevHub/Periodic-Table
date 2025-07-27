@@ -1,4 +1,4 @@
-/* src/components/ElementDetailPanel/ElementDetailPanel.module.css (Final and Confirmed Version) */
+/* src/components/ElementDetailPanel/ElementDetailPanel.module.css  */
 
 .sidePanel {
   position: fixed;
@@ -13,7 +13,6 @@
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1020;
-
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +27,7 @@
   align-items: center;
   padding: 15px 20px;
   border-bottom: 1px solid var(--border-color);
-  flex-shrink: 0; /* Prevents the header from shrinking */
+  flex-shrink: 0;
 }
 
 .elementName {
@@ -38,9 +37,25 @@
   border-left: 5px solid;
   padding-left: 10px;
   line-height: 1.2;
-  /* This text-shadow provides a subtle depth that looks great in both light and dark mode. */
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2),
-              0px 0px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2), 0px 0px 1px rgba(0, 0, 0, 0.5);
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.favoriteButton:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.favoriteButton.favorited {
+  color: var(--error-color);
 }
 
 .closeButton {
@@ -53,6 +68,7 @@
   transition: opacity 0.2s;
   padding: 5px;
 }
+
 .closeButton:hover {
   opacity: 1;
 }
@@ -72,8 +88,8 @@
   margin-bottom: 1rem;
   font-size: 1.2em;
   font-weight: bold;
-  color: var(--link-color); /* Correctly uses a theme variable */
-  border-bottom: 1px solid var(--border-color); /* Correctly uses a theme variable */
+  color: var(--link-color);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.5rem;
 }
 
@@ -102,7 +118,7 @@
 }
 
 .detailItem a {
-  color: var(--link-color); /* Correctly uses a theme variable */
+  color: var(--link-color);
   text-decoration: none;
   font-weight: bold;
 }
@@ -118,7 +134,6 @@
   font-style: italic;
 }
 
-/* These hardcoded colors are intentional and correct for the category tags. */
 .categoryTag {
   padding: 3px 8px;
   border-radius: 4px;
@@ -134,14 +149,71 @@
 
 .divider {
   height: 1px;
-  background-color: var(--border-color); /* Correctly uses a theme variable */
+  background-color: var(--border-color);
   margin: 1.5rem 0;
 }
 
+/* --- NOTES SECTION STYLES --- */
 .notesSection {
   padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 1.5rem;
 }
+
 .notesSection h3 {
   margin-top: 0;
   margin-bottom: 10px;
+}
+
+.notesTextarea {
+  width: 100%;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  resize: vertical;
+}
+.notesTextarea:focus {
+  outline: none;
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* --- NEW STYLES FOR SAVE BUTTON AND STATUS --- */
+.notesActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.saveButton {
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: var(--link-hover-color);
+  opacity: 1;
+}
+
+.saveButton:disabled {
+  background-color: #95a5a6; /* A generic disabled color */
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.saveStatus {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-style: italic;
+  height: 1.2em; /* Prevents layout shift */
 }

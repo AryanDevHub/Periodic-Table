@@ -1,12 +1,12 @@
-// src/components/ElementDetailPanel/ElementDetailPanel.jsx
+// FILE: src/components/ElementDetailPanel/ElementDetailPanel.jsx
 
+// The import statement is now corrected to include the necessary hooks.
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import styles from './ElementDetailPanel.module.css';
 
-const API_USER_URL = 'http://localhost:4000/api/user';
+const API_USER_URL = `${import.meta.env.VITE_API_BASE_URL}/user`;
 
-// Displays a single label-value pair with optional unit and approximation
 const DetailItem = ({ label, value, unit = '', isApprox = false }) => {
   if (value === null || typeof value === 'undefined') return null;
   const displayValue = value === 'Unknown' ? 'Unknown' : `${value} ${unit}`.trim();
@@ -29,7 +29,6 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
   const [saveStatus, setSaveStatus] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
-  // Load note for selected element
   useEffect(() => {
     if (isAuthenticated && user?.notes && element) {
       const existingNote = user.notes.find(n => n.elementNumber === element.number)?.text || '';
@@ -40,26 +39,18 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
     }
   }, [isAuthenticated, user, element]);
 
-  // Save personal note to server
   const handleSaveNote = async () => {
     if (!element) return;
-
     setIsSaving(true);
     setSaveStatus('Saving...');
-
     try {
       const res = await fetch(`${API_USER_URL}/notes`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-auth-token': token,
-        },
+        headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
         body: JSON.stringify({ elementNumber: element.number, text: noteText }),
       });
-
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Failed to save note.');
-
       updateUser(data);
       setInitialNote(noteText);
       setSaveStatus('Saved!');
@@ -76,10 +67,10 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
     setSaveStatus('');
   };
 
-  // Toggle favorite status
   const handleFavoriteToggle = async () => {
     if (!isAuthenticated || !element?._id || !user) return;
 
+    const originalUser = user;
     const isFavorited = user.favoriteElements.some(fav => fav._id === element._id);
     const optimisticUser = {
       ...user,
@@ -92,10 +83,7 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
     try {
       const res = await fetch(`${API_USER_URL}/favorites`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-auth-token': token,
-        },
+        headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
         body: JSON.stringify({ elementId: element._id }),
       });
       const data = await res.json();
@@ -103,7 +91,7 @@ const ElementDetailPanel = ({ element, onClose, categoryColors, isOpen }) => {
       updateUser(data);
     } catch (err) {
       console.error('Favorite sync failed:', err);
-      updateUser(user); // Revert if failed
+      updateUser(originalUser); // Revert if failed
     }
   };
 
