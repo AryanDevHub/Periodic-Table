@@ -17,25 +17,24 @@ const PeriodicTable = ({
   const [initialPositions, setInitialPositions] = useState({});
 
   useEffect(() => {
-    // Prepare initial random positions and delays for animation
+    
     const positions = {};
     allElements.forEach(el => {
       positions[el.number] = {
-        // Start elements slightly off-center and spread out
-        initialX: `${Math.random() * 60 - 30}vw`, // Randomly spread across viewport width
-        initialY: `${Math.random() * 60 - 30}vh`, // Randomly spread across viewport height
-        delay: `${Math.random() * MAX_STAGGER_DELAY_MS}ms` // Random stagger delay
+        
+        initialX: `${Math.random() * 60 - 30}vw`, 
+        initialY: `${Math.random() * 60 - 30}vh`, 
+        delay: `${Math.random() * MAX_STAGGER_DELAY_MS}ms` 
       };
     });
     setInitialPositions(positions);
 
-    // Trigger animation shortly after mount
+    
     const timer = setTimeout(() => {
       setStartInitialAnimation(true);
-    }, 100); // Small delay to ensure elements are rendered before animation class is applied
-
+    }, 100); 
     return () => clearTimeout(timer);
-  }, [allElements]); // Re-run if allElements changes, though it shouldn't for this app
+  }, [allElements]); 
 
   const filteredElementNumbers = new Set(elements.map(el => el.number));
 

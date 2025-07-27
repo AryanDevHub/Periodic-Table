@@ -1,4 +1,4 @@
-/* src/components/Header/Header.module.css (Final and Complete Version) */
+/* FILE: src/components/Header/Header.module.css */
 
 .header {
   background-color: var(--header-bg);
@@ -12,26 +12,27 @@
   gap: 15px;
 }
 
-/* --- LAYOUT: A robust 3-column structure --- */
 .leftSection, .controls {
-  flex: 1; /* This forces the left and right sections to take up equal space */
+  flex: 1;
 }
+
 .leftSection {
   display: flex;
   justify-content: flex-start;
 }
+
 .controls {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 15px;
 }
+
 .title {
   text-align: center;
   margin: 0;
 }
 
-/* --- LOGO & TITLE --- */
 .titleLink {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -46,15 +47,15 @@
   color: transparent;
   transition: transform 0.2s ease-out;
 }
+
 .titleLink:hover {
   transform: scale(1.03);
 }
+
 .logoIcon {
   font-size: 0.9em;
 }
 
-
-/* --- SEARCH & THEME TOGGLE --- */
 .searchInput {
   padding: 8px 12px;
   border: 1px solid var(--input-border);
@@ -65,21 +66,13 @@
   max-width: 280px;
   font-size: 0.9rem;
 }
-.themeToggle {
-  background: none;
-  border: none;
-  color: var(--text-color);
-  font-size: 1.5em;
-  cursor: pointer;
-  padding: 8px;
-}
 
-/* --- AUTH BUTTONS & PROFILE DROPDOWN --- */
 .authLinks, .profileContainer {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .profileContainer {
   position: relative;
 }
@@ -96,44 +89,86 @@
   transition: background-color 0.2s;
   text-decoration: none;
 }
+
 .authButton {
   border: 1px solid var(--border-color);
   color: var(--text-color);
   background: none;
 }
+
 .authButton:hover {
   background-color: var(--button-bg);
 }
+
 .registerButton {
   background-color: var(--link-color);
   border-color: var(--link-color);
   color: white;
 }
+
 .registerButton:hover {
   background-color: var(--link-hover-color);
   border-color: var(--link-hover-color);
 }
+
 .profileLink {
   color: var(--text-color);
   background: none;
   border: none;
   cursor: pointer;
 }
+
 .profileLink:hover {
   background-color: var(--button-bg);
 }
+
 .profileLink i {
   font-size: 1.2rem;
 }
 
+.profileAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
 .chevron {
   font-size: 0.7em;
   margin-left: 8px;
   transition: transform 0.2s ease-in-out;
 }
+
 .chevronUp {
   transform: rotate(180deg);
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.homeButton {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, background-color 0.2s;
+  border-radius: 50%;
+}
+
+.homeButton:hover {
+  opacity: 0.8;
+  background-color: var(--button-bg);
 }
 
 .dropdownMenu {
@@ -171,34 +206,40 @@
   cursor: pointer;
   transition: background-color 0.2s;
 }
+
 .dropdownItem:hover {
   background-color: var(--button-bg);
   opacity: 1;
 }
+
 .dropdownItem i {
   width: 20px;
   text-align: center;
   opacity: 0.8;
   color: var(--link-color);
 }
+
 .dropdownDivider {
   height: 1px;
   background-color: var(--border-color);
   margin: 6px 0;
 }
+
 .logoutButton {
   color: var(--error-color);
 }
+
 .logoutButton:hover {
   background-color: rgba(231, 76, 60, 0.1);
 }
+
 .logoutButton i {
   color: var(--error-color);
 }
 
+
 /* --- RESPONSIVE ADJUSTMENTS --- */
 
-/* For tablets and medium screens */
 @media (max-width: 900px) {
   .titleLink {
     font-size: 1.5em;
@@ -214,7 +255,21 @@
   }
 }
 
-/* For mobile phones */
+.searchInput {
+
+  transition: opacity 0.3s, visibility 0.3s, max-width 0.3s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+}
+
+.searchInputHidden {
+  opacity: 0;
+  visibility: hidden;
+  max-width: 0px !important; 
+  padding: 8px 0;
+  border: 1px solid transparent;
+}
+
 @media (max-width: 650px) {
   .header {
     flex-direction: column;
@@ -227,29 +282,4 @@
     width: 100%;
     justify-content: space-between;
   }
-}
-.profileAvatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%; 
-  object-fit: cover;  
-}
-
-.homeButton {
-  background: none;
-  border: none;
-  color: var(--text-color);
-  font-size: 1.5em; /* Match the theme toggle icon size */
-  cursor: pointer;
-  padding: 8px; /* Give it a good clickable area */
-  display: flex; /* Helps center the icon if needed */
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s;
-  border-radius: 50%; /* Make it circular like other icon buttons */
-}
-
-.homeButton:hover {
-  opacity: 0.7;
-  background-color: var(--button-bg); /* Add a subtle hover background */
 }

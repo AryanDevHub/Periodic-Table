@@ -18,7 +18,7 @@
   color: var(--link-color);
 }
 
-/* --- Intro/End Screen Styles --- */
+
 .intro {
   padding: 1rem 0;
 }
@@ -63,10 +63,10 @@
 }
 .startButton:hover {
   background-color: var(--link-hover-color);
-  opacity: 1; /* Override default hover */
+  opacity: 1; 
 }
 
-/* --- Active Question Styles --- */
+
 .questionArea {
   min-height: 250px;
 }
@@ -110,15 +110,13 @@
   opacity: 0.6;
 }
 
-/* --- Feedback Styles --- */
 .feedback {
   margin-top: 1.5rem;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-/* --- THIS IS THE KEY CHANGE --- */
-/* Now using theme variables for correct/incorrect states */
+
 .optionButton.answered.correct {
   background-color: var(--success-color);
   border-color: var(--success-color);
@@ -134,7 +132,6 @@
   color: white;
   opacity: 1;
 }
-/* --- END OF CHANGE --- */
 
 
 @media (max-width: 500px) {

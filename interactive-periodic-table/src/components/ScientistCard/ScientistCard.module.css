@@ -1,4 +1,4 @@
-/* src/components/ScientistCard/ScientistCard.module.css (Final Version with Dark Mode Polish) */
+/* src/components/ScientistCard/ScientistCard.module.css  */
 
 .scientistEntry {
   display: flex;
@@ -11,6 +11,7 @@
   box-shadow: 0 10px 30px -5px var(--shadow-color);
   position: relative;
   overflow: hidden;
+
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s,
@@ -21,6 +22,7 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 
 .scientistEntry.layoutLeft .imageWrapper {
   order: 1;
@@ -48,6 +50,7 @@
   opacity: 1;
 }
 
+
 .imageWrapper {
   flex: 0 0 250px;
   height: 250px;
@@ -64,7 +67,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease, filter 0.3s ease-in-out; /* Added filter transition */
+  transition: transform 0.5s ease;
 }
 
 .scientistEntry:hover .scientistImage {
@@ -128,7 +131,7 @@
 }
 
 .readMoreLink:hover {
-  background-color: var(--link-hover-color); /* Use variable for consistency */
+  background-color: var(--link-hover-color);
   border-color: var(--link-hover-color);
   color: white;
   opacity: 1;
@@ -140,19 +143,46 @@
 }
 
 
-/* --- Responsive Adjustments --- */
+
+
 @media (max-width: 900px) {
-  /* ... (your existing responsive styles are great and remain here) ... */
+  .scientistEntry {
+   
+    flex-direction: column;
+   
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .imageWrapper {
+   
+    order: 1 !important;
+   
+    margin: 0 auto 30px;
+   
+    flex-basis: 200px;
+    height: 200px;
+  }
+
+  .contentWrapper {
+   
+    order: 2 !important;
+    
+    width: 100%;
+   
+    transform: translateY(30px);
+  }
 }
 
 @media (max-width: 600px) {
-  /* ... (your existing responsive styles are great and remain here) ... */
-}
-
-/* --- NEW: DARK MODE POLISH --- */
-/* What: This rule targets the scientist images ONLY when the dark theme is active. */
-/* Why:  It subtly reduces the brightness and increases the contrast of the images
-         to make them feel more integrated and less jarring in a dark UI. */
-html.dark-theme .scientistImage {
-  filter: brightness(0.85) contrast(1.1);
+  .imageWrapper {
+    flex-basis: 160px;
+    height: 160px;
+  }
+  .scientistName {
+    font-size: 2em;
+  }
+  .scientistContribution {
+    font-size: 1em;
+  }
 }

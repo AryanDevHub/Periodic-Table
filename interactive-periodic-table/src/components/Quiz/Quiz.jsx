@@ -8,7 +8,7 @@ const shuffleArray = (array) => {
 };
 
 const Quiz = ({ allElements }) => {
-  // --- STATE MANAGEMENT ---
+  // STATE MANAGEMENT 
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [options, setOptions] = useState([]);
   const [feedback, setFeedback] = useState('');
@@ -60,7 +60,7 @@ const Quiz = ({ allElements }) => {
     setOptions(shuffleArray(answerOptions));
   }, [allElements]);
 
-  // REMOVED: The useEffect that was causing the double question skip is gone.
+  
   
   const handleAnswerClick = (clickedOption) => {
     if (isAnswered) return;
@@ -82,19 +82,19 @@ const Quiz = ({ allElements }) => {
       if (questionsAnswered < TOTAL_QUESTIONS - 1) { // Check against TOTAL_QUESTIONS - 1
         generateQuestion();
       } else {
-        setIsQuizActive(false); // End the quiz
+        setIsQuizActive(false); 
       }
     }, nextQuestionDelay);
   };
   
-  // THIS IS THE KEY FIX: The first question must be generated here.
+  
   const startQuiz = () => {
     setScore(0);
     setWrongAnswers(0);
     setQuestionsAnswered(0);
     setSelectedAnswer(null);
     setIsQuizActive(true);
-    generateQuestion(); // Generate the first question immediately.
+    generateQuestion(); 
   };
 
   return (

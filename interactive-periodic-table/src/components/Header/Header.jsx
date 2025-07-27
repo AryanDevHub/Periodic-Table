@@ -1,18 +1,15 @@
-// src/components/Header/Header.jsx (Final and Complete Version)
+// FILE: src/components/Header/Header.jsx (Final and Corrected Version)
 
 import React, { useState, useEffect, useRef } from 'react';
-// What: Import 'useLocation' to detect the current page URL.
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Header.module.css';
 
-const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => {
+// --- Accept the new 'showSearchBar' prop from App.jsx ---
+const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme, showSearchBar }) => {
   const { isAuthenticated, logout, user, isAuthLoading } = useAuth();
   const navigate = useNavigate();
-  
-  // What: Get the current location object from the router.
   const location = useLocation();
-  // What: A simple boolean to check if the current path is the homepage.
   const isHomePage = location.pathname === '/';
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -24,7 +21,6 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
     navigate('/');
   };
 
-  // Effect to handle closing the dropdown when clicking outside of it.
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -39,7 +35,6 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
     };
   }, [isDropdownOpen]);
 
-  // This function decides which authentication links to show.
   const renderAuthLinks = () => {
     if (isAuthLoading) return null;
 
@@ -78,7 +73,6 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
       );
     }
 
-    // Render block for logged-out users
     return (
       <div className={styles.authLinks}>
         <Link to="/login" className={styles.authButton} aria-label="Login">
@@ -96,8 +90,6 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
   return (
     <header className={styles.header}>
       <div className={styles.leftSection}>
-        {/* WHAT: Conditionally render the Home link/button. */}
-        {/* WHY:  It only appears if we are NOT on the homepage, providing a clean UI. */}
         {!isHomePage && (
           <Link to="/" className={styles.homeButton} aria-label="Go to Homepage">
             <i className="fas fa-home"></i>
@@ -113,16 +105,18 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme }) => 
       </h1>
 
       <div className={styles.controls}>
-        {onSearchChange && (
-          <input
-            type="search"
-            placeholder="Search..."
-            aria-label="Search elements"
-            className={styles.searchInput}
-            value={searchTerm}
-            onChange={(e) => onSearchChange(e.target.value)}
-          />
-        )}
+        {/* --- THIS IS THE KEY CHANGE --- */}
+        {/* The input is always rendered, but its visibility is now controlled by a CSS class */}
+        <input
+          type="search"
+          placeholder="Search..."
+          aria-label="Search elements"
+          className={`${styles.searchInput} ${showSearchBar ? '' : styles.searchInputHidden}`}
+          value={searchTerm}
+          onChange={(e) => onSearchChange(e.target.value)}
+        />
+        {/* --- END OF CHANGE --- */}
+        
         {renderAuthLinks()}
         <button
           onClick={onThemeToggle}

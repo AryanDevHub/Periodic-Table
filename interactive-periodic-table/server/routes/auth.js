@@ -1,4 +1,4 @@
-// FILE: server/routes/auth.js (Final and Correct Version)
+// FILE: server/routes/auth.js
 
 const express = require('express');
 const router = express.Router();
