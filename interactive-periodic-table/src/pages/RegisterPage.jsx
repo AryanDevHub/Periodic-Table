@@ -6,17 +6,15 @@ import { useNavigate, Link } from 'react-router-dom';
 import AuthForm from '../components/Auth/AuthForm';
 import styles from './AuthPage.module.css';
 
-// ✅ Use environment variable for flexibility
-const API_REGISTER_URL = `${import.meta.env.VITE_API_BASE_URL}/auth/register`;
+// Use a relative path for the API endpoint
+const API_REGISTER_URL = '/api/auth/register';
 
 const RegisterPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
-
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // --- HANDLE REGISTER SUBMIT ---
   const handleRegister = useCallback(async (formData) => {
     setIsLoading(true);
     setError(null);
@@ -30,13 +28,12 @@ const RegisterPage = () => {
       });
 
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.message || 'Failed to register');
       }
 
-      login(data); // Automatically log the user in
-      navigate('/'); // Redirect to home
+      login(data);
+      navigate('/');
 
     } catch (err) {
       setError(err.message);
@@ -49,9 +46,7 @@ const RegisterPage = () => {
     <div className={styles.authPage}>
       <div className={styles.authContainer}>
         <h1 className={styles.title}>Create an Account</h1>
-        <p className={styles.subtitle}>
-          Unlock features like favorites and notes!
-        </p>
+        <p className={styles.subtitle}>Unlock features like favorites and notes!</p>
         <AuthForm
           formType="register"
           onSubmit={handleRegister}

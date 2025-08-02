@@ -6,21 +6,18 @@ import { useNavigate, Link, useLocation } from 'react-router-dom';
 import AuthForm from '../components/Auth/AuthForm';
 import styles from './AuthPage.module.css';
 
-// ✅ Use environment variable
-const API_LOGIN_URL = `${import.meta.env.VITE_API_BASE_URL}/auth/login`;
+// Use a relative path for the API endpoint
+const API_LOGIN_URL = '/api/auth/login';
 
 const LoginPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-
-  // Redirect path after successful login
   const from = location.state?.from?.pathname || '/';
 
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // --- HANDLE LOGIN SUBMIT ---
   const handleLogin = useCallback(async (formData) => {
     setIsLoading(true);
     setError(null);
@@ -34,13 +31,12 @@ const LoginPage = () => {
       });
 
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.message || 'Failed to log in');
       }
 
-      login(data); // Set user in context
-      navigate(from, { replace: true }); // Redirect to intended page
+      login(data);
+      navigate(from, { replace: true });
 
     } catch (err) {
       setError(err.message);
@@ -53,9 +49,7 @@ const LoginPage = () => {
     <div className={styles.authPage}>
       <div className={styles.authContainer}>
         <h1 className={styles.title}>Welcome Back!</h1>
-        <p className={styles.subtitle}>
-          Log in to access your personalized table.
-        </p>
+        <p className={styles.subtitle}>Log in to access your personalized table.</p>
         <AuthForm
           formType="login"
           onSubmit={handleLogin}

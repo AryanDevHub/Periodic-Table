@@ -14,7 +14,8 @@ import AccountPage from './pages/AccountPage';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+const API_BASE_URL = '/api';
 
 function App() {
   const [allElements, setAllElements] = useState([]);
@@ -119,6 +120,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
