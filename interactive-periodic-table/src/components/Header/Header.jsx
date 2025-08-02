@@ -99,7 +99,7 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme, showS
       <h1 className={styles.title}>
         <Link to="/" className={styles.titleLink}>
           <i className={`fas fa-atom ${styles.logoIcon}`}></i>
-          <span className={styles.titleText}>Atomify</span>
+          <span className={styles.titleText}>Quarx</span>
         </Link>
       </h1>
 
