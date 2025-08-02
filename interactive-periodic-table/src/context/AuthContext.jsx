@@ -1,5 +1,4 @@
 // FILE: src/context/AuthContext.jsx
-
 import React, {
   createContext,
   useState,
@@ -23,18 +22,19 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const verifyUserSession = async () => {
       if (token && !user) {
+        setIsAuthLoading(true);
         try {
           const response = await fetch(`${API_BASE_URL}/user/me`, {
             headers: { 'x-auth-token': token },
           });
           if (!response.ok) throw new Error('Unauthorized');
-
           const userData = await response.json();
           setUser(userData);
         } catch (err) {
           console.error('Session verification failed:', err);
           localStorage.removeItem('token');
           setToken(null);
+          setUser(null);
         } finally {
           setIsAuthLoading(false);
         }
@@ -42,9 +42,8 @@ export const AuthProvider = ({ children }) => {
         setIsAuthLoading(false);
       }
     };
-
     verifyUserSession();
-  }, [token, user]);
+  }, [token]);
 
   const login = useCallback(({ user, token }) => {
     setUser(user);

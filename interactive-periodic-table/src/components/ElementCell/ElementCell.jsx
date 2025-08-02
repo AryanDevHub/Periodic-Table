@@ -1,3 +1,5 @@
+// FILE: src/components/ElementCell/ElementCell.jsx
+
 import React, { useState, useRef } from 'react';
 import styles from './ElementCell.module.css';
 import ElementTooltip from '../ElementTooltip/ElementTooltip';
@@ -18,7 +20,6 @@ const ElementCell = ({
   const cellRef = useRef(null);
   const tooltipId = `tooltip-${element.number}`;
 
-  // --- Visual state logic ---
   let cellOpacity = 1;
   let cellFilter = 'none';
   let cellZIndex = 1;
@@ -45,7 +46,6 @@ const ElementCell = ({
     cellZIndex = 1;
   }
 
-  // --- Initial animation style ---
   let initialAnimationStyle = {};
   if (enableInitialAnimation) {
     initialAnimationStyle = {
@@ -79,44 +79,41 @@ const ElementCell = ({
     ...initialAnimationStyle,
   };
 
-  // ✅ Viewport-aware tooltip positioning
   const handleMouseEnter = () => {
     if (!allowIndividualInteractions || !cellRef.current) {
       setShowTooltip(false);
       return;
     }
-
     const cellRect = cellRef.current.getBoundingClientRect();
     const tooltipEstimatedHeight = 150;
     const tooltipEstimatedWidth = 250;
     const viewportMargin = 10;
 
-    // --- Vertical logic ---
-    let top = -(tooltipEstimatedHeight + 8);
-    if (cellRect.top - tooltipEstimatedHeight - 8 < viewportMargin) {
-      top = cellRect.height + 8;
+    let top = cellRect.top - tooltipEstimatedHeight - viewportMargin;
+    if (top < viewportMargin) {
+      top = cellRect.bottom + viewportMargin;
     }
 
-    // --- Horizontal logic ---
-    let left = cellRect.width / 2;
+    let left = cellRect.left + (cellRect.width / 2);
     let transform = 'translateX(-50%)';
 
-    const tooltipCenterOnScreen = cellRect.left + (cellRect.width / 2);
+    const tooltipCenterOnScreen = left;
     const tooltipLeftEdge = tooltipCenterOnScreen - (tooltipEstimatedWidth / 2);
     const tooltipRightEdge = tooltipCenterOnScreen + (tooltipEstimatedWidth / 2);
 
-    if (tooltipLeftEdge < viewportMargin) {
-      const overflowAmount = viewportMargin - tooltipLeftEdge;
-      transform = `translateX(calc(-50% + ${overflowAmount}px))`;
-    } else if (tooltipRightEdge > window.innerWidth - viewportMargin) {
+    if (tooltipRightEdge > window.innerWidth - viewportMargin) {
       const overflowAmount = tooltipRightEdge - (window.innerWidth - viewportMargin);
       transform = `translateX(calc(-50% - ${overflowAmount}px))`;
+    }
+    else if (tooltipLeftEdge < viewportMargin) {
+      const overflowAmount = viewportMargin - tooltipLeftEdge;
+      transform = `translateX(calc(-50% + ${overflowAmount}px))`;
     }
 
     setTooltipPosition({
       top: `${top}px`,
       left: `${left}px`,
-      transform,
+      transform: transform,
     });
 
     setShowTooltip(true);

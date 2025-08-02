@@ -9,6 +9,11 @@
   background-color: var(--panel-bg);
   border-radius: 4px;
   box-shadow: 0 1px 3px var(--shadow-color);
+
+  /* --- THIS IS THE FIX --- */
+  /* This establishes a stacking context for the legend on layer 1. */
+  position: relative;
+  z-index: 1;
 }
 
 .legendItem {
@@ -17,9 +22,9 @@
   font-size: 0.9em;
   padding: 8px 12px;
   border-radius: 4px;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, border 0.2s ease; /* Added border transition */
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
   cursor: pointer;
-  border: 2px solid transparent; /* Placeholder for active border */
+  border: 2px solid transparent;
 }
 
 .colorBox {
@@ -30,7 +35,6 @@
   border-radius: 2px;
 }
 
-/* Style for hovered/focused legend item (general active) */
 .legendItem:hover,
 .legendItem:focus,
 .legendItem.activeLegendItem {
@@ -39,9 +43,8 @@
   outline: none;
 }
 
-/* Specific style for "sticky" selected legend item */
 .legendItem.selectedLegendItem {
-  background-color: var(--button-bg); /* Or a slightly different shade */
-  border: 2px solid var(--link-color); /* Example: a prominent border */
-  font-weight: bold; /* Make text bold */
+  background-color: var(--button-bg);
+  border: 2px solid var(--link-color);
+  font-weight: bold;
 }

@@ -1,49 +1,38 @@
-/* src/pages/HomePage.module.css (Final and Corrected Version for Stationary Legend) */
+/* src/pages/HomePage.module.css */
 
 .homePageContainer {
   width: 100%;
 }
 
-/* 
-  WHAT: This is a new container for the top section.
-  WHY:  It holds both the stationary Legend and the scrollable table area,
-        and uses flexbox to center the Legend above the full-width scroll area.
-*/
 .tableSectionContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; /* This will keep the Legend component centered */
+  align-items: center;
 }
 
-/* 
-  This is the container that scrolls horizontally. It is now separate from the Legend.
-*/
+/* This is the container that scrolls horizontally */
 .interactiveArea {
-  /* This ensures the scrollable area takes up the full screen width */
   width: 100%; 
-  
-  /* This enables horizontal scrolling ONLY if the content inside is wider than the container */
   overflow-x: auto;
   
-  /* These are UX improvements for touch scrolling and hiding the scrollbar visually */
+  /* --- THIS IS THE FIX --- */
+  /* This establishes a stacking context on a HIGHER layer than the legend,
+     ensuring that tooltips from the table will appear on top. */
+  position: relative;
+  z-index: 2;
+  
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* For Firefox */
+  scrollbar-width: none;
 }
 
-/* Correct syntax to hide the scrollbar on Chrome, Safari, and Edge */
 .interactiveArea::-webkit-scrollbar {
   display: none;
 }
 
-/* 
-  The tableArea just provides padding for the PeriodicTable component.
-  It no longer needs flexbox since it only wraps the table.
-*/
 .tableArea {
   padding: 1rem;
 }
 
-/* The static content sections below the table */
 .fullWidthSections {
   width: 100%;
   padding: 0 1rem;
