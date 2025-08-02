@@ -1,9 +1,10 @@
-// FILE: src/App.jsx
+// FILE: src/App.jsx (Final and Corrected Version)
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import styles from './App.module.css';
 
+// Component Imports
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
@@ -82,13 +83,12 @@ function App() {
   return (
     <div className={styles.appContainer}>
       <Header
-        onSearchChange={handleSearch}
-        showSearchBar={showSearchBar}
+        onSearchChange={showSearchBar ? handleSearch : null}
         searchTerm={searchTerm}
         onThemeToggle={handleThemeToggle}
         currentTheme={theme}
       />
-
+      
       <main className={styles.mainContent}>
         {isLoading ? (
           <div className="status-message">Loading Application Data...</div>
@@ -119,5 +119,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
