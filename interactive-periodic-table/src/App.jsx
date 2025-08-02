@@ -1,4 +1,4 @@
-// FILE: src/App.jsx (Final and Corrected Version)
+// FILE: src/App.jsx (Final and Complete Version)
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -14,7 +14,6 @@ import AccountPage from './pages/AccountPage';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 
-
 const API_BASE_URL = '/api';
 
 function App() {
@@ -25,8 +24,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  
+  // Hook to get the current page location
   const location = useLocation();
 
+  // Effect to fetch initial data from the backend
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -54,11 +56,13 @@ function App() {
     fetchData();
   }, []);
 
+  // Effect to manage the theme class on the <html> element
   useEffect(() => {
     document.documentElement.className = theme === 'dark' ? 'dark-theme' : '';
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  // Handler for search input changes
   const handleSearch = useCallback((term) => {
     setSearchTerm(term);
     if (!term) {
@@ -75,16 +79,19 @@ function App() {
     );
   }, [allElements]);
 
+  // Handler for theme toggle button clicks
   const handleThemeToggle = useCallback(() => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   }, []);
 
+  // Derived state: determine if the search bar should be shown based on the current page
   const showSearchBar = location.pathname === '/';
 
   return (
     <div className={styles.appContainer}>
       <Header
-        onSearchChange={showSearchBar ? handleSearch : null}
+        onSearchChange={handleSearch}
+        showSearchBar={showSearchBar} // This prop tells the Header whether to apply the hiding class
         searchTerm={searchTerm}
         onThemeToggle={handleThemeToggle}
         currentTheme={theme}

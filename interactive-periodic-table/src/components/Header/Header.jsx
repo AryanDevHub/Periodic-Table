@@ -1,11 +1,10 @@
-// FILE: src/components/Header/Header.jsx (Final and Corrected Version)
+// FILE: src/components/Header/Header.jsx
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Header.module.css';
 
-// --- Accept the new 'showSearchBar' prop from App.jsx ---
 const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme, showSearchBar }) => {
   const { isAuthenticated, logout, user, isAuthLoading } = useAuth();
   const navigate = useNavigate();
@@ -105,19 +104,17 @@ const Header = ({ onSearchChange, searchTerm, onThemeToggle, currentTheme, showS
       </h1>
 
       <div className={styles.controls}>
-        {/* --- THIS IS THE KEY CHANGE --- */}
-        {/* The input is always rendered, but its visibility is now controlled by a CSS class */}
         <input
           type="search"
           placeholder="Search..."
           aria-label="Search elements"
           className={`${styles.searchInput} ${showSearchBar ? '' : styles.searchInputHidden}`}
           value={searchTerm}
-          onChange={(e) => onSearchChange(e.target.value)}
+          onChange={(e) => onSearchChange && onSearchChange(e.target.value)}
         />
-        {/* --- END OF CHANGE --- */}
         
         {renderAuthLinks()}
+
         <button
           onClick={onThemeToggle}
           className={styles.themeToggle}
