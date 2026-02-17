@@ -59,7 +59,7 @@
   margin: 1rem 0;
 }
 
-/* --- NEW STYLES FOR FILE UPLOAD --- */
+
 
 .fileUploadContainer {
   display: flex;
@@ -84,7 +84,7 @@
   font-size: 0.9rem;
   opacity: 0.8;
   font-style: italic;
-  /* Prevents long filenames from breaking the layout */
+ 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import styles from './ElementDetailPanel.module.css';
 
-// Use a relative path for the API endpoint
+
 const API_USER_URL = '/api/user';
 
 const DetailItem = ({ label, value, unit = '', isApprox = false }) => {

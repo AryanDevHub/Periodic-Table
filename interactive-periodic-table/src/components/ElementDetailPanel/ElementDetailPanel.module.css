@@ -153,7 +153,7 @@
   margin: 1.5rem 0;
 }
 
-/* --- NOTES SECTION STYLES --- */
+
 .notesSection {
   padding-top: 1rem;
   border-top: 1px solid var(--border-color);
@@ -182,7 +182,7 @@
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
-/* --- NEW STYLES FOR SAVE BUTTON AND STATUS --- */
+
 .notesActions {
   display: flex;
   justify-content: space-between;
@@ -206,7 +206,7 @@
 }
 
 .saveButton:disabled {
-  background-color: #95a5a6; /* A generic disabled color */
+  background-color: #95a5a6; 
   cursor: not-allowed;
   opacity: 0.7;
 }
@@ -215,5 +215,5 @@
   font-size: 0.8rem;
   opacity: 0.7;
   font-style: italic;
-  height: 1.2em; /* Prevents layout shift */
+  height: 1.2em; 
 }
