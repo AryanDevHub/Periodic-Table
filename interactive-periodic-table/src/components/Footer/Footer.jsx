@@ -54,7 +54,7 @@ const Footer = () => {
 
       <div className={styles.bottomBar}>
         <div className={styles.container}>
-          <p>© {currentYear} Quarx. </p>
+          <p>© {currentYear} Quarx. All rights reserved.</p>
           <div className={styles.legalLinks}>
             <a href="#privacy">Privacy Policy</a>
             <a href="#terms">Terms of Service</a>
