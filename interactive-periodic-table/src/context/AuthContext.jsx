@@ -24,9 +24,13 @@ export const AuthProvider = ({ children }) => {
       if (token && !user) {
         setIsAuthLoading(true);
         try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 8000);
           const response = await fetch(`${API_BASE_URL}/user/me`, {
             headers: { 'x-auth-token': token },
+            signal: controller.signal,
           });
+          clearTimeout(timeoutId);
           if (!response.ok) throw new Error('Unauthorized');
           const userData = await response.json();
           setUser(userData);

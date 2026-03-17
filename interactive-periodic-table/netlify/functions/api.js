@@ -24,7 +24,11 @@ const connectDB = async () => {
     return Promise.resolve(cachedDb);
   }
   try {
-    cachedDb = await mongoose.connect(dbURI, { bufferCommands: false });
+    cachedDb = await mongoose.connect(dbURI, {
+      bufferCommands: false,
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 5000,
+    });
     return cachedDb;
   } catch (error) {
     console.error("MongoDB Error:", error);

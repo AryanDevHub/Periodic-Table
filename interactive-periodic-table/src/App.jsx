@@ -13,47 +13,19 @@ import AccountPage from './pages/AccountPage';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 
-const API_BASE_URL = '/api';
+// Import static data directly — no API call needed for reference data
+import elementsData from './data/elements.json';
+import scientistsData from './data/scientists.json';
 
 function App() {
-  const [allElements, setAllElements] = useState([]);
-  const [scientists, setScientists] = useState([]);
-  const [filteredElements, setFilteredElements] = useState([]);
+  const [allElements] = useState(() => [...elementsData].sort((a, b) => a.number - b.number));
+  const [scientists] = useState(() => [...scientistsData].sort((a, b) => a.discoveryYear - b.discoveryYear));
+  const [filteredElements, setFilteredElements] = useState(allElements);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
-  
-  
+
+
   const location = useLocation();
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const [elementsRes, scientistsRes] = await Promise.all([
-          fetch(`${API_BASE_URL}/elements`),
-          fetch(`${API_BASE_URL}/scientists`)
-        ]);
-        if (!elementsRes.ok || !scientistsRes.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const elementsData = await elementsRes.json();
-        const scientistsData = await scientistsRes.json();
-        setAllElements(elementsData);
-        setFilteredElements(elementsData);
-        setScientists(scientistsData);
-        setError(null);
-      } catch (err) {
-        console.error('Failed to fetch data:', err);
-        setError('Failed to load data from the server. Please try again later.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
 
   
   useEffect(() => {
@@ -97,29 +69,23 @@ function App() {
       />
       
       <main className={styles.mainContent}>
-        {isLoading ? (
-          <div className="status-message">Loading Application Data...</div>
-        ) : error ? (
-          <div className="status-message error">{error}</div>
-        ) : (
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <HomePage
-                  allElements={allElements}
-                  filteredElements={filteredElements}
-                  scientists={scientists}
-                  searchTerm={searchTerm}
-                />
-              }
-            />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
-            <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-          </Routes>
-        )}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                allElements={allElements}
+                filteredElements={filteredElements}
+                scientists={scientists}
+                searchTerm={searchTerm}
+              />
+            }
+          />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+        </Routes>
       </main>
 
       <Footer />
