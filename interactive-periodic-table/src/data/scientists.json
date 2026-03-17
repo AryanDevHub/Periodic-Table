@@ -1,0 +1,58 @@
+[
+  {
+    "id": 6,
+    "name": "John Dalton",
+    "discoveryYear": 1803,
+    "image": "https://imgs.search.brave.com/D1Kl6JhOK29VUDSKdzKewu_FJJIo83gSSqAnC-mI8NE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2U1L2Q1/L2U2L2U1ZDVlNjI5/NTJiMWJmY2UyYjA5/MDNkMmQ2MTkxN2Y0/LmpwZw",
+    "contribution": "Considered the father of modern atomic theory, Dalton's work was the first complete attempt to describe all matter in terms of atoms. His postulates stated that elements are made of indivisible atoms, all atoms of an element are identical, and compounds are combinations of different types of atoms.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/John_Dalton"
+  },
+  {
+    "id": 4,
+    "name": "Dmitri Mendeleev",
+    "discoveryYear": 1869,
+    "image": "https://imgs.search.brave.com/jZi3-WBx19NSDCtpC_Ag1hyeQ3yQEcWeG9gxOJ32VJY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM5/MTk0MTg4OC9waG90/by9oYWxmLWxlbmd0/aC1zZWF0ZWQtcG9y/dHJhaXQtb2Ytc2Np/ZW50aXN0LWRtaXRy/aS1tZW5kZWxlZXYt/MTg5MC1ub3RlLWlt/YWdlLWhhcy1iZWVu/LWRpZ2l0YWxseS5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/VU1DcDRPaXFadDB0/YUFHeGxTLWRJT1JR/bXR3eEtIVTlqR05w/dHZKczdHND0",
+    "contribution": "Best known for formulating the Periodic Law. He arranged the then-known elements by atomic mass, and his table's structure had such predictive power that he correctly described the properties of elements that had not yet been discovered.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dmitri_Mendeleev"
+  },
+  {
+    "id": 1,
+    "name": "J.J. Thomson",
+    "discoveryYear": 1897,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbK25RK6ZnSu3j-77RsGovGu4EsGaVizIsow&s",
+    "contribution": "Through his experiments with cathode ray tubes, Thomson is credited with the discovery of the electron, the first subatomic particle. This revolutionary finding proved that atoms were divisible and led to his famous 'plum pudding' model of atomic structure.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/J._J._Thomson"
+  },
+  {
+    "id": 2,
+    "name": "Ernest Rutherford",
+    "discoveryYear": 1911,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Ernest_Rutherford_LOC.jpg/440px-Ernest_Rutherford_LOC.jpg",
+    "contribution": "His famous gold foil experiment proved that atoms consist of a small, dense, positively-charged nucleus surrounded by mostly empty space. This displaced the 'plum pudding' model and formed the basis of our modern understanding of atomic structure.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ernest_Rutherford"
+  },
+  {
+    "id": 5,
+    "name": "Henry Moseley",
+    "discoveryYear": 1913,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyQTeBXJYEh0JiGZiLPR3yYJCW8ba5kihkvw&s",
+    "contribution": "Using X-ray spectroscopy, Moseley experimentally demonstrated that the major properties of an element are determined by its atomic number, not its atomic weight. This discovery fixed flaws in Mendeleev's table and led to the table's modern organization.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Henry_Moseley"
+  },
+  {
+    "id": 8,
+    "name": "Niels Bohr",
+    "discoveryYear": 1913,
+    "image": "https://imgs.search.brave.com/0EgEyww-qVuC-KAt2noAgW6YK0STISeSdl39UvZiCeE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZW5k/ZXIuZmluZWFydGFt/ZXJpY2EuY29tL2lt/YWdlcy9pbWFnZXMt/cHJvZmlsZS1mbG93/LzQwMC9pbWFnZXMt/bWVkaXVtLWxhcmdl/LTUvMy1uaWVscy1i/b2hyLWxpYnJhcnkt/b2YtY29uZ3Jlc3Mu/anBn",
+    "contribution": "Bohr refined Rutherford's atomic model by proposing that electrons travel in separate, defined orbits around the nucleus. He theorized that electrons could move between these energy levels through 'quantum leaps,' a foundational concept in quantum mechanics.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Niels_Bohr"
+  },
+  {
+    "id": 3,
+    "name": "James Chadwick",
+    "discoveryYear": 1932,
+    "image": "https://imgs.search.brave.com/B4MMzHGtoBa1HuvJXrGoEZDGCczdByZWEA4RYojXdnY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZW5k/ZXIuZmluZWFydGFt/ZXJpY2EuY29tL2lt/YWdlcy9pbWFnZXMt/cHJvZmlsZS1mbG93/LzQwMC9pbWFnZXMv/YXJ0d29ya2ltYWdl/cy9tZWRpdW1sYXJn/ZS8yL2phbWVzLWNo/YWR3aWNrLWZhbW91/cy1zY2llbnRpc3Qt/am9obi1zcHJpbmdm/aWVsZC5qcGc",
+    "contribution": "In 1932, Chadwick discovered the neutron, a neutral particle in the atom's nucleus. This monumental discovery completed the picture of the atom's subatomic particles and explained the existence of isotopes, paving the way for the nuclear age.",
+    "wikiUrl": "https://en.wikipedia.org/wiki/James_Chadwick"
+  }
+]
