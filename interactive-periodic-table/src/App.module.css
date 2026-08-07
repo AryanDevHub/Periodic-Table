@@ -1,0 +1,19 @@
+/* src/App.module.css (Corrected and Final Version) */
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* 
+    REMOVED: 'overflow-x: hidden' was here.
+    WHY: This was preventing the 'position: fixed' side panel from being
+         visible when it was animated in from outside the screen boundaries.
+         Removing it is the key to fixing the invisible panel bug.
+  */
+}
+
+.mainContent {
+  flex-grow: 1; /* This ensures the main area fills the vertical space between the header and footer. */
+  width: 100%;
+}
+
