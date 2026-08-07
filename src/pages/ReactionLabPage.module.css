@@ -1,0 +1,254 @@
+.reactionLabPage {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 2rem 3rem;
+  color: var(--text-color);
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pageHeader h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pageHeader p {
+  opacity: 0.8;
+}
+
+.pickerRow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+.pickerColumn {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  min-height: 220px;
+}
+
+.pickerLabel {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pickerInput {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.pickerOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.pickerOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  text-align: left;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.pickerOption:hover {
+  background-color: var(--button-bg);
+}
+
+.optionSwatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.selectedCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 1.5rem 1rem;
+  border: 2px solid;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.selectedSymbol {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.selectedName {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.changeButton {
+  margin-top: 8px;
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  border-radius: 12px;
+}
+
+.plusSign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2.5rem;
+}
+
+.reactVisual {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reactOrb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #222;
+  transition: transform 0.4s ease;
+}
+
+.plusIcon {
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0.6;
+}
+
+.reacting .reactOrb {
+  animation: pulseMerge 0.9s ease-in-out;
+}
+
+@keyframes pulseMerge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3) rotate(15deg); }
+  100% { transform: scale(1); }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.reactButton {
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.reactButton:hover:not(:disabled) {
+  background-color: var(--link-hover-color);
+  opacity: 1;
+}
+
+.reactButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.resetButton {
+  padding: 12px 24px;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 8px;
+}
+
+.resultCard {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  animation: fadeInResult 0.4s ease-out;
+}
+
+@keyframes fadeInResult {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.resultCard h3 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  color: var(--link-color);
+}
+
+.equationText {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0.75rem 0;
+}
+
+.knownReaction {
+  border-left: 4px solid var(--success-color);
+}
+
+.noReaction {
+  border-left: 4px solid var(--border-color);
+}
+
+.unknownReaction {
+  border-left: 4px solid #f39c12;
+}
+
+.predictedTag {
+  display: inline-block;
+  background-color: var(--button-bg);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .pickerRow {
+    grid-template-columns: 1fr;
+  }
+  .plusSign {
+    padding-top: 0;
+  }
+}

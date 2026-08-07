@@ -1,0 +1,39 @@
+/* src/pages/HomePage.module.css */
+
+.homePageContainer {
+  width: 100%;
+}
+
+.tableSectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* This is the container that scrolls horizontally */
+.interactiveArea {
+  width: 100%; 
+  overflow-x: auto;
+  
+  /* --- THIS IS THE FIX --- */
+  /* This establishes a stacking context on a HIGHER layer than the legend,
+     ensuring that tooltips from the table will appear on top. */
+  position: relative;
+  z-index: 2;
+  
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.interactiveArea::-webkit-scrollbar {
+  display: none;
+}
+
+.tableArea {
+  padding: 1rem;
+}
+
+.fullWidthSections {
+  width: 100%;
+  padding: 0 1rem;
+}

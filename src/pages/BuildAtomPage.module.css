@@ -1,0 +1,273 @@
+.buildAtomPage {
+  width: 100%;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 2rem 3rem;
+  color: var(--text-color);
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pageHeader h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pageHeader p {
+  opacity: 0.8;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.atomVisual {
+  position: relative;
+  height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+}
+
+.perspectiveWrapper {
+  perspective: 900px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atomScene {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.05s linear;
+}
+
+.nucleus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
+
+.particleCluster {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 90px;
+  gap: 2px;
+}
+
+.proton, .neutron {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  animation: jiggle 0.6s ease-in-out infinite;
+}
+
+/* Subtle thermal-motion jiggle — scientifically accurate stand-in for the
+   fact that nucleons vibrate in place, unlike electrons which genuinely
+   move around the nucleus. Protons/neutrons never orbit. */
+@keyframes jiggle {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(1px, -1px); }
+  50% { transform: translate(-1px, 1px); }
+  75% { transform: translate(1px, 1px); }
+}
+
+.proton {
+  background-color: #e74c3c;
+  box-shadow: 0 0 4px rgba(231, 76, 60, 0.6);
+}
+
+.neutron {
+  background-color: #95a5a6;
+}
+
+.overflowNote {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.dragHint {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.shell {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  border: 1px dashed var(--border-color);
+  border-radius: 50%;
+  margin-left: calc(-1 * var(--shell-radius, 0px));
+  margin-top: calc(-1 * var(--shell-radius, 0px));
+}
+
+.shellSpin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  animation: spinShell 10s linear infinite;
+}
+
+@keyframes spinShell {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(360deg); }
+}
+
+.electron {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background-color: #3498db;
+  box-shadow: 0 0 8px #3498db, 0 0 3px #fff;
+}
+
+.controlsPanel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.particleControl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.particleLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.dotProton, .dotNeutron, .dotElectron {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotProton { background-color: #e74c3c; }
+.dotNeutron { background-color: #95a5a6; }
+.dotElectron { background-color: #3498db; box-shadow: 0 0 4px #3498db; }
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stepper button {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.stepper span {
+  min-width: 30px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.resetButton {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.infoCard {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.25rem;
+  text-align: center;
+}
+
+.elementBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.badgeSymbol {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--link-color);
+}
+
+.badgeName {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.chargeTag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background-color: var(--button-bg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+@media (max-width: 800px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .atomVisual {
+    height: 420px;
+  }
+}

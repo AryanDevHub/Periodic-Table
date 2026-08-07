@@ -1,0 +1,177 @@
+.comparePage {
+  width: 100%;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 2rem 3rem;
+  color: var(--text-color);
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pageHeader h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pageHeader p {
+  opacity: 0.8;
+}
+
+.selectorArea {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.selectedChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  min-height: 40px;
+  align-items: center;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 6px 10px;
+  border-radius: 20px;
+  color: #222;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.removeChipButton {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 2px;
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+.removeChipButton:hover {
+  opacity: 1;
+}
+
+.emptyHint {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.searchWrapper {
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px var(--shadow-color);
+  z-index: 10;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.suggestionItem:hover:not(:disabled) {
+  background-color: var(--button-bg);
+}
+
+.suggestionItem:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.suggestionSwatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.noResults {
+  padding: 12px 14px;
+  opacity: 0.6;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--panel-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.compareTable th,
+.compareTable td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.rowLabel {
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.tableHeaderCell {
+  display: flex;
+  flex-direction: column;
+  border-left: 4px solid;
+  padding-left: 10px;
+}
+
+.headerSymbol {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.headerName {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .comparePage {
+    padding: 0 1rem 2rem;
+  }
+}

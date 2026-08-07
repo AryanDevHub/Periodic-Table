@@ -1,0 +1,126 @@
+.balancerPage {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 2rem 3rem;
+  color: var(--text-color);
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pageHeader h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pageHeader p {
+  opacity: 0.8;
+}
+
+.inputForm {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.equationInput {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.balanceButton {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--link-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.balanceButton:hover {
+  background-color: var(--link-hover-color);
+  opacity: 1;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.examplesLabel {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-right: 0.25rem;
+}
+
+.exampleChip {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  background-color: var(--button-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  font-family: monospace;
+}
+
+.exampleChip:hover {
+  border-color: var(--link-color);
+}
+
+.errorBox {
+  background-color: rgba(231, 76, 60, 0.12);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  color: #e74c3c;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.resultBox {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.balancedEquation {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.coefficient {
+  color: var(--link-color);
+  margin-right: 2px;
+}
+
+.compoundTerm {
+  display: inline;
+}
+
+.arrow {
+  color: var(--text-color);
+  opacity: 0.6;
+  margin: 0 0.3em;
+}
+
+@media (max-width: 600px) {
+  .inputForm {
+    flex-direction: column;
+  }
+  .balancedEquation {
+    font-size: 1.2rem;
+  }
+}
